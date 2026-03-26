@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiwami School — Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#152b5e;--blue-dark:#0e1e42;--blue-light:#e8edf8;--blue-mid:#1e3a7a;
+  --sky:#3a6db5;--ink:#0f1d3a;--ink2:#1e3050;--muted:#4a6080;--muted2:#8aa0b8;
+  --surface:#ffffff;--bg:#f7f9fc;--bg2:#eef3fb;--border:#dce6f5;--border2:#c5d8f0;
+  --green:#0e9f6e;--green-light:#e6f7f0;--accent:#e8622a;--yellow:#f5c842;
+  --font:'Plus Jakarta Sans',sans-serif;--font2:'Manrope',sans-serif;
+  --radius:12px;--radius-lg:18px;--radius-xl:24px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);color:var(--ink);background:var(--surface);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ─ NAV ─ */
+nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
+.logo-mark{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;}
+.logo-mark svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.btn-ghost{color:var(--blue);font-weight:600;font-size:14px;text-decoration:none;padding:8px 16px;border-radius:var(--radius);transition:background .2s;}
+.btn-ghost:hover{background:var(--blue-light);}
+.btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);transition:all .2s;}
+.btn-solid:hover{background:var(--blue-dark);}
+.nav-burger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink);padding:4px;}
+
+/* ─ BREADCRUMB ─ */
+.breadcrumb{padding:16px 6vw;background:var(--bg);border-bottom:1px solid var(--border);font-size:13px;color:var(--muted2);}
+.breadcrumb a{color:var(--muted);text-decoration:none;font-weight:500;}
+.breadcrumb a:hover{color:var(--blue);}
+.breadcrumb span{margin:0 8px;}
+
+/* ─ COURSE HERO ─ */
+.course-hero{background:var(--blue-dark);padding:60px 6vw 0;position:relative;overflow:hidden;}
+.ch-blob{position:absolute;top:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(58,109,181,.2) 0%,transparent 65%);pointer-events:none;}
+.ch-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:flex-end;position:relative;z-index:1;}
+.ch-left{padding-bottom:60px;}
+.ch-track{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:700;margin-bottom:20px;letter-spacing:.5px;text-transform:uppercase;font-family:var(--font2);}
+.ch-title{font-family:var(--font2);font-size:clamp(28px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-1.5px;margin-bottom:16px;}
+.ch-tagline{font-size:17px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px;max-width:520px;}
+.ch-meta{display:flex;gap:20px;flex-wrap:wrap;}
+.ch-meta-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);font-size:14px;font-weight:500;}
+.ch-meta-item strong{color:#fff;}
+
+/* Stars */
+.stars{display:flex;align-items:center;gap:4px;}
+.star{font-size:15px;line-height:1;}
+.star.half{position:relative;display:inline-block;}
+.rating-val{font-family:var(--font2);font-size:16px;font-weight:800;color:#fff;margin-right:2px;}
+.rating-count{font-size:13px;color:rgba(255,255,255,.45);font-weight:500;}
+
+/* Sticky card floated on hero */
+.ch-card-wrap{align-self:flex-end;padding-bottom:0;}
+.course-card{background:var(--surface);border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:32px 28px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.18);}
+.cc-icon{width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--blue-light);margin-bottom:20px;}
+.cc-price{font-family:var(--font2);font-size:36px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:4px;}
+.cc-price-note{font-size:13px;color:var(--muted2);margin-bottom:24px;}
+.btn-enroll{display:block;background:var(--blue);color:#fff;text-align:center;padding:16px;border-radius:var(--radius-lg);font-size:16px;font-weight:800;text-decoration:none;transition:all .25s;font-family:var(--font2);margin-bottom:12px;}
+.btn-enroll:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,43,94,.3);}
+.btn-whatsapp{display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:var(--radius-lg);font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;margin-bottom:20px;}
+.btn-whatsapp:hover{background:#1ebe5d;transform:translateY(-1px);}
+.cc-details{display:flex;flex-direction:column;gap:12px;}
+.cc-detail{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.cc-detail:last-child{border-bottom:none;padding-bottom:0;}
+.cc-detail-label{color:var(--muted2);font-weight:500;}
+.cc-detail-val{color:var(--ink);font-weight:700;font-family:var(--font2);}
+
+/* ─ MAIN LAYOUT ─ */
+.course-body{max-width:1160px;margin:0 auto;padding:56px 6vw;display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:flex-start;}
+.course-content{}
+
+/* ─ SECTION BLOCKS ─ */
+.cb-section{margin-bottom:52px;}
+.cb-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:8px;font-family:var(--font2);}
+.cb-label::before{content:'';width:16px;height:2px;background:var(--blue);border-radius:2px;}
+.cb-title{font-family:var(--font2);font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--ink);margin-bottom:16px;letter-spacing:-.5px;line-height:1.15;}
+.cb-body{font-size:16px;color:var(--muted);line-height:1.8;}
+
+/* Prerequisites */
+.prereq-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.prereq-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--muted);line-height:1.5;}
+.prereq-list li::before{content:'✓';color:var(--green);font-weight:800;font-size:14px;margin-top:2px;flex-shrink:0;}
+
+/* Curriculum */
+.curriculum{display:flex;flex-direction:column;gap:0;border-radius:var(--radius-lg);overflow:hidden;border:1.5px solid var(--border);}
+.cw{border-bottom:1.5px solid var(--border);cursor:pointer;}
+.cw:last-child{border-bottom:none;}
+.cw-head{display:flex;align-items:center;gap:14px;padding:18px 22px;transition:background .2s;}
+.cw-head:hover{background:var(--bg);}
+.cw.open .cw-head{background:var(--blue-light);}
+.cw-week{font-family:var(--font2);font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:3px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.cw.open .cw-week{background:var(--blue);color:#fff;}
+.cw-title{font-size:15px;font-weight:700;color:var(--ink);flex:1;font-family:var(--font2);}
+.cw-arrow{color:var(--muted2);font-size:18px;transition:transform .25s;flex-shrink:0;}
+.cw.open .cw-arrow{transform:rotate(90deg);color:var(--blue);}
+.cw-body{display:none;padding:0 22px 18px 56px;}
+.cw.open .cw-body{display:block;}
+.cw-topics{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.cw-topics li{font-size:14px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.cw-topics li::before{content:'→';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* ─ STICKY SIDEBAR ─ */
+.course-sidebar{position:sticky;top:88px;}
+.sidebar-card{background:var(--surface);border-radius:var(--radius-xl);border:1.5px solid var(--border);padding:28px;box-shadow:0 4px 24px rgba(21,43,94,.07);}
+.sidebar-card + .sidebar-card{margin-top:20px;}
+
+/* ─ REVIEWS ─ */
+.reviews-section{background:var(--bg);padding:64px 6vw;}
+.reviews-inner{max-width:1160px;margin:0 auto;}
+.reviews-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
+.rating-big{display:flex;align-items:center;gap:20px;}
+.rating-number{font-family:var(--font2);font-size:72px;font-weight:900;color:var(--ink);line-height:1;}
+.rating-right{}
+.rating-stars-big{display:flex;gap:4px;margin-bottom:6px;}
+.rating-star-big{font-size:24px;}
+.rating-label{font-size:14px;color:var(--muted);font-weight:500;}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+.rcard{background:var(--surface);border-radius:var(--radius-xl);padding:26px;border:1.5px solid var(--border);transition:all .25s;position:relative;}
+.rcard:hover{border-color:var(--border2);box-shadow:0 8px 32px rgba(21,43,94,.07);}
+.rcard::before{content:'"';font-family:var(--font2);font-size:64px;color:var(--border2);line-height:1;position:absolute;top:14px;right:20px;font-weight:900;}
+.rc-stars{display:flex;gap:3px;margin-bottom:14px;}
+.rc-star{font-size:14px;}
+.rc-text{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;position:relative;z-index:1;}
+.rc-author{display:flex;align-items:center;gap:10px;}
+.rc-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font2);font-size:13px;font-weight:800;color:#fff;flex-shrink:0;}
+.rc-name{font-size:14px;font-weight:700;color:var(--ink);font-family:var(--font2);}
+.rc-role{font-size:12px;color:var(--muted2);margin-top:2px;}
+.no-reviews{text-align:center;padding:48px;color:var(--muted2);font-size:15px;}
+
+/* ─ CTA BANNER ─ */
+.cta-banner{background:var(--blue);padding:72px 6vw;text-align:center;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;border:50px solid rgba(255,255,255,.04);}
+.cta-inner{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+.cta-title{font-family:var(--font2);font-size:clamp(26px,4vw,44px);font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:14px;line-height:1.1;}
+.cta-title i{font-style:italic;color:var(--yellow);}
+.cta-sub{font-size:16px;color:rgba(255,255,255,.55);margin-bottom:32px;line-height:1.65;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-yellow{background:var(--yellow);color:var(--blue-dark);font-weight:800;font-size:16px;padding:16px 32px;border-radius:var(--radius-lg);text-decoration:none;transition:all .25s;font-family:var(--font2);}
+.btn-yellow:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(245,200,66,.3);}
+.btn-outline-white{color:rgba(255,255,255,.75);font-size:15px;font-weight:600;text-decoration:none;padding:16px 28px;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--radius-lg);transition:all .2s;}
+.btn-outline-white:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+
+/* ─ FOOTER ─ */
+footer{background:var(--ink);padding:64px 6vw 32px;}
+.footer-grid{max-width:1160px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.f-brand{font-family:var(--font2);font-size:22px;font-weight:900;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.f-mark{width:34px;height:34px;border-radius:8px;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;}
+.f-desc{font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;max-width:300px;}
+.f-col h5{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;font-family:var(--font2);}
+.f-col a{display:block;font-size:14px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.f-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,.28);}
+
+/* Tags */
+.tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;font-family:var(--font2);}
+.tag-pop{background:#fff4ed;color:#c44d10;}
+.tag-istqb{background:var(--blue-light);color:var(--blue);}
+.tag-hot{background:#fff0f0;color:#b52525;}
+.tag-new{background:var(--green-light);color:#0a7a52;}
+
+/* ─ 404 STATE ─ */
+.not-found{text-align:center;padding:120px 6vw;color:var(--muted);}
+.not-found .nf-icon{font-size:64px;margin-bottom:20px;}
+.not-found h2{font-family:var(--font2);font-size:32px;font-weight:900;color:var(--ink);margin-bottom:10px;}
+.not-found p{font-size:16px;color:var(--muted);margin-bottom:28px;}
+
+/* ─ MOBILE ─ */
+@media(max-width:960px){
+  .ch-inner{grid-template-columns:1fr;}
+  .ch-card-wrap{display:none;}
+  .course-body{grid-template-columns:1fr;}
+  .course-sidebar{position:static;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .mobile-enroll-bar{display:flex !important;}
+}
+@media(max-width:600px){
+  .footer-top{grid-template-columns:1fr;}
+  .course-hero{padding:40px 5vw 0;}
+  .course-body{padding:36px 5vw;}
+  .reviews-section{padding:48px 5vw;}
+  nav{padding:0 5vw;}
+  .breadcrumb{padding:12px 5vw;}
+  .cta-btns{flex-direction:column;align-items:center;}
+}
+
+/* Mobile sticky enroll bar */
+.mobile-enroll-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;z-index:200;gap:10px;align-items:center;box-shadow:0 -4px 20px rgba(0,0,0,.1);}
+.meb-price{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--ink);}
+.meb-btn{flex:1;background:var(--blue);color:#fff;text-align:center;padding:13px;border-radius:var(--radius);font-size:15px;font-weight:800;text-decoration:none;font-family:var(--font2);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg>
+    </div>
+    Kiwami School
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#courses">Courses</a></li>
+    <li><a href="/#why">Why Us</a></li>
+    <li><a href="/#testimonials">Alumni</a></li>
+    <li><a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a></li>
+    <li><a href="/#bootcamp">Students Bootcamps</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
+    <a href="/#enroll" class="btn-solid">Enroll Now</a>
+  </div>
+</nav>
+
+<!-- Dynamic content injected here -->
+<div id="app"></div>
+
+<!-- Mobile sticky bar -->
+<div class="mobile-enroll-bar" id="mobileBar">
+  <div class="meb-price" id="mobilePrice"></div>
+  <a href="#enroll" class="meb-btn">Enroll Now →</a>
+</div>
+
+<script src="courses-data.js"></script>
+<script>
+// ── helpers ──────────────────────────────────────────────────
+function stars(rating, size = 'normal') {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.5;
+  const cls = size === 'big' ? 'rating-star-big' : 'rc-star';
+  let s = '';
+  for (let i = 0; i < full; i++) s += `<span class="${cls}">⭐</span>`;
+  if (half) s += `<span class="${cls}">✨</span>`;
+  return s;
+}
+
+function fmt(price) {
+  if (!price) return 'Enquire';
+  return 'KSH ' + Number(price).toLocaleString();
+}
+
+function tagHTML(tag, style) {
+  return `<span class="tag ${style}">${tag}</span>`;
+}
+
+// ── get course from URL ───────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+const course = id && COURSES[id];
+
+// ── 404 ──────────────────────────────────────────────────────
+if (!course) {
+  document.getElementById('app').innerHTML = `
+    <div class="not-found">
+      <div class="nf-icon">🔍</div>
+      <h2>Course not found</h2>
+      <p>We couldn't find the course you're looking for.</p>
+      <a href="index.html#courses" class="btn-solid" style="display:inline-block;">Browse All Courses →</a>
+    </div>
+    ${footerHTML()}
+  `;
+} else {
+  document.title = `${course.title} — Kiwami School`;
+  renderCourse(course);
+}
+
+// ── render ────────────────────────────────────────────────────
+function renderCourse(c) {
+  const prereqs = c.prerequisites.map(p => `<li>${p}</li>`).join('');
+  const curriculum = c.curriculum.map((w, i) => `
+    <div class="cw${i === 0 ? ' open' : ''}" onclick="toggleWeek(this)">
+      <div class="cw-head">
+        <span class="cw-week">${w.week}</span>
+        <span class="cw-title">${w.title}</span>
+        <span class="cw-arrow">›</span>
+      </div>
+      <div class="cw-body">
+        <ul class="cw-topics">
+          ${w.topics.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `).join('');
+
+  const reviewCards = c.testimonials.length > 0
+    ? c.testimonials.map(t => `
+        <div class="rcard">
+          <div class="rc-stars">${'⭐'.repeat(5)}</div>
+          <div class="rc-text">${t.text}</div>
+          <div class="rc-author">
+            <div class="rc-avatar" style="background:${t.color};">${t.avatar}</div>
+            <div>
+              <div class="rc-name">${t.name}</div>
+              <div class="rc-role">${t.role}</div>
+            </div>
+          </div>
+        </div>
+      `).join('')
+    : `<div class="no-reviews">⭐ Be the first to complete this course and share your story!</div>`;
+
+  const priceDisplay = c.price ? `KSH ${Number(c.price).toLocaleString()}` : 'Enquire for pricing';
+  const enrollHref = `contact.html?course=${c.id}`;
+
+  document.getElementById('app').innerHTML = `
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="index.html#courses">Courses</a>
+      <span>›</span>
+      ${c.title}
+    </div>
+
+    <!-- HERO -->
+    <div class="course-hero">
+      <div class="ch-blob"></div>
+      <div class="ch-inner">
+        <div class="ch-left">
+          <div class="ch-track">${c.track} Track</div>
+          <h1 class="ch-title">${c.title}</h1>
+          <p class="ch-tagline">${c.tagline}</p>
+          <div class="ch-meta">
+            <div class="ch-meta-item">⏱ <strong>${c.duration}</strong></div>
+            <div class="ch-meta-item">📅 <strong>${c.cohort}</strong></div>
+            <div class="ch-meta-item">🖥 <strong>${c.mode}</strong></div>
+            <div class="ch-meta-item">
+              <span class="rating-val">${c.rating}</span>
+              <div class="stars">${stars(c.rating)}</div>
+              <span class="rating-count">(${c.reviews} reviews)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating card (desktop) -->
+        <div class="ch-card-wrap">
+          <div class="course-card">
+            <div class="cc-icon">${c.icon}</div>
+            <div class="cc-price">${priceDisplay}</div>
+            <div class="cc-price-note">Full course · All materials included</div>
+            <a href="${enrollHref}" class="btn-enroll" id="enroll">Contact Us to Enroll →</a>
+            <a href="https://wa.me/254110436849?text=Hi, I'm interested in ${encodeURIComponent(c.title)}" class="btn-whatsapp">💬 Chat on WhatsApp</a>
+            <div class="cc-details">
+              <div class="cc-detail">
+                <span class="cc-detail-label">Duration</span>
+                <span class="cc-detail-val">${c.duration}</span>
+              </div>
+              <div class="cc-detail">
+                <span class="cc-detail-label">Next Cohort</span>
+                <span class="cc-detail-val">${c.cohort}</span>
+              </div>
+              <div class="cc-detail">
+                <span class="cc-detail-label">Mode</span>
+                <span class="cc-detail-val">Virtual · Hybrid</span>
+              </div>
+              <div class="cc-detail">
+                <span class="cc-detail-label">Rating</span>
+                <span class="cc-detail-val">${c.rating} ⭐ (${c.reviews})</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="course-body">
+      <div class="course-content">
+
+        <!-- About -->
+        <div class="cb-section">
+          <div class="cb-label">About This Course</div>
+          <p class="cb-body">${c.description}</p>
+        </div>
+
+        <!-- Prerequisites -->
+        <div class="cb-section">
+          <div class="cb-label">Prerequisites</div>
+          <h2 class="cb-title">What you'll need</h2>
+          <ul class="prereq-list">${prereqs}</ul>
+        </div>
+
+        <!-- Curriculum -->
+        <div class="cb-section">
+          <div class="cb-label">Curriculum</div>
+          <h2 class="cb-title">What you'll learn</h2>
+          <div class="curriculum" style="margin-top:20px;">${curriculum}</div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="course-sidebar">
+        <div class="sidebar-card" id="enroll">
+          <div class="cc-icon" style="margin-bottom:16px;">${c.icon}</div>
+          <div class="cc-price" style="font-size:28px;margin-bottom:4px;">${priceDisplay}</div>
+          <div class="cc-price-note" style="margin-bottom:20px;">Full course · All materials included</div>
+          <a href="contact.html?course=${c.id}" class="btn-enroll">Contact Us to Enroll →</a>
+          <a href="https://wa.me/254110436849?text=Hi, I'm interested in ${encodeURIComponent(c.title)}" class="btn-whatsapp">💬 Chat on WhatsApp</a>
+          <div class="cc-details">
+            <div class="cc-detail">
+              <span class="cc-detail-label">Duration</span>
+              <span class="cc-detail-val">${c.duration}</span>
+            </div>
+            <div class="cc-detail">
+              <span class="cc-detail-label">Next Cohort</span>
+              <span class="cc-detail-val">${c.cohort}</span>
+            </div>
+            <div class="cc-detail">
+              <span class="cc-detail-label">Mode</span>
+              <span class="cc-detail-val">Virtual · Hybrid</span>
+            </div>
+            <div class="cc-detail">
+              <span class="cc-detail-label">Rating</span>
+              <span class="cc-detail-val">${c.rating} ⭐ (${c.reviews})</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div class="sidebar-card">
+          <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:14px;font-family:var(--font2);">OTHER COURSES</div>
+          ${Object.values(COURSES).filter(x => x.id !== c.id).slice(0,4).map(x => `
+            <a href="course.html?id=${x.id}" style="display:flex;align-items:center;gap:10px;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);">
+              <span style="font-size:20px;">${x.icon}</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--ink);font-family:var(--font2);">${x.title}</div>
+                <div style="font-size:12px;color:var(--muted2);margin-top:2px;">${x.duration} · ${fmt(x.price)}</div>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews-section">
+      <div class="reviews-inner">
+        <div class="reviews-header">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;font-family:var(--font2);">Student Reviews</div>
+            <h2 style="font-family:var(--font2);font-size:clamp(24px,3.5vw,38px);font-weight:900;color:var(--ink);letter-spacing:-.5px;">What our students say</h2>
+          </div>
+          <div class="rating-big">
+            <div class="rating-number">${c.rating}</div>
+            <div class="rating-right">
+              <div class="rating-stars-big">${stars(c.rating, 'big')}</div>
+              <div class="rating-label">${c.reviews} student reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="reviews-grid">${reviewCards}</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <div class="cta-inner">
+        <h2 class="cta-title">Ready to start your<br><i>QA career?</i></h2>
+        <p class="cta-sub">Reach out to our team and we'll walk you through everything — course fit, schedule, and next steps.</p>
+        <div class="cta-btns">
+          <a href="contact.html?course=${c.id}" class="btn-yellow">Contact Us to Enroll →</a>
+          <a href="index.html#courses" class="btn-outline-white">Browse Other Courses</a>
+        </div>
+      </div>
+    </div>
+
+    ${footerHTML()}
+  `;
+
+  // Set mobile bar price
+  document.getElementById('mobilePrice').textContent = c.price ? `KSH ${Number(c.price).toLocaleString()}` : 'Enquire';
+}
+
+function footerHTML() {
+  return `
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-top">
+          <div>
+            <a href="index.html" class="f-brand">
+              <div class="f-mark">
+                <svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg>
+              </div>
+              Kiwami School
+            </a>
+            <p class="f-desc">Africa's leading QA engineering training school. Expert-led courses, ISTQB pathways, and real-world skills for the next generation of QA professionals.</p>
+          </div>
+          <div class="f-col">
+            <h5>Courses</h5>
+            <a href="course.html?id=manual-testing">Manual Testing</a>
+            <a href="course.html?id=api-testing-postman">API Testing</a>
+            <a href="course.html?id=selenium">Selenium</a>
+            <a href="course.html?id=cypress">Cypress</a>
+            <a href="course.html?id=playwright-typescript">Playwright</a>
+            <a href="course.html?id=ussd-testing">USSD Testing</a>
+          </div>
+          <div class="f-col">
+            <h5>Company</h5>
+            <a href="https://kiwamitech.com">Kiwami Tech</a>
+            <a href="https://kiwamitech.com/about.html">About</a>
+            <a href="https://kiwamitech.com/sqasummit2026/">SQA Summit 2026</a>
+            <a href="#">Login to LMS</a>
+          </div>
+          <div class="f-col">
+            <h5>Enroll</h5>
+            <a href="contact.html">Contact Us</a>
+            <a href="https://forms.gle/xbjheoCrfStsnLfc8">Bootcamp Apply</a>
+            <a href="https://kiwamitech.com/#contact">Get in Touch</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Kiwami Tech Solutions Ltd</p>
+          <p>Nairobi, Kenya</p>
+        </div>
+      </div>
+    </footer>
+  `;
+}
+
+function toggleWeek(el) {
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
