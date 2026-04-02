@@ -31,7 +31,23 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .btn-ghost:hover{background:var(--blue-light);}
 .btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);transition:all .2s;}
 .btn-solid:hover{background:var(--blue-dark);}
-.nav-burger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink);padding:4px;}
+
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;transition:background .2s;}
+.nav-hamburger:hover{background:var(--blue-light);}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--blue);border-radius:2px;transition:all .3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile menu */
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:90px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-size:18px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a:hover{color:var(--blue);}
+.mobile-menu-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.mobile-menu-btns .btn-ghost{text-align:center;border:2px solid var(--border2);}
+.mobile-menu-btns .btn-solid{text-align:center;padding:14px 22px;color:#fff;}
 
 /* ─ BREADCRUMB ─ */
 .breadcrumb{padding:16px 6vw;background:var(--bg);border-bottom:1px solid var(--border);font-size:13px;color:var(--muted2);}
@@ -45,20 +61,14 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .ch-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:flex-end;position:relative;z-index:1;}
 .ch-left{padding-bottom:60px;}
 .ch-track{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:700;margin-bottom:20px;letter-spacing:.5px;text-transform:uppercase;font-family:var(--font2);}
-.ch-title{font-family:var(--font2);font-size:clamp(28px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-1.5px;margin-bottom:16px;}
-.ch-tagline{font-size:17px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px;max-width:520px;}
+.ch-title{font-family:var(--font2);font-size:clamp(26px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-1.5px;margin-bottom:16px;}
+.ch-tagline{font-size:16px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px;max-width:520px;}
 .ch-meta{display:flex;gap:20px;flex-wrap:wrap;}
 .ch-meta-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);font-size:14px;font-weight:500;}
 .ch-meta-item strong{color:#fff;}
-
-/* Stars */
 .stars{display:flex;align-items:center;gap:4px;}
-.star{font-size:15px;line-height:1;}
-.star.half{position:relative;display:inline-block;}
 .rating-val{font-family:var(--font2);font-size:16px;font-weight:800;color:#fff;margin-right:2px;}
 .rating-count{font-size:13px;color:rgba(255,255,255,.45);font-weight:500;}
-
-/* Sticky card floated on hero */
 .ch-card-wrap{align-self:flex-end;padding-bottom:0;}
 .course-card{background:var(--surface);border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:32px 28px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.18);}
 .cc-icon{width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--blue-light);margin-bottom:20px;}
@@ -67,7 +77,7 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .btn-enroll{display:block;background:var(--blue);color:#fff;text-align:center;padding:16px;border-radius:var(--radius-lg);font-size:16px;font-weight:800;text-decoration:none;transition:all .25s;font-family:var(--font2);margin-bottom:12px;}
 .btn-enroll:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,43,94,.3);}
 .btn-whatsapp{display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:var(--radius-lg);font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;margin-bottom:20px;}
-.btn-whatsapp:hover{background:#1ebe5d;transform:translateY(-1px);}
+.btn-whatsapp:hover{background:#1ebe5d;}
 .cc-details{display:flex;flex-direction:column;gap:12px;}
 .cc-detail{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding-bottom:12px;border-bottom:1px solid var(--border);}
 .cc-detail:last-child{border-bottom:none;padding-bottom:0;}
@@ -76,21 +86,14 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 
 /* ─ MAIN LAYOUT ─ */
 .course-body{max-width:1160px;margin:0 auto;padding:56px 6vw;display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:flex-start;}
-.course-content{}
-
-/* ─ SECTION BLOCKS ─ */
 .cb-section{margin-bottom:52px;}
 .cb-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:8px;font-family:var(--font2);}
 .cb-label::before{content:'';width:16px;height:2px;background:var(--blue);border-radius:2px;}
-.cb-title{font-family:var(--font2);font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--ink);margin-bottom:16px;letter-spacing:-.5px;line-height:1.15;}
+.cb-title{font-family:var(--font2);font-size:clamp(20px,3vw,32px);font-weight:900;color:var(--ink);margin-bottom:16px;letter-spacing:-.5px;line-height:1.15;}
 .cb-body{font-size:16px;color:var(--muted);line-height:1.8;}
-
-/* Prerequisites */
 .prereq-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
 .prereq-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--muted);line-height:1.5;}
 .prereq-list li::before{content:'✓';color:var(--green);font-weight:800;font-size:14px;margin-top:2px;flex-shrink:0;}
-
-/* Curriculum */
 .curriculum{display:flex;flex-direction:column;gap:0;border-radius:var(--radius-lg);overflow:hidden;border:1.5px solid var(--border);}
 .cw{border-bottom:1.5px solid var(--border);cursor:pointer;}
 .cw:last-child{border-bottom:none;}
@@ -107,11 +110,9 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .cw-topics{list-style:none;display:flex;flex-direction:column;gap:8px;}
 .cw-topics li{font-size:14px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
 .cw-topics li::before{content:'→';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px;}
-
-/* ─ STICKY SIDEBAR ─ */
 .course-sidebar{position:sticky;top:88px;}
 .sidebar-card{background:var(--surface);border-radius:var(--radius-xl);border:1.5px solid var(--border);padding:28px;box-shadow:0 4px 24px rgba(21,43,94,.07);}
-.sidebar-card + .sidebar-card{margin-top:20px;}
+.sidebar-card+.sidebar-card{margin-top:20px;}
 
 /* ─ REVIEWS ─ */
 .reviews-section{background:var(--bg);padding:64px 6vw;}
@@ -119,7 +120,6 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .reviews-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
 .rating-big{display:flex;align-items:center;gap:20px;}
 .rating-number{font-family:var(--font2);font-size:72px;font-weight:900;color:var(--ink);line-height:1;}
-.rating-right{}
 .rating-stars-big{display:flex;gap:4px;margin-bottom:6px;}
 .rating-star-big{font-size:24px;}
 .rating-label{font-size:14px;color:var(--muted);font-weight:500;}
@@ -136,11 +136,11 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .rc-role{font-size:12px;color:var(--muted2);margin-top:2px;}
 .no-reviews{text-align:center;padding:48px;color:var(--muted2);font-size:15px;}
 
-/* ─ CTA BANNER ─ */
+/* ─ CTA ─ */
 .cta-banner{background:var(--blue);padding:72px 6vw;text-align:center;position:relative;overflow:hidden;}
 .cta-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;border:50px solid rgba(255,255,255,.04);}
 .cta-inner{max-width:640px;margin:0 auto;position:relative;z-index:1;}
-.cta-title{font-family:var(--font2);font-size:clamp(26px,4vw,44px);font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:14px;line-height:1.1;}
+.cta-title{font-family:var(--font2);font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:14px;line-height:1.1;}
 .cta-title i{font-style:italic;color:var(--yellow);}
 .cta-sub{font-size:16px;color:rgba(255,255,255,.55);margin-bottom:32px;line-height:1.65;}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
@@ -169,38 +169,62 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 .tag-hot{background:#fff0f0;color:#b52525;}
 .tag-new{background:var(--green-light);color:#0a7a52;}
 
-/* ─ 404 STATE ─ */
+/* ─ NOT FOUND ─ */
 .not-found{text-align:center;padding:120px 6vw;color:var(--muted);}
 .not-found .nf-icon{font-size:64px;margin-bottom:20px;}
 .not-found h2{font-family:var(--font2);font-size:32px;font-weight:900;color:var(--ink);margin-bottom:10px;}
 .not-found p{font-size:16px;color:var(--muted);margin-bottom:28px;}
 
-/* ─ MOBILE ─ */
+/* ─ WHATSAPP FLOAT ─ */
+.wa-float{position:fixed;bottom:88px;right:24px;z-index:998;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:15px;padding:14px 22px 14px 18px;border-radius:50px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .25s;font-family:var(--font);}
+.wa-float:hover{background:#1ebe5d;transform:translateY(-3px);}
+.wa-float svg{width:22px;height:22px;flex-shrink:0;}
+@media(min-width:961px){
+  .wa-float{bottom:28px;}
+}
+@media(max-width:560px){
+  .wa-float span{display:none;}
+  .wa-float{padding:16px;border-radius:50%;}
+}
+
+/* ─ MOBILE ENROLL BAR ─ */
+.mobile-enroll-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;z-index:200;gap:10px;align-items:center;box-shadow:0 -4px 20px rgba(0,0,0,.1);}
+.meb-price{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--ink);}
+.meb-btn{flex:1;background:var(--blue);color:#fff;text-align:center;padding:13px;border-radius:var(--radius);font-size:15px;font-weight:800;text-decoration:none;font-family:var(--font2);cursor:pointer;border:none;}
+.meb-btn:hover{background:var(--blue-dark);}
+
+/* ─ RESPONSIVE ─ */
 @media(max-width:960px){
   .ch-inner{grid-template-columns:1fr;}
   .ch-card-wrap{display:none;}
-  .course-body{grid-template-columns:1fr;}
+  .course-body{grid-template-columns:1fr;padding:36px 5vw;}
   .course-sidebar{position:static;}
   .footer-top{grid-template-columns:1fr 1fr;}
   .nav-links{display:none;}
-  .mobile-enroll-bar{display:flex !important;}
+  .nav-right{display:none;}
+  .nav-hamburger{display:flex;}
+  .mobile-enroll-bar{display:flex;}
 }
 @media(max-width:600px){
   .footer-top{grid-template-columns:1fr;}
   .course-hero{padding:40px 5vw 0;}
-  .course-body{padding:36px 5vw;}
   .reviews-section{padding:48px 5vw;}
   nav{padding:0 5vw;}
   .breadcrumb{padding:12px 5vw;}
   .cta-btns{flex-direction:column;align-items:center;}
+  .ch-left{padding-bottom:40px;}
 }
-
-/* Mobile sticky enroll bar */
-.mobile-enroll-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;z-index:200;gap:10px;align-items:center;box-shadow:0 -4px 20px rgba(0,0,0,.1);}
-.meb-price{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--ink);}
-.meb-btn{flex:1;background:var(--blue);color:#fff;text-align:center;padding:13px;border-radius:var(--radius);font-size:15px;font-weight:800;text-decoration:none;font-family:var(--font2);}
 </style>
 </head>
+
+<a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.847L.057 23.882a.5.5 0 0 0 .606.663l6.266-1.643A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.389l-.36-.214-3.733.979.995-3.636-.234-.374A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+  </svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
 <body>
 
 <!-- NAV -->
@@ -212,55 +236,79 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
     Kiwami School
   </a>
   <ul class="nav-links">
-    <li><a href="/#courses">Courses</a></li>
-    <li><a href="/#why">Why Us</a></li>
-    <li><a href="/#testimonials">Alumni</a></li>
+    <li><a href="index.html#courses">Courses</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#testimonials">Alumni</a></li>
     <li><a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a></li>
-    <li><a href="/#bootcamp">Students Bootcamps</a></li>
+    <li><a href="index.html#bootcamp">Bootcamp</a></li>
   </ul>
   <div class="nav-right">
     <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
-    <a href="/#enroll" class="btn-solid">Enroll Now</a>
+    <a href="contact.html" class="btn-solid">Enroll Now</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- Dynamic content injected here -->
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#courses">Courses</a>
+  <a href="index.html#why">Why Us</a>
+  <a href="index.html#testimonials">Alumni</a>
+  <a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a>
+  <a href="index.html#bootcamp">Bootcamp</a>
+  <div class="mobile-menu-btns">
+    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
+    <a href="contact.html" class="btn-solid">Enroll Now</a>
+  </div>
+</div>
+
+<!-- Dynamic content -->
 <div id="app"></div>
 
-<!-- Mobile sticky bar -->
+<!-- Mobile sticky enroll bar -->
 <div class="mobile-enroll-bar" id="mobileBar">
   <div class="meb-price" id="mobilePrice"></div>
-  <a href="#enroll" class="meb-btn">Enroll Now →</a>
+  <button class="meb-btn" id="mebBtn">Enroll Now →</button>
 </div>
 
 <script src="courses-data.js"></script>
 <script>
-// ── helpers ──────────────────────────────────────────────────
+// ── HAMBURGER ─────────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ── HELPERS ───────────────────────────────────────────────────
 function stars(rating, size = 'normal') {
   const full = Math.floor(rating);
-  const half = rating % 1 >= 0.5;
   const cls = size === 'big' ? 'rating-star-big' : 'rc-star';
   let s = '';
   for (let i = 0; i < full; i++) s += `<span class="${cls}">⭐</span>`;
-  if (half) s += `<span class="${cls}">✨</span>`;
   return s;
 }
-
 function fmt(price) {
   if (!price) return 'Enquire';
   return 'KSH ' + Number(price).toLocaleString();
 }
 
-function tagHTML(tag, style) {
-  return `<span class="tag ${style}">${tag}</span>`;
-}
-
-// ── get course from URL ───────────────────────────────────────
+// ── LOAD COURSE ───────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 const course = id && COURSES[id];
 
-// ── 404 ──────────────────────────────────────────────────────
 if (!course) {
   document.getElementById('app').innerHTML = `
     <div class="not-found">
@@ -276,7 +324,7 @@ if (!course) {
   renderCourse(course);
 }
 
-// ── render ────────────────────────────────────────────────────
+// ── RENDER ────────────────────────────────────────────────────
 function renderCourse(c) {
   const prereqs = c.prerequisites.map(p => `<li>${p}</li>`).join('');
   const curriculum = c.curriculum.map((w, i) => `
@@ -287,9 +335,7 @@ function renderCourse(c) {
         <span class="cw-arrow">›</span>
       </div>
       <div class="cw-body">
-        <ul class="cw-topics">
-          ${w.topics.map(t => `<li>${t}</li>`).join('')}
-        </ul>
+        <ul class="cw-topics">${w.topics.map(t => `<li>${t}</li>`).join('')}</ul>
       </div>
     </div>
   `).join('');
@@ -301,29 +347,21 @@ function renderCourse(c) {
           <div class="rc-text">${t.text}</div>
           <div class="rc-author">
             <div class="rc-avatar" style="background:${t.color};">${t.avatar}</div>
-            <div>
-              <div class="rc-name">${t.name}</div>
-              <div class="rc-role">${t.role}</div>
-            </div>
+            <div><div class="rc-name">${t.name}</div><div class="rc-role">${t.role}</div></div>
           </div>
-        </div>
-      `).join('')
+        </div>`).join('')
     : `<div class="no-reviews">⭐ Be the first to complete this course and share your story!</div>`;
 
   const priceDisplay = c.price ? `KSH ${Number(c.price).toLocaleString()}` : 'Enquire for pricing';
   const enrollHref = `contact.html?course=${c.id}`;
 
   document.getElementById('app').innerHTML = `
-    <!-- BREADCRUMB -->
     <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <a href="index.html#courses">Courses</a>
-      <span>›</span>
+      <a href="index.html">Home</a><span>›</span>
+      <a href="index.html#courses">Courses</a><span>›</span>
       ${c.title}
     </div>
 
-    <!-- HERO -->
     <div class="course-hero">
       <div class="ch-blob"></div>
       <div class="ch-inner">
@@ -342,93 +380,54 @@ function renderCourse(c) {
             </div>
           </div>
         </div>
-
-        <!-- Floating card (desktop) -->
         <div class="ch-card-wrap">
           <div class="course-card">
             <div class="cc-icon">${c.icon}</div>
             <div class="cc-price">${priceDisplay}</div>
             <div class="cc-price-note">Full course · All materials included</div>
-            <a href="${enrollHref}" class="btn-enroll" id="enroll">Contact Us to Enroll →</a>
-            <a href="https://wa.me/254110436849?text=Hi, I'm interested in ${encodeURIComponent(c.title)}" class="btn-whatsapp">💬 Chat on WhatsApp</a>
+            <a href="${enrollHref}" class="btn-enroll">Contact Us to Enroll →</a>
             <div class="cc-details">
-              <div class="cc-detail">
-                <span class="cc-detail-label">Duration</span>
-                <span class="cc-detail-val">${c.duration}</span>
-              </div>
-              <div class="cc-detail">
-                <span class="cc-detail-label">Next Cohort</span>
-                <span class="cc-detail-val">${c.cohort}</span>
-              </div>
-              <div class="cc-detail">
-                <span class="cc-detail-label">Mode</span>
-                <span class="cc-detail-val">Virtual · Hybrid</span>
-              </div>
-              <div class="cc-detail">
-                <span class="cc-detail-label">Rating</span>
-                <span class="cc-detail-val">${c.rating} ⭐ (${c.reviews})</span>
-              </div>
+              <div class="cc-detail"><span class="cc-detail-label">Duration</span><span class="cc-detail-val">${c.duration}</span></div>
+              <div class="cc-detail"><span class="cc-detail-label">Next Cohort</span><span class="cc-detail-val">${c.cohort}</span></div>
+              <div class="cc-detail"><span class="cc-detail-label">Mode</span><span class="cc-detail-val">Virtual · Hybrid</span></div>
+              <div class="cc-detail"><span class="cc-detail-label">Rating</span><span class="cc-detail-val">${c.rating} ⭐ (${c.reviews})</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BODY -->
     <div class="course-body">
       <div class="course-content">
-
-        <!-- About -->
         <div class="cb-section">
           <div class="cb-label">About This Course</div>
           <p class="cb-body">${c.description}</p>
         </div>
-
-        <!-- Prerequisites -->
         <div class="cb-section">
           <div class="cb-label">Prerequisites</div>
           <h2 class="cb-title">What you'll need</h2>
           <ul class="prereq-list">${prereqs}</ul>
         </div>
-
-        <!-- Curriculum -->
-        <div class="cb-section">
+        <div class="cb-section" id="enrollAnchor">
           <div class="cb-label">Curriculum</div>
           <h2 class="cb-title">What you'll learn</h2>
           <div class="curriculum" style="margin-top:20px;">${curriculum}</div>
         </div>
-
       </div>
 
-      <!-- SIDEBAR -->
       <div class="course-sidebar">
-        <div class="sidebar-card" id="enroll">
+        <div class="sidebar-card">
           <div class="cc-icon" style="margin-bottom:16px;">${c.icon}</div>
           <div class="cc-price" style="font-size:28px;margin-bottom:4px;">${priceDisplay}</div>
           <div class="cc-price-note" style="margin-bottom:20px;">Full course · All materials included</div>
-          <a href="contact.html?course=${c.id}" class="btn-enroll">Contact Us to Enroll →</a>
-          <a href="https://wa.me/254110436849?text=Hi, I'm interested in ${encodeURIComponent(c.title)}" class="btn-whatsapp">💬 Chat on WhatsApp</a>
+          <a href="${enrollHref}" class="btn-enroll">Contact Us to Enroll →</a>
           <div class="cc-details">
-            <div class="cc-detail">
-              <span class="cc-detail-label">Duration</span>
-              <span class="cc-detail-val">${c.duration}</span>
-            </div>
-            <div class="cc-detail">
-              <span class="cc-detail-label">Next Cohort</span>
-              <span class="cc-detail-val">${c.cohort}</span>
-            </div>
-            <div class="cc-detail">
-              <span class="cc-detail-label">Mode</span>
-              <span class="cc-detail-val">Virtual · Hybrid</span>
-            </div>
-            <div class="cc-detail">
-              <span class="cc-detail-label">Rating</span>
-              <span class="cc-detail-val">${c.rating} ⭐ (${c.reviews})</span>
-            </div>
+            <div class="cc-detail"><span class="cc-detail-label">Duration</span><span class="cc-detail-val">${c.duration}</span></div>
+            <div class="cc-detail"><span class="cc-detail-label">Next Cohort</span><span class="cc-detail-val">${c.cohort}</span></div>
+            <div class="cc-detail"><span class="cc-detail-label">Mode</span><span class="cc-detail-val">Virtual · Hybrid</span></div>
+            <div class="cc-detail"><span class="cc-detail-label">Rating</span><span class="cc-detail-val">${c.rating} ⭐ (${c.reviews})</span></div>
           </div>
         </div>
-
-        <!-- Quick links -->
         <div class="sidebar-card">
           <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:14px;font-family:var(--font2);">OTHER COURSES</div>
           ${Object.values(COURSES).filter(x => x.id !== c.id).slice(0,4).map(x => `
@@ -438,23 +437,21 @@ function renderCourse(c) {
                 <div style="font-size:13px;font-weight:700;color:var(--ink);font-family:var(--font2);">${x.title}</div>
                 <div style="font-size:12px;color:var(--muted2);margin-top:2px;">${x.duration} · ${fmt(x.price)}</div>
               </div>
-            </a>
-          `).join('')}
+            </a>`).join('')}
         </div>
       </div>
     </div>
 
-    <!-- REVIEWS -->
     <div class="reviews-section">
       <div class="reviews-inner">
         <div class="reviews-header">
           <div>
             <div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;font-family:var(--font2);">Student Reviews</div>
-            <h2 style="font-family:var(--font2);font-size:clamp(24px,3.5vw,38px);font-weight:900;color:var(--ink);letter-spacing:-.5px;">What our students say</h2>
+            <h2 style="font-family:var(--font2);font-size:clamp(22px,3.5vw,38px);font-weight:900;color:var(--ink);letter-spacing:-.5px;">What our students say</h2>
           </div>
           <div class="rating-big">
             <div class="rating-number">${c.rating}</div>
-            <div class="rating-right">
+            <div>
               <div class="rating-stars-big">${stars(c.rating, 'big')}</div>
               <div class="rating-label">${c.reviews} student reviews</div>
             </div>
@@ -464,13 +461,12 @@ function renderCourse(c) {
       </div>
     </div>
 
-    <!-- CTA -->
     <div class="cta-banner">
       <div class="cta-inner">
         <h2 class="cta-title">Ready to start your<br><i>QA career?</i></h2>
         <p class="cta-sub">Reach out to our team and we'll walk you through everything — course fit, schedule, and next steps.</p>
         <div class="cta-btns">
-          <a href="contact.html?course=${c.id}" class="btn-yellow">Contact Us to Enroll →</a>
+          <a href="${enrollHref}" class="btn-yellow">Contact Us to Enroll →</a>
           <a href="index.html#courses" class="btn-outline-white">Browse Other Courses</a>
         </div>
       </div>
@@ -479,8 +475,13 @@ function renderCourse(c) {
     ${footerHTML()}
   `;
 
-  // Set mobile bar price
-  document.getElementById('mobilePrice').textContent = c.price ? `KSH ${Number(c.price).toLocaleString()}` : 'Enquire';
+  // ── Mobile bar: set price + wire up button ──────────────────
+  const priceEl = document.getElementById('mobilePrice');
+  const mebBtn  = document.getElementById('mebBtn');
+  if (priceEl) priceEl.textContent = c.price ? `KSH ${Number(c.price).toLocaleString()}` : 'Enquire';
+  if (mebBtn)  mebBtn.addEventListener('click', () => {
+    window.location.href = enrollHref;
+  });
 }
 
 function footerHTML() {
@@ -490,9 +491,7 @@ function footerHTML() {
         <div class="footer-top">
           <div>
             <a href="index.html" class="f-brand">
-              <div class="f-mark">
-                <svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg>
-              </div>
+              <div class="f-mark"><svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg></div>
               Kiwami School
             </a>
             <p class="f-desc">Africa's leading QA engineering training school. Expert-led courses, ISTQB pathways, and real-world skills for the next generation of QA professionals.</p>
@@ -502,31 +501,30 @@ function footerHTML() {
             <a href="course.html?id=manual-testing">Manual Testing</a>
             <a href="course.html?id=api-testing-postman">API Testing</a>
             <a href="course.html?id=selenium">Selenium</a>
-            <a href="course.html?id=cypress">Cypress</a>
             <a href="course.html?id=playwright-typescript">Playwright</a>
             <a href="course.html?id=ussd-testing">USSD Testing</a>
+            <a href="course.html?id=security-testing">Security Testing</a>
           </div>
           <div class="f-col">
             <h5>Company</h5>
-            <a href="https://kiwamitech.com">Kiwami Tech</a>
-            <a href="https://kiwamitech.com/about.html">About</a>
-            <a href="https://kiwamitech.com/sqasummit2026/">SQA Summit 2026</a>
-            <a href="#">Login to LMS</a>
+            <a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a>
+            <a href="https://kiwamitech.com/about.html" target="_blank">About</a>
+            <a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a>
+            <a href="https://learning.kiwamitech.com/" target="_blank">Login to LMS</a>
           </div>
           <div class="f-col">
             <h5>Enroll</h5>
             <a href="contact.html">Contact Us</a>
             <a href="https://forms.gle/xbjheoCrfStsnLfc8">Bootcamp Apply</a>
-            <a href="https://kiwamitech.com/#contact">Get in Touch</a>
+            <a href="contact.html">Get in Touch</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2026 Kiwami Tech Solutions Ltd</p>
+          <p>© 2024 Kiwami Tech Solutions Ltd</p>
           <p>Nairobi, Kenya</p>
         </div>
       </div>
-    </footer>
-  `;
+    </footer>`;
 }
 
 function toggleWeek(el) {

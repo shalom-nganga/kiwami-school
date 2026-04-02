@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Kiwami Tech Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --navy-mid: #152347;
+    --blue: #152b5e;
+    --blue-dark: #0e1e42;
+    --blue-mid: #1e3a7a;
+    --blue-light: #e8edf8;
+    --green: #4caf82;
+    --yellow: #f5c518;
+    --muted: #a8b8d8;
+    --border: rgba(255,255,255,0.08);
+    --border-light: #dce6f5;
+    --surface: #ffffff;
+    --text: #0d1b3e;
+    --text-muted: #4a6080;
+    --radius: 12px;
+    --font1: 'Plus Jakarta Sans', sans-serif;
+    --font2: 'Manrope', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font2);
+    background: #f7f8fc;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── TOPBAR (matching index.html) ── */
+  .topbar {
+    background: var(--blue);
+    color: #fff;
+    text-align: center;
+    padding: 13px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .2px;
+    position: sticky;
+    top: 0;
+    z-index: 101;
+  }
+  .topbar a { color: #fff; text-decoration: underline; }
+
+  /* ── NAV (matching index.html) ── */
+  nav {
+    position: sticky;
+    top: 41px;
+    z-index: 100;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6vw;
+    height: 68px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--blue-dark);
+    font-family: var(--font2);
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-links a.active { color: var(--blue); font-weight: 700; }
+  .nav-right { display: flex; gap: 12px; align-items: center; }
+  .btn-ghost {
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    transition: background .2s;
+  }
+  .btn-ghost:hover { background: var(--blue-light); }
+  .btn-solid {
+    background: var(--blue);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-solid:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(21,43,94,.28); }
+
+  /* ── HERO ── */
+  .hub-hero {
+    background: var(--navy);
+    padding: 64px 6vw 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hub-hero::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 70px solid rgba(255,255,255,0.03);
+    right: -100px; top: -120px;
+  }
+  .hub-hero::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 40px solid rgba(255,255,255,0.04);
+    right: 120px; top: 40px;
+  }
+  .hero-inner { max-width: 1160px; margin: 0 auto; position: relative; }
+  .hub-tag {
+    display: inline-block;
+    background: rgba(245,197,24,0.15);
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hub-hero h1 {
+    font-family: var(--font1);
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hub-hero h1 span { color: var(--green); }
+  .hub-hero p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hub-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+  .hub-stat-num {
+    font-family: var(--font1);
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .hub-stat-lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* ── FILTERS ── */
+  .filters-bar {
+    background: #fff;
+    border-bottom: 1px solid #e8edf5;
+    padding: 0 6vw;
+    position: sticky;
+    top: 109px; /* 41px topbar + 68px nav */
+    z-index: 90;
+  }
+  .filters-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 12px 0;
+    scrollbar-width: none;
+  }
+  .filters-inner::-webkit-scrollbar { display: none; }
+  .filter-btn {
+    flex-shrink: 0;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1.5px solid #e2e8f0;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .filter-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+  /* ── GALLERY ── */
+  .gallery-section {
+    padding: 48px 6vw 80px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .gallery-grid { columns: 3; column-gap: 20px; }
+  @media (max-width: 900px) { .gallery-grid { columns: 2; } }
+  @media (max-width: 560px) { .gallery-grid { columns: 1; } }
+
+  .photo-card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e8edf5;
+    transition: transform .25s, box-shadow .25s;
+    cursor: pointer;
+  }
+  .photo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(13,27,62,0.12); }
+  .photo-card.hidden { display: none; }
+  .photo-img { width: 100%; display: block; object-fit: cover; background: #e8edf5; }
+  .photo-placeholder {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8edf5 0%, #d1daea 100%);
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .photo-info { padding: 16px 18px 18px; }
+  .photo-event {
+    display: inline-block;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .photo-event.green { background: #e6f7ef; color: #2a8a5c; }
+  .photo-event.yellow { background: #fef9e7; color: #a0780a; }
+  .photo-event.navy { background: #eef0f8; color: var(--navy); }
+  .photo-caption { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .photo-date {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .photo-date::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  /* ── EMPTY STATE ── */
+  .empty-state { text-align: center; padding: 80px 20px; display: none; }
+  .empty-state.show { display: block; }
+  .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: .4; }
+  .empty-state h3 { color: var(--text); font-size: 18px; margin-bottom: 8px; }
+  .empty-state p { color: var(--text-muted); font-size: 14px; }
+
+  /* ── UPLOAD CTA ── */
+  .upload-cta {
+    background: var(--navy-mid);
+    padding: 48px 6vw;
+    text-align: center;
+  }
+  .upload-cta h3 { font-family: var(--font1); color: #fff; font-size: 24px; margin-bottom: 10px; }
+  .upload-cta p { color: var(--muted); font-size: 15px; margin-bottom: 24px; }
+  .upload-cta a {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .upload-cta a:hover { background: #3a9a6e; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 64px 6vw 32px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-grid { max-width: 1160px; margin: 0 auto; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .f-brand {
+    font-family: var(--font1);
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .f-mark {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: var(--blue-mid);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .f-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,.4);
+    line-height: 1.75;
+    max-width: 300px;
+  }
+  .f-col h5 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+    margin-bottom: 16px;
+    font-family: var(--font1);
+  }
+  .f-col a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color .2s;
+  }
+  .f-col a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.28); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hub-stats { gap: 20px; }
+  }
+  @media (max-width: 540px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR (matching index.html) -->
+<div class="topbar">
+  🎓 Bootcamp now open — <strong>Fullstack QA Engineering</strong> · 23rd Feb 2026 · Virtual &amp; Hybrid &nbsp;
+  <a href="contact.html">Apply Now →</a>
+</div>
+
+<!-- NAV (matching index.html style) -->
+<nav>
+  <a href="index.html" class="logo">
+    Kiwami School
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#courses">Courses</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#testimonials">Alumni</a></li>
+    <li><a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a></li>
+    <li><a href="index.html#bootcamp">Bootcamp</a></li>
+    <li><a href="hub.html" class="active">Kiwami Tech Hub</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
+    <a href="contact.html" class="btn-solid">Enroll Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hub-hero">
+  <div class="hero-inner">
+    <div class="hub-tag">Community Moments</div>
+    <h1>Kiwami <span>Tech Hub</span></h1>
+    <p>Relive the energy — bootcamp sessions, graduations, summits, and the people making it happen across East Africa.</p>
+    <div class="hub-stats">
+      <div class="hub-stat">
+        <div class="hub-stat-num">50+</div>
+        <div class="hub-stat-lbl">Graduates trained</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-num">4+</div>
+        <div class="hub-stat-lbl">Years in East Africa</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-num">92%</div>
+        <div class="hub-stat-lbl">Graduate employment rate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <div class="filters-inner">
+    <button class="filter-btn active" data-filter="all">All Photos</button>
+    <button class="filter-btn" data-filter="bootcamp">Bootcamp</button>
+    <button class="filter-btn" data-filter="graduation">Graduation</button>
+    <button class="filter-btn" data-filter="summit">SQA Summit</button>
+    <button class="filter-btn" data-filter="workshop">Workshops</button>
+    <button class="filter-btn" data-filter="community">Community</button>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-grid" id="galleryGrid">
+
+    <div class="photo-card" data-category="bootcamp">
+      <div class="photo-placeholder" style="height:220px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event">Bootcamp</span>
+        <div class="photo-caption">Fullstack QA Bootcamp Kickoff — Cohort 3</div>
+        <div class="photo-date">23 February 2026</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="graduation">
+      <div class="photo-placeholder" style="height:280px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event green">Graduation</span>
+        <div class="photo-caption">QA Bootcamp Graduation Ceremony — Class of 2025</div>
+        <div class="photo-date">14 December 2025</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="summit">
+      <div class="photo-placeholder" style="height:200px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event yellow">SQA Summit</span>
+        <div class="photo-caption">SQA Summit 2026 — Opening Keynote</div>
+        <div class="photo-date">10 April 2026</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="workshop">
+      <div class="photo-placeholder" style="height:240px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event navy">Workshop</span>
+        <div class="photo-caption">Introduction to Automation Testing Workshop</div>
+        <div class="photo-date">5 November 2025</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="community">
+      <div class="photo-placeholder" style="height:260px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event green">Community</span>
+        <div class="photo-caption">Kiwami Nairobi Meetup — Tech Talks & Networking</div>
+        <div class="photo-date">20 October 2025</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="bootcamp">
+      <div class="photo-placeholder" style="height:200px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event">Bootcamp</span>
+        <div class="photo-caption">Weekend Session — API Testing Deep Dive</div>
+        <div class="photo-date">8 March 2026</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="summit">
+      <div class="photo-placeholder" style="height:300px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event yellow">SQA Summit</span>
+        <div class="photo-caption">Panel Discussion — The Future of QA in Africa</div>
+        <div class="photo-date">11 April 2026</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="graduation">
+      <div class="photo-placeholder" style="height:220px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event green">Graduation</span>
+        <div class="photo-caption">Certificate Presentation — Introduction to Software Testing</div>
+        <div class="photo-date">14 December 2025</div>
+      </div>
+    </div>
+
+    <div class="photo-card" data-category="community">
+      <div class="photo-placeholder" style="height:200px;">📸 Add your photo here</div>
+      <div class="photo-info">
+        <span class="photo-event green">Community</span>
+        <div class="photo-caption">Team Building — Kiwami Staff & Mentors</div>
+        <div class="photo-date">3 September 2025</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">🔍</div>
+    <h3>No photos in this category yet</h3>
+    <p>Check back soon — more moments are on the way.</p>
+  </div>
+</div>
+
+<!-- UPLOAD CTA -->
+<div class="upload-cta">
+  <h3>Were you at a Kiwami event?</h3>
+  <p>Share your photos with us and we'll feature them on this page.</p>
+  <a href="mailto:info@kiwamitech.com?subject=Hub Photo Submission">Submit Your Photos</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="f-brand">
+          <div class="f-mark">
+            <svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg>
+          </div>
+          Kiwami School
+        </a>
+        <p class="f-desc">Africa's leading QA engineering training school. Expert-led courses, ISTQB pathways, and real-world skills for the next generation of QA professionals.</p>
+      </div>
+      <div class="f-col">
+        <h5>Courses</h5>
+        <a href="course.html?id=manual-testing">Manual Testing</a>
+        <a href="course.html?id=api-testing-postman">API Testing</a>
+        <a href="course.html?id=selenium">Selenium</a>
+        <a href="course.html?id=playwright-typescript">Playwright</a>
+        <a href="course.html?id=ussd-testing">USSD Testing</a>
+        <a href="course.html?id=security-testing">Security Testing</a>
+      </div>
+      <div class="f-col">
+        <h5>Company</h5>
+        <a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a>
+        <a href="https://kiwamitech.com/about.html" target="_blank">About</a>
+        <a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a>
+        <a href="https://learning.kiwamitech.com/" target="_blank">Login to LMS</a>
+      </div>
+      <div class="f-col">
+        <h5>Enroll</h5>
+        <a href="contact.html">Contact Us</a>
+        <a href="https://forms.gle/xbjheoCrfStsnLfc8">Bootcamp Apply</a>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kiwami Tech Solutions Ltd</p>
+      <p>Nairobi, Kenya</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.photo-card');
+  const emptyState = document.getElementById('emptyState');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let visible = 0;
+      cards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      emptyState.classList.toggle('show', visible === 0);
+    });
+  });
+</script>
+</body>
+</html>

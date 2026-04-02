@@ -18,23 +18,44 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--font);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
 
+/* ── NAV ── */
 nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
 .logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
-.logo-mark{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;transition:color .2s;}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--blue);}
-.btn-ghost{color:var(--blue);font-weight:600;font-size:14px;text-decoration:none;padding:8px 16px;border-radius:var(--radius);}
-.btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.btn-ghost{color:var(--blue);font-weight:600;font-size:14px;text-decoration:none;padding:8px 16px;border-radius:var(--radius);transition:background .2s;}
+.btn-ghost:hover{background:var(--blue-light);}
+.btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);transition:all .2s;}
+.btn-solid:hover{background:var(--blue-dark);}
 
-.page-hero{background:var(--blue-dark);padding:60px 6vw;text-align:center;}
-.page-hero h1{font-family:var(--font2);font-size:clamp(28px,4vw,52px);font-weight:900;color:#fff;letter-spacing:-1.5px;margin-bottom:12px;}
-.page-hero p{font-size:17px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto;line-height:1.65;}
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;transition:background .2s;}
+.nav-hamburger:hover{background:var(--blue-light);}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--blue);border-radius:2px;transition:all .3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-.contact-wrap{max-width:1100px;margin:0 auto;padding:64px 6vw;display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:flex-start;}
+/* Mobile menu */
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:90px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-size:18px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a:hover{color:var(--blue);}
+.mobile-menu-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.mobile-menu-btns .btn-ghost{text-align:center;border:2px solid var(--border2);}
+.mobile-menu-btns .btn-solid{text-align:center;padding:14px 22px;color:#fff;}
 
-/* Info side */
-.info-side{}
+/* ── HERO ── */
+.page-hero{background:var(--blue-dark);padding:56px 6vw;text-align:center;}
+.page-hero h1{font-family:var(--font2);font-size:clamp(26px,4vw,52px);font-weight:900;color:#fff;letter-spacing:-1.5px;margin-bottom:12px;}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto;line-height:1.65;}
+
+/* ── LAYOUT ── */
+.contact-wrap{max-width:1100px;margin:0 auto;padding:56px 6vw;display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:flex-start;}
+
+/* ── INFO SIDE ── */
 .info-card{background:var(--surface);border-radius:var(--radius-xl);border:1.5px solid var(--border);padding:32px;margin-bottom:20px;}
 .info-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:20px;display:flex;align-items:center;gap:8px;font-family:var(--font2);}
 .info-label::before{content:'';width:16px;height:2px;background:var(--blue);border-radius:2px;}
@@ -46,25 +67,16 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .info-text-val a{color:var(--blue);text-decoration:none;}
 .info-text-val a:hover{text-decoration:underline;}
 
-.wa-card{background:var(--green);border-radius:var(--radius-xl);padding:28px 32px;display:flex;align-items:center;gap:18px;text-decoration:none;transition:all .25s;}
-.wa-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(14,159,110,.3);}
-.wa-icon{font-size:36px;flex-shrink:0;}
-.wa-title{font-family:var(--font2);font-size:17px;font-weight:800;color:#fff;margin-bottom:2px;}
-.wa-sub{font-size:13px;color:rgba(255,255,255,.7);}
-
-/* Form side */
+/* ── FORM SIDE ── */
 .form-card{background:var(--surface);border-radius:var(--radius-xl);border:1.5px solid var(--border);padding:36px;box-shadow:0 4px 24px rgba(21,43,94,.07);}
 .form-title{font-family:var(--font2);font-size:22px;font-weight:900;color:var(--ink);margin-bottom:6px;}
 .form-sub{font-size:14px;color:var(--muted2);margin-bottom:28px;line-height:1.5;}
-
-/* Selected course banner */
 .course-banner{background:var(--blue-light);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:24px;border:1px solid var(--border2);}
 .cb-icon{font-size:22px;}
 .cb-name{font-size:14px;font-weight:700;color:var(--blue);font-family:var(--font2);}
 .cb-change{font-size:12px;color:var(--muted2);margin-top:2px;}
 .cb-x{margin-left:auto;background:none;border:none;color:var(--muted2);cursor:pointer;font-size:18px;padding:2px;}
 .cb-x:hover{color:var(--ink);}
-
 .field{margin-bottom:18px;}
 label.lbl{display:block;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px;font-family:var(--font2);}
 input,select,textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:13px 16px;font-size:15px;font-family:var(--font);color:var(--ink);outline:none;transition:border .2s;}
@@ -72,60 +84,119 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);background:var(
 select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238aa0b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
 textarea{resize:vertical;min-height:110px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
 .btn-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:16px;border-radius:var(--radius-lg);font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font2);transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;}
 .btn-submit:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,43,94,.3);}
 .btn-submit:disabled{background:var(--muted2);cursor:not-allowed;transform:none;box-shadow:none;}
 .form-note{font-size:12px;color:var(--muted2);text-align:center;margin-top:12px;line-height:1.5;}
 
-/* Success state */
+/* Success */
 .success-state{text-align:center;padding:20px 0;}
 .success-icon{font-size:56px;margin-bottom:16px;}
 .success-title{font-family:var(--font2);font-size:24px;font-weight:900;color:var(--ink);margin-bottom:10px;}
 .success-body{font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:24px;}
 .btn-back{display:inline-block;background:var(--blue-light);color:var(--blue);font-weight:700;font-size:14px;text-decoration:none;padding:12px 24px;border-radius:var(--radius);}
 
-footer{background:var(--ink);padding:40px 6vw 28px;}
-.footer-bottom{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:64px 6vw 32px;}
+.footer-grid{max-width:1160px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.f-brand{font-family:var(--font2);font-size:22px;font-weight:900;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.f-mark{width:34px;height:34px;border-radius:8px;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;}
+.f-desc{font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;max-width:300px;}
+.f-col h5{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;font-family:var(--font2);}
+.f-col a{display:block;font-size:14px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.f-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
 .footer-bottom p{font-size:13px;color:rgba(255,255,255,.28);}
-.f-brand{font-family:var(--font2);font-size:18px;font-weight:900;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;}
 
+/* ── WHATSAPP FLOAT ── */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:15px;padding:14px 22px 14px 18px;border-radius:50px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .25s;font-family:var(--font);}
+.wa-float:hover{background:#1ebe5d;transform:translateY(-3px);}
+.wa-float svg{width:22px;height:22px;flex-shrink:0;}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════ */
+
+/* Tablet */
 @media(max-width:860px){
-  .contact-wrap{grid-template-columns:1fr;gap:32px;}
+  .contact-wrap{grid-template-columns:1fr;gap:28px;padding:40px 6vw;}
   .info-side{order:2;}
   .form-card{order:1;}
-}
-@media(max-width:600px){
   .nav-links{display:none;}
+  .nav-right{display:none;}
+  .nav-hamburger{display:flex;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
+}
+
+/* Mobile */
+@media(max-width:600px){
   nav{padding:0 5vw;}
-  .contact-wrap{padding:40px 5vw;}
+  .page-hero{padding:44px 5vw;}
+  .contact-wrap{padding:32px 5vw;gap:20px;}
   .field-row{grid-template-columns:1fr;}
-  .form-card{padding:24px;}
+  .form-card{padding:22px 18px;}
+  .info-card{padding:22px 18px;}
+  .footer-top{grid-template-columns:1fr;}
+  footer{padding:48px 5vw 28px;}
+  .wa-float span{display:none;}
+  .wa-float{padding:16px;border-radius:50%;}
+}
+
+/* Small mobile */
+@media(max-width:400px){
+  .form-title{font-size:19px;}
+  input,select,textarea{font-size:14px;padding:12px 14px;}
 }
 </style>
 </head>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.847L.057 23.882a.5.5 0 0 0 .606.663l6.266-1.643A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.389l-.36-.214-3.733.979.995-3.636-.234-.374A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+  </svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 18 18" fill="none"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg>
-    </div>
-    Kiwami School
-  </a>
+  <a href="index.html" class="logo">Kiwami School</a>
   <ul class="nav-links">
-     <li><a href="index.html#courses">Courses</a></li>
+    <li><a href="index.html#courses">Courses</a></li>
     <li><a href="index.html#why">Why Us</a></li>
     <li><a href="index.html#testimonials">Alumni</a></li>
     <li><a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a></li>
-    <li><a href="index.html#bootcamp">Students Bootcamps</a></li>
+    <li><a href="index.html#bootcamp">Bootcamp</a></li>
+    <li><a href="hub.html">Kiwami Tech Hub</a></li>
   </ul>
-  <div class="nav-right" style="display:flex;gap:12px;">
-    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="blank">Login to LMS</a>
-    <a href="index.html#form" class="btn-solid">Enroll Now</a>
+  <div class="nav-right">
+    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
+    <a href="contact.html" class="btn-solid">Enroll Now</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#courses">Courses</a>
+  <a href="index.html#why">Why Us</a>
+  <a href="index.html#testimonials">Alumni</a>
+  <a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a>
+  <a href="index.html#bootcamp">Bootcamp</a>
+  <a href="hub.html">Kiwami Tech Hub</a>
+  <div class="mobile-menu-btns">
+    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
+    <a href="contact.html" class="btn-solid">Enroll Now</a>
+  </div>
+</div>
+
+<!-- HERO -->
 <div class="page-hero">
   <h1>Get in touch</h1>
   <p>Tell us which course you're interested in and we'll reach out to walk you through everything.</p>
@@ -154,7 +225,7 @@ footer{background:var(--ink);padding:40px 6vw 28px;}
         <div class="info-icon">📍</div>
         <div>
           <div class="info-text-label">Location</div>
-          <div class="info-text-val">The Atrium, Chaka Rd, 1st Floor<br>Nairobi, Kenya</div>
+          <div class="info-text-val">124 Manyani E Rd<br>Nairobi, Kenya</div>
         </div>
       </div>
       <div class="info-item">
@@ -165,14 +236,6 @@ footer{background:var(--ink);padding:40px 6vw 28px;}
         </div>
       </div>
     </div>
-
-    <a href="https://wa.me/254110436849" class="wa-card" target="_blank">
-      <div class="wa-icon">💬</div>
-      <div>
-        <div class="wa-title">Chat on WhatsApp</div>
-        <div class="wa-sub">Quickest way to get answers — we're usually online</div>
-      </div>
-    </a>
   </div>
 
   <!-- FORM SIDE -->
@@ -181,7 +244,6 @@ footer{background:var(--ink);padding:40px 6vw 28px;}
       <div class="form-title">Enrollment Enquiry</div>
       <div class="form-sub">Fill in your details and we'll get back to you with everything you need to get started.</div>
 
-      <!-- Course banner (shown if ?course= param present) -->
       <div class="course-banner" id="courseBanner" style="display:none;">
         <span class="cb-icon" id="bannerIcon">📚</span>
         <div>
@@ -224,17 +286,43 @@ footer{background:var(--ink);padding:40px 6vw 28px;}
           <optgroup label="Intermediate">
             <option value="api-testing-postman">API Testing + Automation (Postman) — KSH 19,999</option>
             <option value="advanced-api-postman">Advanced API Automation (Postman + AI) — KSH 29,999</option>
+            <option value="api-testing-selenium">API Testing + Automation (Selenium) — KSH 24,999</option>
+            <option value="api-testing-istqb">API Testing + ISTQB Voucher — KSH 32,999</option>
             <option value="ussd-testing">USSD Testing — KSH 14,999</option>
+            <option value="ussd-automation">USSD Automation — KSH 21,999</option>
+            <option value="ussd-automation-istqb">USSD Automation + ISTQB Voucher — KSH 32,999</option>
           </optgroup>
           <optgroup label="Automation">
             <option value="selenium">Web Automation — Selenium — KSH 34,999</option>
             <option value="cypress">Test Automation — Cypress — KSH 39,999</option>
-            <option value="playwright-typescript">Playwright (TypeScript) — KSH 39,999</option>
+            <option value="selenium-istqb">Web Automation (Selenium) + ISTQB Voucher — KSH 54,999</option>
             <option value="playwright-istqb">Playwright + ISTQB Advanced — KSH 59,999</option>
+            <option value="playwright-typescript">Test Automation — Playwright (TypeScript) — KSH 39,999</option>
+            <option value="playwright-javascript">Test Automation — Playwright (JavaScript) — KSH 39,999</option>
+            <option value="playwright-javascript-istqb">Playwright (JavaScript) + ISTQB Voucher — KSH 59,999</option>
+            <option value="robot-framework">Test Automation — Robot Framework — KSH 39,999</option>
+            <option value="robot-framework-istqb">Robot Framework + ISTQB Voucher — KSH 59,999</option>
+            <option value="appium">Mobile Automation — Appium — KSH 34,999</option>
+            <option value="appium-istqb">Mobile Automation (Appium) + ISTQB Voucher — KSH 59,999</option>
           </optgroup>
           <optgroup label="Specialist">
-            <option value="aws-practitioner">AWS Cloud Practitioner Prep — Enquire</option>
-            <option value="istqb-advanced">ISTQB Advanced Test Automation — Enquire</option>
+            <option value="aws-practitioner">AWS Cloud Practitioner Exam Prep — KSH 11,999</option>
+            <option value="istqb-advanced">ISTQB Advanced — Test Automation Engineer — Enquire</option>
+            <option value="automation-governance">Automation & Governance in Software QA — Enquire</option>
+          </optgroup>
+          <optgroup label="Performance">
+            <option value="performance-testing">Performance Testing — KSH 44,999</option>
+            <option value="performance-testing-istqb">Performance Testing + ISTQB Voucher — KSH 64,999</option>
+          </optgroup>
+          <optgroup label="Security">
+            <option value="security-testing">Security Testing — KSH 49,999</option>
+            <option value="security-testing-istqb">Security Testing + ISTQB Voucher — KSH 69,999</option>
+          </optgroup>
+          <optgroup label="ISTQB Prep">
+            <option value="istqb-foundation-prep">ISTQB Foundation Level — Exam Preparation — KSH 9,999</option>
+            <option value="istqb-foundation-voucher">ISTQB Foundation Prep + Exam Voucher — KSH 21,999</option>
+            <option value="istqb-advanced-prep">ISTQB Advanced Test Automation — Exam Preparation — KSH 14,999</option>
+            <option value="istqb-advanced-voucher">ISTQB Advanced Test Automation Prep + Voucher — KSH 29,999</option>
           </optgroup>
         </select>
       </div>
@@ -287,7 +375,6 @@ footer{background:var(--ink);padding:40px 6vw 28px;}
       <p class="form-note">We'll respond within 24 hours. No spam, ever.</p>
     </div>
 
-    <!-- Success state (hidden until submit) -->
     <div id="successState" style="display:none;" class="success-state">
       <div class="success-icon">✅</div>
       <div class="success-title">Enquiry received!</div>
@@ -297,23 +384,69 @@ footer{background:var(--ink);padding:40px 6vw 28px;}
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-bottom">
-    <a href="index.html" class="f-brand">
-      <svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg>
-      Kiwami School
-    </a>
-    <p>© 2026 Kiwami Tech Solutions Ltd · Nairobi, Kenya</p>
+  <div class="footer-grid">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="f-brand">
+          <div class="f-mark"><svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg></div>
+          Kiwami School
+        </a>
+        <p class="f-desc">Africa's leading QA engineering training school. Expert-led courses, ISTQB pathways, and real-world skills for the next generation of QA professionals.</p>
+      </div>
+      <div class="f-col">
+        <h5>Courses</h5>
+        <a href="course.html?id=manual-testing">Manual Testing</a>
+        <a href="course.html?id=api-testing-postman">API Testing</a>
+        <a href="course.html?id=selenium">Selenium</a>
+        <a href="course.html?id=playwright-typescript">Playwright</a>
+        <a href="course.html?id=ussd-testing">USSD Testing</a>
+        <a href="course.html?id=security-testing">Security Testing</a>
+      </div>
+      <div class="f-col">
+        <h5>Company</h5>
+        <a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a>
+        <a href="https://kiwamitech.com/about.html" target="_blank">About</a>
+        <a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a>
+        <a href="https://learning.kiwamitech.com/" target="_blank">Login to LMS</a>
+      </div>
+      <div class="f-col">
+        <h5>Enroll</h5>
+        <a href="contact.html">Contact Us</a>
+        <a href="https://forms.gle/xbjheoCrfStsnLfc8">Bootcamp Apply</a>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kiwami Tech Solutions Ltd</p>
+      <p>Nairobi, Kenya</p>
+    </div>
   </div>
 </footer>
 
 <script src="courses-data.js"></script>
 <script>
-// Pre-select course from URL param
+// ── HAMBURGER ─────────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ── PRE-SELECT COURSE FROM URL ────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 const courseParam = params.get('course');
-
-if (courseParam && COURSES[courseParam]) {
+if (courseParam && COURSES && COURSES[courseParam]) {
   const c = COURSES[courseParam];
   document.getElementById('courseSelect').value = courseParam;
   document.getElementById('bannerName').textContent = c.title;
@@ -323,7 +456,7 @@ if (courseParam && COURSES[courseParam]) {
 
 document.getElementById('courseSelect').addEventListener('change', function() {
   const val = this.value;
-  if (val && COURSES[val]) {
+  if (val && COURSES && COURSES[val]) {
     const c = COURSES[val];
     document.getElementById('bannerName').textContent = c.title;
     document.getElementById('bannerIcon').textContent = c.icon;
@@ -338,19 +471,22 @@ function clearCourse() {
   document.getElementById('courseBanner').style.display = 'none';
 }
 
-function submitForm(btn) {
-  const fname = document.getElementById('fname').value.trim();
-  const lname = document.getElementById('lname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const course = document.getElementById('courseSelect').value;
+// ── FORM SUBMIT ───────────────────────────────────────────────
+async function submitForm(btn) {
+  const fname    = document.getElementById('fname').value.trim();
+  const lname    = document.getElementById('lname').value.trim();
+  const email    = document.getElementById('email').value.trim();
+  const phone    = document.getElementById('phone').value.trim();
+  const course   = document.getElementById('courseSelect').value;
+  const schedule = document.getElementById('schedule').value;
+  const bg       = document.getElementById('background').value;
+  const source   = document.getElementById('source').value;
+  const message  = document.getElementById('message').value.trim();
 
   if (!fname || !lname || !email || !phone || !course) {
     alert('Please fill in all required fields (marked with *).');
     return;
   }
-
-  // Email validation
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     alert('Please enter a valid email address.');
     return;
@@ -359,13 +495,32 @@ function submitForm(btn) {
   btn.disabled = true;
   btn.innerHTML = '<span>Sending...</span>';
 
-  // ── Replace this section with your actual form submission ──
-  // e.g. fetch to Formspree, EmailJS, your backend, etc.
-  // For now, simulates a 1.5s submit then shows success.
-  setTimeout(() => {
-    document.getElementById('formWrap').style.display = 'none';
-    document.getElementById('successState').style.display = 'block';
-  }, 1500);
+  try {
+    const res = await fetch('https://jewapropertypro.com/infinity/jewaapp/api/applicationsubmit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: fname, last_name: lname,
+        email, phone, course, schedule,
+        background: bg, referral: source, extra_info: message
+      })
+    });
+
+    const data = await res.json();
+    console.log('API response:', data);
+
+    if (res.ok) {
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    } else {
+      console.error('API error:', data);
+      throw new Error('Server returned ' + res.status);
+    }
+  } catch (err) {
+    alert('Something went wrong — please try again or WhatsApp us directly.');
+    btn.disabled = false;
+    btn.innerHTML = '<span>Send Enquiry →</span>';
+  }
 }
 </script>
 </body>
