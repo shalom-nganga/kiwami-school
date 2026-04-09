@@ -18,12 +18,24 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--font);color:var(--ink);background:var(--surface);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
+/* ══════════════════════════════════════
+   FESTIVAL DISCOUNT MARQUEE
+   ══════════════════════════════════════ */
+.festival-marquee{background:linear-gradient(90deg,#0a7a52 0%,#0e9f6e 50%,#0a7a52 100%);color:#fff;padding:9px 0;overflow:hidden;position:sticky;top:0;z-index:102;border-bottom:1px solid rgba(255,255,255,.15);}
+.festival-marquee-track{display:flex;width:max-content;animation:marquee-scroll 30s linear infinite;}
+.festival-marquee-track:hover{animation-play-state:paused;}
+@keyframes marquee-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.fm-item{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;white-space:nowrap;padding:0 48px;letter-spacing:.2px;}
+.fm-tag{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:2px 10px;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;}
+.fm-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);flex-shrink:0;}
+.fm-item strong{color:var(--yellow);}
+
 /* ── TOPBAR ── */
-.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:0;z-index:101;line-height:1.5;}
+.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:37px;z-index:101;line-height:1.5;}
 .topbar a{color:#fff;text-decoration:underline;}
 
 /* ── NAV ── */
-nav{background:var(--surface);position:sticky;top:37px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
+nav{background:var(--surface);position:sticky;top:74px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
 .logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
@@ -33,29 +45,22 @@ nav{background:var(--surface);position:sticky;top:37px;z-index:100;border-bottom
 .btn-ghost:hover{background:var(--blue-light);}
 .btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);transition:all .2s;}
 .btn-solid:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(21,43,94,.28);}
-
-/* Hamburger */
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;transition:background .2s;}
 .nav-hamburger:hover{background:var(--blue-light);}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--blue);border-radius:2px;transition:all .3s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-/* Mobile menu drawer */
 .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:100px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:var(--ink);text-decoration:none;font-size:18px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--border);transition:color .2s;}
 .mobile-menu a:hover{color:var(--blue);}
-.mobile-menu a:last-child{border-bottom:none;}
 .mobile-menu-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
 .mobile-menu-btns .btn-ghost{text-align:center;border:2px solid var(--border2);}
 .mobile-menu-btns .btn-solid{text-align:center;padding:14px 22px;color:#fff;}
-
-/* ── SCROLL TO TOP ── */
 .scroll-top{position:fixed;bottom:24px;left:24px;z-index:998;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(21,43,94,.3);opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s;}
 .scroll-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
-.scroll-top:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,43,94,.4);}
+.scroll-top:hover{background:var(--blue-dark);}
 .scroll-top svg{width:18px;height:18px;}
 
 /* ── HERO ── */
@@ -122,7 +127,7 @@ h1 i{font-style:italic;color:var(--yellow);}
 
 /* ── COURSES ── */
 .courses{background:var(--bg);}
-.track-nav{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 28px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}
+.track-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}
 .track-nav::-webkit-scrollbar{display:none;}
 .tnav{flex-shrink:0;padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid var(--border);background:var(--surface);color:var(--muted);transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--font);}
 .tnav:hover{border-color:var(--blue);color:var(--blue);}
@@ -132,11 +137,13 @@ h1 i{font-style:italic;color:var(--yellow);}
 .course-listing{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;animation:up .3s ease both;}
 @keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 .empty-cat{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted2);font-size:15px;}
+
+/* ── COURSE CARD ── */
 .card{background:var(--surface);border-radius:var(--radius-xl);border:1.5px solid var(--border);padding:24px;transition:all .3s;position:relative;display:flex;flex-direction:column;}
 .card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(21,43,94,.1);border-color:var(--border2);}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;}
 .card-icon{width:48px;height:48px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.card-tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start;}
 .tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;font-family:var(--font2);}
 .tag-pop{background:#fff4ed;color:#c44d10;}
 .tag-istqb{background:var(--blue-light);color:var(--blue);}
@@ -154,6 +161,21 @@ h1 i{font-style:italic;color:var(--yellow);}
 .learn-more:hover{background:var(--blue-light);}
 .enroll{background:var(--blue);color:#fff;padding:9px 18px;border-radius:var(--radius);font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;}
 .enroll:hover{background:var(--blue-dark);box-shadow:0 4px 14px rgba(21,43,94,.3);}
+
+/* ══════════════════════════════════════
+   FESTIVAL DISCOUNT — CARD ELEMENTS
+   ══════════════════════════════════════ */
+.festival-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#0e9f6e,#0a7a52);color:#fff;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px;letter-spacing:.3px;font-family:var(--font2);white-space:nowrap;}
+.price-festival{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--green);line-height:1;}
+.price-original{font-size:13px;color:var(--muted2);text-decoration:line-through;font-weight:500;margin-top:2px;}
+.price-save{font-size:11px;font-weight:700;color:var(--green);background:var(--green-light);padding:2px 7px;border-radius:4px;display:inline-block;margin-top:3px;}
+
+/* ── FESTIVAL NOTICE BANNER ── */
+.festival-notice{display:flex;align-items:center;gap:12px;background:var(--green-light);border:1.5px solid rgba(14,159,110,.3);border-radius:var(--radius);padding:14px 18px;margin:24px 0 0;flex-wrap:wrap;}
+.festival-notice-text{flex:1;min-width:200px;}
+.festival-notice-title{font-size:13px;font-weight:800;color:var(--green);font-family:var(--font2);margin-bottom:2px;}
+.festival-notice-sub{font-size:12px;color:var(--muted);}
+.festival-notice-sub strong{color:var(--ink);}
 
 /* ── WHY ── */
 .why{background:var(--surface);}
@@ -227,125 +249,85 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 .wa-float:hover{background:#1ebe5d;transform:translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,.55);}
 .wa-float svg{width:22px;height:22px;flex-shrink:0;}
 
-/* ════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-   ════════════════════════════════════════ */
-
-/* ── Tablet: 960px ── */
+/* ── RESPONSIVE ── */
 @media(max-width:960px){
-  /* Nav */
-  .nav-links{display:none;}
-  .nav-right{display:none;}
+  .nav-links,.nav-right{display:none;}
   .nav-hamburger{display:flex;}
-
-  /* Hero */
   .hero{padding:48px 6vw 0;}
   .hero-inner{grid-template-columns:1fr;gap:0;}
   .hero-left{padding-bottom:48px;}
   .hero-right{display:none;}
-
-  /* Attachment */
   .attachment-inner{grid-template-columns:1fr;gap:32px;}
-
-  /* Why */
   .why-layout{grid-template-columns:1fr;gap:48px;margin-top:40px;}
   .why-right{grid-template-columns:1fr 1fr;}
   .wbox:nth-child(1){grid-column:span 2;}
   .wbox:nth-child(4){grid-column:span 2;}
-
-  /* Testimonials */
   .testi-wrap{grid-template-columns:1fr 1fr;}
-
-  /* Bootcamp */
   .bc-inner{grid-template-columns:1fr;gap:32px;}
   .bc-cta{align-items:flex-start;min-width:unset;}
-
-  /* Footer */
   .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
 }
-
-/* ── Mobile: 640px ── */
 @media(max-width:640px){
-  /* Topbar */
-  .topbar{font-size:11px;padding:9px 14px;}
-
-  /* Nav */
-  nav{height:60px;top:35px;padding:0 5vw;}
+  .topbar{font-size:11px;padding:9px 14px;top:34px;}
+  nav{height:60px;top:71px;padding:0 5vw;}
   .logo{font-size:18px;}
-
-  /* Hero */
   .hero{padding:40px 5vw 0;}
   .hero-eyebrow{font-size:12px;padding:6px 14px;}
   .hero-left{padding-bottom:40px;}
   .hero-actions{flex-direction:column;align-items:flex-start;gap:10px;}
-  .btn-hero{width:100%;justify-content:center;}
-  .btn-hero-outline{width:100%;justify-content:center;}
-
-  /* Attachment */
+  .btn-hero,.btn-hero-outline{width:100%;justify-content:center;}
   .attachment{padding:48px 5vw;}
   .attachment-btn{width:100%;text-align:center;}
-
-  /* Sections */
   .section{padding:60px 5vw;}
-
-  /* Courses — track nav scroll */
-  .track-nav{flex-wrap:nowrap;overflow-x:auto;gap:8px;margin:28px 0 20px;}
+  .track-nav{flex-wrap:nowrap;overflow-x:auto;margin:12px 0 16px;}
   .tnav{padding:8px 14px;font-size:12px;}
-
-  /* Course cards — single col */
   .course-listing{grid-template-columns:1fr;}
   .card-actions{flex-direction:column;width:100%;}
   .learn-more,.enroll{width:100%;text-align:center;padding:11px;}
-
-  /* Why */
   .why-layout{margin-top:28px;}
   .why-right{grid-template-columns:1fr 1fr;}
   .wbox-num{font-size:34px;}
-
-  /* Testimonials */
   .testi-wrap{grid-template-columns:1fr;}
-
-  /* Bootcamp */
   .bootcamp{padding:56px 5vw;}
-  .bc-details{gap:14px;}
   .btn-yellow{width:100%;text-align:center;padding:14px 24px;}
-
-  /* Footer */
   .footer-top{grid-template-columns:1fr;gap:32px;}
   footer{padding:48px 5vw 28px;}
-
-  /* WhatsApp */
   .wa-float span{display:none;}
   .wa-float{padding:16px;border-radius:50%;bottom:20px;right:20px;}
+  .fm-item{font-size:11.5px;padding:0 28px;}
 }
-
-/* ── Small mobile: 400px ── */
 @media(max-width:400px){
   h1{letter-spacing:-1px;}
   .why-right{grid-template-columns:1fr;}
-  .wbox:nth-child(1){grid-column:span 1;}
-  .wbox:nth-child(4){grid-column:span 1;}
+  .wbox:nth-child(1),.wbox:nth-child(4){grid-column:span 1;}
   .wbox-num{font-size:30px;}
 }
 </style>
 </head>
-
-<!-- WhatsApp float -->
-<a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.847L.057 23.882a.5.5 0 0 0 .606.663l6.266-1.643A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.389l-.36-.214-3.733.979.995-3.636-.234-.374A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
-  </svg>
-  <span>Chat on WhatsApp</span>
-</a>
-
 <body>
 
+<!-- ══ FESTIVAL DISCOUNT MARQUEE ══ -->
+<div class="festival-marquee">
+  <div class="festival-marquee-track">
+    <span class="fm-item"><span class="fm-tag">🎉 Festival Discount</span> <strong>10% OFF</strong> all courses — register on 10th or 11th April 2026 <span class="fm-sep"></span></span>
+    <span class="fm-item">🎟 Attending SQA Festival? Enrol any course &amp; save <strong>10%</strong> on 10–11 April <span class="fm-sep"></span></span>
+    <span class="fm-item"><span class="fm-tag">Limited Time</span> Festival Discount valid <strong>10th &amp; 11th April 2026 only</strong> — don't miss out! <span class="fm-sep"></span></span>
+    <span class="fm-item">🚀 SQA Festival special: <strong>10% off</strong> all Kiwami School courses <span class="fm-sep"></span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="fm-item"><span class="fm-tag">🎉 Festival Discount</span> <strong>10% OFF</strong> all courses — register on 10th or 11th April 2026 <span class="fm-sep"></span></span>
+    <span class="fm-item">🎟 Attending SQA Festival? Enrol any course &amp; save <strong>10%</strong> on 10–11 April <span class="fm-sep"></span></span>
+    <span class="fm-item"><span class="fm-tag">Limited Time</span> Festival Discount valid <strong>10th &amp; 11th April 2026 only</strong> — don't miss out! <span class="fm-sep"></span></span>
+    <span class="fm-item">🚀 SQA Festival special: <strong>10% off</strong> all Kiwami School courses <span class="fm-sep"></span></span>
+  </div>
+</div>
+
+<!-- TOPBAR -->
 <div class="topbar">
   🎓 Bootcamp now open — <strong>Fullstack QA Engineering</strong> · May 2026 · Virtual &amp; Hybrid &nbsp;
   <a href="https://forms.gle/xbjheoCrfStsnLfc8">Apply Now →</a>
 </div>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">Kiwami School</a>
   <ul class="nav-links">
@@ -365,7 +347,6 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   </button>
 </nav>
 
-<!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#courses" onclick="closeMenu()">Courses</a>
   <a href="#why" onclick="closeMenu()">Why Us</a>
@@ -381,8 +362,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-blob"></div>
-  <div class="hero-blob2"></div>
+  <div class="hero-blob"></div><div class="hero-blob2"></div>
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Expert-Led · ISTQB Certified Trainers</div>
@@ -435,7 +415,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
           <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 2 months</span><span>KSH 32,999</span></div>
         </a>
         <a href="course.html?id=intro-testing" class="course-preview" style="border:1.5px dashed var(--border);background:var(--bg);">
-          <div class="cp-tag" style="background:var(--blue-light);color:var(--blue);">NEXT UP</div>
+          <div class="cp-tag" style="background:var(--blue-light);color:var(--blue);">BEGINNER</div>
           <div class="cp-title">Introduction to Software Testing</div>
           <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 2 months</span><span>KSH 14,999</span></div>
         </a>
@@ -444,7 +424,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   </div>
 </section>
 
-<!-- ATTACHMENT SECTION -->
+<!-- ATTACHMENT -->
 <div class="attachment">
   <div class="attachment-inner">
     <div class="attachment-left">
@@ -473,6 +453,16 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
     <div class="sec-label">Training Programs</div>
     <h2 class="sec-title">Pick your<br><i>learning track</i></h2>
     <p class="sec-body">Whether you're just starting out or levelling up to advanced automation — every course is live, instructor-led, and built around real job requirements.</p>
+
+    <!-- Festival discount notice -->
+    <div class="festival-notice">
+      <span style="font-size:22px;flex-shrink:0;">🎉</span>
+      <div class="festival-notice-text">
+        <div class="festival-notice-title">Festival Discount — 10% OFF All Courses</div>
+        <div class="festival-notice-sub">Valid for enrolments made on <strong>10th &amp; 11th April 2026</strong> during the SQA Festival. Festival prices shown on all course cards below.</div>
+      </div>
+    </div>
+
     <div class="track-nav" id="trackNav">
       <button class="tnav on" onclick="sw('all',this)">All Courses <span class="ct" id="ct-all">0</span></button>
       <button class="tnav" onclick="sw('beginner',this)">Beginner <span class="ct" id="ct-beginner">0</span></button>
@@ -518,26 +508,16 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
     <div class="sec-label">Alumni Stories</div>
     <h2 class="sec-title">From our students,<br><i>in their own words.</i></h2>
     <div class="testi-wrap">
-      <div class="tcard">
-        <div class="tquote">KiwamiTech equipped me with practical software testing and QA skills, bridging academic knowledge with industry-ready expertise.</div>
-        <div class="tauthor"><div class="tavatar" style="background:linear-gradient(135deg,var(--blue),var(--sky));">SK</div><div><div class="tname">Steve Kimani</div><div class="trole">Introduction to Software Testing</div></div></div>
-      </div>
-      <div class="tcard">
-        <div class="tquote">The program was good. I got to learn more than I expected. I never thought software testing was a field on its own.</div>
-        <div class="tauthor"><div class="tavatar" style="background:linear-gradient(135deg,var(--green),var(--blue));">DM</div><div><div class="tname">David Momanyi</div><div class="trole">Software Testing</div></div></div>
-      </div>
-      <div class="tcard">
-        <div class="tquote">I truly enjoyed the software testing course. It not only improved my technical skills but also boosted my confidence in approaching testing tasks.</div>
-        <div class="tauthor"><div class="tavatar" style="background:linear-gradient(135deg,var(--accent),var(--yellow));">EO</div><div><div class="tname">Erick Omondi Onyango</div><div class="trole">Software Testing</div></div></div>
-      </div>
+      <div class="tcard"><div class="tquote">KiwamiTech equipped me with practical software testing and QA skills, bridging academic knowledge with industry-ready expertise.</div><div class="tauthor"><div class="tavatar" style="background:linear-gradient(135deg,var(--blue),var(--sky));">SK</div><div><div class="tname">Steve Kimani</div><div class="trole">Introduction to Software Testing</div></div></div></div>
+      <div class="tcard"><div class="tquote">The program was good. I got to learn more than I expected. I never thought software testing was a field on its own.</div><div class="tauthor"><div class="tavatar" style="background:linear-gradient(135deg,var(--green),var(--blue));">DM</div><div><div class="tname">David Momanyi</div><div class="trole">Software Testing</div></div></div></div>
+      <div class="tcard"><div class="tquote">I truly enjoyed the software testing course. It not only improved my technical skills but also boosted my confidence in approaching testing tasks.</div><div class="tauthor"><div class="tavatar" style="background:linear-gradient(135deg,var(--accent),var(--yellow));">EO</div><div><div class="tname">Erick Omondi Onyango</div><div class="trole">Software Testing</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- BOOTCAMP CTA -->
+<!-- BOOTCAMP -->
 <section class="bootcamp" id="bootcamp">
-  <div class="bc-shape"></div>
-  <div class="bc-shape2"></div>
+  <div class="bc-shape"></div><div class="bc-shape2"></div>
   <div class="bc-inner">
     <div>
       <div class="bc-label">Intensive Program · Limited Seats</div>
@@ -560,10 +540,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   <div class="footer-grid">
     <div class="footer-top">
       <div>
-        <a href="index.html" class="f-brand">
-          <div class="f-mark"><svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg></div>
-          Kiwami School
-        </a>
+        <a href="index.html" class="f-brand"><div class="f-mark"><svg viewBox="0 0 18 18" fill="none" width="20"><path d="M9 2L3 6v6l6 4 6-4V6L9 2z" fill="white" opacity=".9"/><circle cx="9" cy="9" r="2.5" fill="white"/></svg></div>Kiwami School</a>
         <p class="f-desc">Africa's leading QA engineering training school. Expert-led courses, ISTQB pathways, and real-world skills for the next generation of QA professionals.</p>
       </div>
       <div class="f-col">
@@ -585,75 +562,86 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
       <div class="f-col">
         <h5>Enroll</h5>
         <a href="contact.html">Contact Us</a>
-        <a href="contact.html">Apply for bootcamp →</a>
+        <a href="contact.html">Apply for Bootcamp →</a>
         <a href="contact.html">Get in Touch</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 Kiwami Tech Solutions Ltd</p>
+      <p>© 2026 Kiwami Tech Solutions Ltd</p>
       <p>Nairobi, Kenya</p>
     </div>
   </div>
 </footer>
 
-<!-- Scroll to top button -->
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18 15 12 9 6 15"/>
-  </svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
+
+<a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.847L.057 23.882a.5.5 0 0 0 .606.663l6.266-1.643A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.389l-.36-.214-3.733.979.995-3.636-.234-.374A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
 
 <script src="courses-data.js"></script>
 <script>
-// ── HAMBURGER MENU ──────────────────────────────────────────
+// ── HAMBURGER ──────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
   hamburger.classList.toggle('open', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
-
 function closeMenu() {
   mobileMenu.classList.remove('open');
   hamburger.classList.remove('open');
   document.body.style.overflow = '';
 }
-
-// Close on outside click
 document.addEventListener('click', e => {
-  if (mobileMenu.classList.contains('open') &&
-      !mobileMenu.contains(e.target) &&
-      !hamburger.contains(e.target)) {
-    closeMenu();
-  }
+  if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
 });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-// Close on escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeMenu();
-});
+// ── FESTIVAL DISCOUNT ──────────────────────────────────────
+const DISCOUNT = 0.10;
+function festivalPrice(p){ return Math.round(p * (1 - DISCOUNT)); }
+function ksh(n){ return 'KSH ' + Number(n).toLocaleString(); }
 
-// ── COURSE RENDER ENGINE ────────────────────────────────────
-const CATEGORIES = ['all','beginner','intermediate','automation','performance','security','istqb','bootcamps','specialist'];
+// ── COURSE RENDER ──────────────────────────────────────────
+const CATS = ['all','beginner','intermediate','automation','performance','security','istqb','bootcamps','specialist'];
 
-function getCourses(filter) {
+function getCourses(f){
   const all = Object.values(COURSES);
-  if (filter === 'all') return all;
-  return all.filter(c => c.categories && c.categories.includes(filter));
+  return f === 'all' ? all : all.filter(c => c.categories && c.categories.includes(f));
 }
 
-function cardHTML(c) {
-  const price = c.price ? 'KSH ' + Number(c.price).toLocaleString() : 'Enquire';
-  const enrollLabel = c.price ? 'Enroll →' : 'Enquire →';
-  const tags = (c.tags || []).map(t => `<span class="tag ${t.cls}">${t.label}</span>`).join('');
+function cardHTML(c){
+  const tags = (c.tags||[]).map(t=>`<span class="tag ${t.cls}">${t.label}</span>`).join('');
   const toolPill = c.tool ? `<span class="pill">🛠 ${c.tool}</span>` : '';
+  const enrollLabel = c.price ? 'Enroll →' : 'Enquire →';
+
+  let priceBlock;
+  if(c.price){
+    const orig = Number(c.price);
+    const disc = festivalPrice(orig);
+    priceBlock = `
+      <div>
+        <div class="price-festival">${ksh(disc)}</div>
+        <div class="price-original">${ksh(orig)}</div>
+        <div class="price-save">Save ${ksh(orig - disc)}</div>
+      </div>`;
+  } else {
+    priceBlock = `<div><div class="price">Enquire</div><div class="price-sub">Contact us</div></div>`;
+  }
+
   return `
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:${c.cardBg || 'var(--blue-light)'};">${c.icon}</div>
-        <div class="card-tags">${tags}</div>
+        <div class="card-icon" style="background:${c.cardBg||'var(--blue-light)'};">${c.icon}</div>
+        <div class="card-tags">
+          <span class="festival-badge">🎉 Festival Discount</span>
+          ${tags}
+        </div>
       </div>
       <div class="card-title">${c.title}</div>
       <div class="card-desc">${c.tagline}</div>
@@ -663,10 +651,7 @@ function cardHTML(c) {
         ${toolPill}
       </div>
       <div class="card-bottom">
-        <div>
-          <div class="price">${price}</div>
-          <div class="price-sub">Full course</div>
-        </div>
+        ${priceBlock}
         <div class="card-actions">
           <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
           <a href="course.html?id=${c.id}#enroll" class="enroll">${enrollLabel}</a>
@@ -675,28 +660,20 @@ function cardHTML(c) {
     </div>`;
 }
 
-function renderCourses(filter) {
-  const listing = document.getElementById('courseListing');
-  const courses = getCourses(filter);
-  if (courses.length === 0) {
-    listing.innerHTML = '<div class="empty-cat">No courses in this category yet. Check back soon!</div>';
-    return;
-  }
-  listing.innerHTML = courses.map(cardHTML).join('');
-  listing.style.animation = 'none';
-  listing.offsetHeight;
-  listing.style.animation = '';
+function renderCourses(f){
+  const el = document.getElementById('courseListing');
+  const courses = getCourses(f);
+  if(!courses.length){ el.innerHTML='<div class="empty-cat">No courses in this category yet. Check back soon!</div>'; return; }
+  el.innerHTML = courses.map(cardHTML).join('');
+  el.style.animation='none'; el.offsetHeight; el.style.animation='';
 }
 
-function updateCounts() {
-  CATEGORIES.forEach(cat => {
-    const el = document.getElementById('ct-' + cat);
-    if (el) el.textContent = getCourses(cat).length;
-  });
+function updateCounts(){
+  CATS.forEach(c=>{ const el=document.getElementById('ct-'+c); if(el) el.textContent=getCourses(c).length; });
 }
 
-function sw(name, btn) {
-  document.querySelectorAll('.tnav').forEach(b => b.classList.remove('on'));
+function sw(name, btn){
+  document.querySelectorAll('.tnav').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   renderCourses(name);
 }
@@ -704,14 +681,11 @@ function sw(name, btn) {
 updateCounts();
 renderCourses('all');
 
-// ── SCROLL TO TOP ────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  const scrollBtn = document.getElementById('scrollTop');
-  if (scrollBtn) scrollBtn.classList.toggle('show', window.scrollY > 400);
+// ── SCROLL TO TOP ──────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
 });
-document.getElementById('scrollTop').addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
 </html>
