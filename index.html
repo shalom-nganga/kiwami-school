@@ -18,19 +18,10 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--font);color:var(--ink);background:var(--surface);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-.festival-marquee{background:linear-gradient(90deg,#0a7a52 0%,#0e9f6e 50%,#0a7a52 100%);color:#fff;padding:9px 0;overflow:hidden;position:sticky;top:0;z-index:102;border-bottom:1px solid rgba(255,255,255,.15);}
-.festival-marquee-track{display:flex;width:max-content;animation:marquee-scroll 30s linear infinite;}
-.festival-marquee-track:hover{animation-play-state:paused;}
-@keyframes marquee-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.fm-item{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;white-space:nowrap;padding:0 48px;letter-spacing:.2px;}
-.fm-tag{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:2px 10px;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;}
-.fm-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);flex-shrink:0;}
-.fm-item strong{color:var(--yellow);}
-
-.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:37px;z-index:101;line-height:1.5;}
+.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:0;z-index:101;line-height:1.5;}
 .topbar a{color:#fff;text-decoration:underline;}
 
-nav{background:var(--surface);position:sticky;top:74px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
+nav{background:var(--surface);position:sticky;top:37px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
 .logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
@@ -152,17 +143,6 @@ h1 i{font-style:italic;color:var(--yellow);}
 .enroll{background:var(--blue);color:#fff;padding:9px 18px;border-radius:var(--radius);font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;}
 .enroll:hover{background:var(--blue-dark);box-shadow:0 4px 14px rgba(21,43,94,.3);}
 
-.festival-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#0e9f6e,#0a7a52);color:#fff;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px;letter-spacing:.3px;font-family:var(--font2);white-space:nowrap;}
-.price-festival{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--green);line-height:1;}
-.price-original{font-size:13px;color:var(--muted2);text-decoration:line-through;font-weight:500;margin-top:2px;}
-.price-save{font-size:11px;font-weight:700;color:var(--green);background:var(--green-light);padding:2px 7px;border-radius:4px;display:inline-block;margin-top:3px;}
-
-.festival-notice{display:flex;align-items:center;gap:12px;background:var(--green-light);border:1.5px solid rgba(14,159,110,.3);border-radius:var(--radius);padding:14px 18px;margin:24px 0 0;flex-wrap:wrap;}
-.festival-notice-text{flex:1;min-width:200px;}
-.festival-notice-title{font-size:13px;font-weight:800;color:var(--green);font-family:var(--font2);margin-bottom:2px;}
-.festival-notice-sub{font-size:12px;color:var(--muted);}
-.festival-notice-sub strong{color:var(--ink);}
-
 .why{background:var(--surface);}
 .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px;}
 .why-left .big-text{font-family:var(--font2);font-size:clamp(26px,3.5vw,46px);font-weight:900;color:var(--ink);line-height:1.15;letter-spacing:-1px;margin-bottom:28px;}
@@ -248,8 +228,8 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
 }
 @media(max-width:640px){
-  .topbar{font-size:11px;padding:9px 14px;top:34px;}
-  nav{height:60px;top:71px;padding:0 5vw;}
+  .topbar{font-size:11px;padding:9px 14px;}
+  nav{height:60px;padding:0 5vw;}
   .logo{font-size:18px;}
   .hero{padding:40px 5vw 0;}
   .hero-eyebrow{font-size:12px;padding:6px 14px;}
@@ -274,7 +254,6 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   footer{padding:48px 5vw 28px;}
   .wa-float span{display:none;}
   .wa-float{padding:16px;border-radius:50%;bottom:20px;right:20px;}
-  .fm-item{font-size:11.5px;padding:0 28px;}
 }
 @media(max-width:400px){
   h1{letter-spacing:-1px;}
@@ -285,20 +264,6 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 </style>
 </head>
 <body>
-
-<!-- ══ FESTIVAL DISCOUNT MARQUEE ══ -->
-<div class="festival-marquee">
-  <div class="festival-marquee-track">
-    <span class="fm-item"><span class="fm-tag">🎉 Festival Discount</span> <strong>10% OFF</strong> all courses — register on 10th or 11th April 2026 <span class="fm-sep"></span></span>
-    <span class="fm-item">🎟 Attending SQA Festival? Enroll any course &amp; save <strong>10%</strong> on 10–11 April <span class="fm-sep"></span></span>
-    <span class="fm-item"><span class="fm-tag">Limited Time</span> Festival Discount valid <strong>10th &amp; 11th April 2026 only</strong> — don't miss out! <span class="fm-sep"></span></span>
-    <span class="fm-item">🚀 SQA Festival special: <strong>10% off</strong> all Kiwami School courses <span class="fm-sep"></span></span>
-    <span class="fm-item"><span class="fm-tag">🎉 Festival Discount</span> <strong>10% OFF</strong> all courses — register on 10th or 11th April 2026 <span class="fm-sep"></span></span>
-    <span class="fm-item">🎟 Attending SQA Festival? Enroll any course &amp; save <strong>10%</strong> on 10–11 April <span class="fm-sep"></span></span>
-    <span class="fm-item"><span class="fm-tag">Limited Time</span> Festival Discount valid <strong>10th &amp; 11th April 2026 only</strong> — don't miss out! <span class="fm-sep"></span></span>
-    <span class="fm-item">🚀 SQA Festival special: <strong>10% off</strong> all Kiwami School courses <span class="fm-sep"></span></span>
-  </div>
-</div>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -386,7 +351,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
         <a href="course.html?id=playwright-typescript" class="course-preview">
           <div class="cp-tag">AUTOMATION</div>
           <div class="cp-title">Playwright (TypeScript)</div>
-          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 2 months</span><span>KSH 39,999</span></div>
+          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 3 months</span><span>KSH 44,999</span></div>
         </a>
         <a href="course.html?id=manual-testing-istqb" class="course-preview">
           <div class="cp-tag" style="background:#fff4ed;color:var(--accent);">BEGINNER</div>
@@ -396,7 +361,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
         <a href="course.html?id=intro-testing" class="course-preview" style="border:1.5px dashed var(--border);background:var(--bg);">
           <div class="cp-tag" style="background:var(--blue-light);color:var(--blue);">BEGINNER</div>
           <div class="cp-title">Introduction to Software Testing</div>
-          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 2 months</span><span>KSH 14,999</span></div>
+          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 8 weeks</span><span>KSH 14,999</span></div>
         </a>
       </div>
     </div>
@@ -433,16 +398,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
     <h2 class="sec-title">Pick your<br><i>learning track</i></h2>
     <p class="sec-body">Whether you're just starting out or levelling up to advanced automation — every course is live, instructor-led, and built around real job requirements.</p>
 
-    <div class="festival-notice">
-      <span style="font-size:22px;flex-shrink:0;">🎉</span>
-      <div class="festival-notice-text">
-        <div class="festival-notice-title">Festival Discount — 10% OFF All Courses</div>
-        <div class="festival-notice-sub">Valid for enrollments made on <strong>10th &amp; 11th April 2026</strong> during the SQA Festival. Festival prices shown on all course cards below.</div>
-      </div>
-    </div>
-
     <div class="track-nav" id="trackNav">
-      <!-- "All Courses" button removed -->
       <button class="tnav on" onclick="sw('beginner',this)">Beginner <span class="ct" id="ct-beginner">0</span></button>
       <button class="tnav" onclick="sw('intermediate',this)">Intermediate <span class="ct" id="ct-intermediate">0</span></button>
       <button class="tnav" onclick="sw('automation',this)">Automation <span class="ct" id="ct-automation">0</span></button>
@@ -523,7 +479,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
       </div>
       <div class="f-col">
         <h5>Courses</h5>
-        <a href="course.html?id=manual-testing">Manual Testing</a>
+        <a href="course.html?id=manual-testing-istqb">Manual Testing</a>
         <a href="course.html?id=api-testing-postman">API Testing</a>
         <a href="course.html?id=selenium">Selenium</a>
         <a href="course.html?id=playwright-typescript">Playwright</a>
@@ -580,11 +536,6 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-// ── FESTIVAL DISCOUNT ──────────────────────────────────────
-const DISCOUNT = 0.10;
-function festivalPrice(p){ return Math.round(p * (1 - DISCOUNT)); }
-function ksh(n){ return 'KSH ' + Number(n).toLocaleString(); }
-
 // ── COURSE RENDER ──────────────────────────────────────────
 const CATS = ['beginner','intermediate','automation','performance','security','istqb','bootcamps','specialist'];
 
@@ -598,28 +549,15 @@ function cardHTML(c){
   const toolPill = c.tool ? `<span class="pill">🛠 ${c.tool}</span>` : '';
   const enrollLabel = c.price ? 'Enroll →' : 'Enquire →';
 
-  let priceBlock;
-  if(c.price){
-    const orig = Number(c.price);
-    const disc = festivalPrice(orig);
-    priceBlock = `
-      <div>
-        <div class="price-festival">${ksh(disc)}</div>
-        <div class="price-original">${ksh(orig)}</div>
-        <div class="price-save">Save ${ksh(orig - disc)}</div>
-      </div>`;
-  } else {
-    priceBlock = `<div><div class="price">Enquire</div><div class="price-sub">Contact us</div></div>`;
-  }
+  const priceBlock = c.price
+    ? `<div><div class="price">KSH ${Number(c.price).toLocaleString()}</div><div class="price-sub">Full course</div></div>`
+    : `<div><div class="price">Enquire</div><div class="price-sub">Contact us</div></div>`;
 
   return `
     <div class="card">
       <div class="card-top">
         <div class="card-icon" style="background:${c.cardBg||'var(--blue-light)'};">${c.icon}</div>
-        <div class="card-tags">
-          <span class="festival-badge">🎉 Festival Discount</span>
-          ${tags}
-        </div>
+        <div class="card-tags">${tags}</div>
       </div>
       <div class="card-title">${c.title}</div>
       <div class="card-desc">${c.tagline}</div>
@@ -632,7 +570,7 @@ function cardHTML(c){
         ${priceBlock}
         <div class="card-actions">
           <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
-          <a href="course.html?id=${c.id}#enroll" class="enroll">${enrollLabel}</a>
+          <a href="contact.html?course=${c.id}" class="enroll">${enrollLabel}</a>
         </div>
       </div>
     </div>`;

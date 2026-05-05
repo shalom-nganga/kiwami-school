@@ -71,17 +71,10 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .course-card{background:var(--surface);border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:32px 28px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.18);}
 .cc-icon{width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--blue-light);margin-bottom:20px;}
 
-/* ── FESTIVAL DISCOUNT STYLES ── */
-.festival-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#0e9f6e,#0a7a52);color:#fff;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px;letter-spacing:.3px;font-family:var(--font2);white-space:nowrap;margin-bottom:10px;}
-.cc-price-festival{font-family:var(--font2);font-size:36px;font-weight:900;color:var(--green);line-height:1;margin-bottom:4px;}
-.cc-price-original{font-size:14px;color:var(--muted2);text-decoration:line-through;font-weight:500;margin-bottom:4px;}
-.cc-price-save{font-size:11px;font-weight:700;color:var(--green);background:var(--green-light);padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:20px;}
+/* ── PRICE STYLES ── */
 .cc-price{font-family:var(--font2);font-size:36px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:4px;}
 .cc-price-note{font-size:13px;color:var(--muted2);margin-bottom:24px;}
-/* sidebar festival */
-.sidebar-price-festival{font-family:var(--font2);font-size:28px;font-weight:900;color:var(--green);line-height:1;margin-bottom:4px;}
-.sidebar-price-original{font-size:13px;color:var(--muted2);text-decoration:line-through;font-weight:500;margin-bottom:4px;}
-.sidebar-price-save{font-size:11px;font-weight:700;color:var(--green);background:var(--green-light);padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:20px;}
+.sidebar-price{font-family:var(--font2);font-size:28px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:20px;}
 
 .btn-enroll{display:block;background:var(--blue);color:#fff;text-align:center;padding:16px;border-radius:var(--radius-lg);font-size:16px;font-weight:800;text-decoration:none;transition:all .25s;font-family:var(--font2);margin-bottom:12px;}
 .btn-enroll:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,43,94,.3);}
@@ -193,8 +186,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 /* ─ MOBILE ENROLL BAR ─ */
 .mobile-enroll-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;z-index:200;gap:10px;align-items:center;box-shadow:0 -4px 20px rgba(0,0,0,.1);}
-.meb-price{font-family:var(--font2);font-size:18px;font-weight:900;color:var(--green);}
-.meb-price-orig{font-size:12px;color:var(--muted2);text-decoration:line-through;font-weight:500;}
+.meb-price{font-family:var(--font2);font-size:18px;font-weight:900;color:var(--ink);}
 .meb-btn{flex:1;background:var(--blue);color:#fff;text-align:center;padding:13px;border-radius:var(--radius);font-size:15px;font-weight:800;text-decoration:none;font-family:var(--font2);cursor:pointer;border:none;}
 .meb-btn:hover{background:var(--blue-dark);}
 
@@ -269,10 +261,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 <!-- Mobile sticky enroll bar -->
 <div class="mobile-enroll-bar" id="mobileBar">
-  <div>
-    <div class="meb-price" id="mobilePrice"></div>
-    <div class="meb-price-orig" id="mobilePriceOrig"></div>
-  </div>
+  <div class="meb-price" id="mobilePrice"></div>
   <button class="meb-btn" id="mebBtn">Enroll Now →</button>
 </div>
 
@@ -293,11 +282,6 @@ document.addEventListener('keydown', e => {
     document.body.style.overflow = '';
   }
 });
-
-// ── FESTIVAL DISCOUNT ─────────────────────────────────────────
-const DISCOUNT = 0.10;
-function festivalPrice(p){ return Math.round(p * (1 - DISCOUNT)); }
-function ksh(n){ return 'KSH ' + Number(n).toLocaleString(); }
 
 // ── HELPERS ───────────────────────────────────────────────────
 function stars(rating, size = 'normal') {
@@ -363,29 +347,13 @@ function renderCourse(c) {
   const enrollHref = `contact.html?course=${c.id}`;
 
   // ── Price blocks ──────────────────────────────────────────
-  let heroPriceBlock, sidebarPriceBlock;
+  const heroPriceBlock = c.price
+    ? `<div class="cc-price">${fmt(c.price)}</div>`
+    : `<div class="cc-price">Enquire for pricing</div>`;
 
-  if (c.price) {
-    const orig = Number(c.price);
-    const disc = festivalPrice(orig);
-    const save = orig - disc;
-
-    heroPriceBlock = `
-      <span class="festival-badge">🎉 Festival Discount</span>
-      <div class="cc-price-festival">${ksh(disc)}</div>
-      <div class="cc-price-original">${ksh(orig)}</div>
-      <div class="cc-price-save">Save ${ksh(save)}</div>
-    `;
-    sidebarPriceBlock = `
-      <span class="festival-badge">🎉 Festival Discount</span>
-      <div class="sidebar-price-festival">${ksh(disc)}</div>
-      <div class="sidebar-price-original">${ksh(orig)}</div>
-      <div class="sidebar-price-save">Save ${ksh(save)}</div>
-    `;
-  } else {
-    heroPriceBlock = `<div class="cc-price">Enquire for pricing</div>`;
-    sidebarPriceBlock = `<div class="cc-price" style="font-size:28px;margin-bottom:4px;">Enquire</div>`;
-  }
+  const sidebarPriceBlock = c.price
+    ? `<div class="sidebar-price">${fmt(c.price)}</div>`
+    : `<div class="sidebar-price">Enquire</div>`;
 
   document.getElementById('app').innerHTML = `
     <div class="breadcrumb">
@@ -507,20 +475,11 @@ function renderCourse(c) {
     ${footerHTML()}
   `;
 
-  // ── Mobile bar: set festival price + wire up button ─────────
-  const priceEl     = document.getElementById('mobilePrice');
-  const priceOrigEl = document.getElementById('mobilePriceOrig');
-  const mebBtn      = document.getElementById('mebBtn');
-  if (c.price) {
-    const orig = Number(c.price);
-    const disc = festivalPrice(orig);
-    if (priceEl)     priceEl.textContent = ksh(disc);
-    if (priceOrigEl) priceOrigEl.textContent = ksh(orig);
-  } else {
-    if (priceEl)     priceEl.textContent = 'Enquire';
-    if (priceOrigEl) priceOrigEl.textContent = '';
-  }
-  if (mebBtn) mebBtn.addEventListener('click', () => { window.location.href = enrollHref; });
+  // ── Mobile bar: set price + wire up button ─────────────────
+  const priceEl = document.getElementById('mobilePrice');
+  const mebBtn  = document.getElementById('mebBtn');
+  if (priceEl) priceEl.textContent = c.price ? fmt(c.price) : 'Enquire';
+  if (mebBtn)  mebBtn.addEventListener('click', () => { window.location.href = enrollHref; });
 }
 
 function footerHTML() {
@@ -537,7 +496,7 @@ function footerHTML() {
           </div>
           <div class="f-col">
             <h5>Courses</h5>
-            <a href="course.html?id=manual-testing">Manual Testing</a>
+            <a href="course.html?id=manual-testing-istqb">Manual Testing</a>
             <a href="course.html?id=api-testing-postman">API Testing</a>
             <a href="course.html?id=selenium">Selenium</a>
             <a href="course.html?id=playwright-typescript">Playwright</a>
@@ -559,7 +518,7 @@ function footerHTML() {
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2024 Kiwami Tech Solutions Ltd</p>
+          <p>© 2026 Kiwami Tech Solutions Ltd</p>
           <p>Nairobi, Kenya</p>
         </div>
       </div>
