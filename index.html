@@ -18,10 +18,10 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--font);color:var(--ink);background:var(--surface);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:0;z-index:101;line-height:1.5;}
+.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:37px;z-index:101;;line-height:1.5;}
 .topbar a{color:#fff;text-decoration:underline;}
 
-nav{background:var(--surface);position:sticky;top:37px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
+nav{background:var(--surface);position:sticky;top:74px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
 .logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
@@ -227,6 +227,12 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   .bc-cta{align-items:flex-start;min-width:unset;}
   .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
 }
+.student-marquee{background:linear-gradient(90deg,#0a7a52 0%,#0e9f6e 50%,#0a7a52 100%);color:#fff;padding:10px 0;overflow:hidden;position:sticky;top:0;z-index:102;border-bottom:1px solid rgba(255,255,255,.15);}
+.student-marquee-track{display:flex;width:max-content;animation:marquee-scroll 35s linear infinite;}
+.student-marquee-track:hover{animation-play-state:paused;}
+@keyframes marquee-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.sm-item{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;white-space:nowrap;padding:0 48px;letter-spacing:.2px;}
+.sm-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);flex-shrink:0;}
 @media(max-width:640px){
   .topbar{font-size:11px;padding:9px 14px;}
   nav{height:60px;padding:0 5vw;}
@@ -264,6 +270,21 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 </style>
 </head>
 <body>
+
+<!-- TOPBAR -->
+<!-- MARQUEE -->
+<div class="student-marquee" onclick="document.getElementById('student-offer').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+  <div class="student-marquee-track">
+    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing at <strong style="color:var(--yellow);">Ksh 9,999</strong> <span class="sm-sep"></span></span>
+    <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
+    <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
+    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special offer at <strong style="color:var(--yellow);">Ksh 9,999</strong> · Click to learn more <span class="sm-sep"></span></span>
+    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing at <strong style="color:var(--yellow);">Ksh 9,999</strong> <span class="sm-sep"></span></span>
+    <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
+    <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
+    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special offer at <strong style="color:var(--yellow);">Ksh 9,999</strong> · Click to learn more <span class="sm-sep"></span></span>
+  </div>
+</div>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -369,7 +390,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 </section>
 
 <!-- ATTACHMENT -->
-<div class="attachment">
+<div class="attachment" id="student-offer">
   <div class="attachment-inner">
     <div class="attachment-left">
       <p class="attachment-tag">Special Offer</p>
