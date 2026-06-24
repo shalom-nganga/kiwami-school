@@ -303,6 +303,13 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 .cf-restart{margin-top:20px;font-size:13px;font-weight:700;color:var(--muted2);background:none;border:none;cursor:pointer;font-family:var(--font);}
 .cf-restart:hover{color:var(--ink);}
 @media(max-width:600px){.cf-box{padding:32px 22px 26px;}.cf-q{font-size:20px;}}
+
+.cf-reopen{position:fixed;bottom:90px;right:24px;z-index:998;background:var(--blue);color:#fff;font-weight:700;font-size:13px;padding:12px 18px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(21,43,94,.3);display:flex;align-items:center;gap:8px;font-family:var(--font);transition:all .25s;}
+.cf-reopen:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 10px 26px rgba(21,43,94,.4);}
+@media(max-width:640px){
+  .cf-reopen{bottom:84px;right:20px;padding:14px;border-radius:50%;font-size:16px;}
+  .cf-reopen .cfr-text{display:none;}
+}
 </style>
 </head>
 <body>
@@ -581,6 +588,10 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   <span>Chat on WhatsApp</span>
 </a>
 
+<button class="cf-reopen" onclick="cfReopenManual()" aria-label="Need help choosing a course?">
+  🤔 <span class="cfr-text">Need help choosing a course? Click here.</span>
+</button>
+
 <script src="courses-data.js"></script>
 <script>
 // ── HAMBURGER ──────────────────────────────────────────────
@@ -722,17 +733,17 @@ document.getElementById('scrollTop').addEventListener('click',()=>window.scrollT
     result_intro:{r:true,t:"Introduction to Software Testing",s:"Best for students exploring QA",d:"A beginner-friendly course covering the fundamentals of software testing — perfect for students exploring QA as a career path.",link:"https://kiwamitech.com/school/course.html?id=intro-testing"},
     result_manual:{r:true,t:"Manual Testing + AI in Manual Testing",s:"+ ISTQB Foundation Voucher included",d:"A focused, career-entry course covering manual testing fundamentals plus practical AI-assisted testing techniques.",link:"https://kiwamitech.com/school/course.html?id=manual-testing-istqb"},
     result_fullstack:{r:true,t:"FullStack QA Bootcamp",s:"Manual + Automation + Performance + AI",d:"Our most comprehensive program — covering the complete QA skillset from manual testing through automation, performance, and AI in testing.",link:"https://kiwamitech.com/school/course.html?id=bootcamp-2026"},
-    result_fallback:{r:true,t:"Let's find the right fit together",s:"",d:"Your background doesn't fit neatly into one box — and that's okay. You can visit our website to enroll or talk to our team directly and we'll recommend the right course for you.",link:"https://kiwamitech.com/school/"},
-    result_ai:{r:true,t:"AI in Testing & AI System Validation",s:"",d:"Learn to apply AI tools within testing workflows and validate AI-driven systems — a fast-growing specialization.", link:"https://kiwamitech.com/school/course.html?id=bootcamp-ai-testing"},
-    result_automationBootcamp:{r:true,t:"Test Automation + AI Bootcamp",s:"Complete Automation Career Path",d:"A complete automation career path combining core automation engineering skills with AI-assisted testing techniques.", link:"https://kiwamitech.com/school/course.html?id=bootcamp-test-automation-ai"},
-    result_robot:{r:true,t:"Robot Framework Specialization",s:"",d:"A focused, deep-dive specialization in Robot Framework for test automation.", link:"https://kiwamitech.com/school/course.html?id=robot-framework"},
-    result_playwright:{r:true,t:"Playwright with TypeScript",s:"",d:"Master modern web automation using Playwright and TypeScript — one of the fastest-growing automation tools in the industry.", link:"https://kiwamitech.com/school/course.html?id=playwright-typescript"},
-    result_performance:{r:true,t:"Performance Testing",s:"",d:"Learn load, stress, and performance testing methodologies and tools used to safeguard production systems.", link:"https://kiwamitech.com/school/course.html?id=performance-testing"},
-    result_security:{r:true,t:"Security Testing",s:"",d:"Learn vulnerability assessment and penetration testing fundamentals to help safeguard applications and data.", link:"https://kiwamitech.com/school/course.html?id=security-testing"},
-    result_istqbFoundation:{r:true,t:"ISTQB Foundation Level Prep",s:"",d:"Get certified with our ISTQB Foundation Level preparation course — the internationally recognised starting point for QA certification.", link:"https://kiwamitech.com/school/course.html?id=istqb-foundation-prep"},
-    result_advAutomation:{r:true,t:"Advanced Test Automation",s:"ISTQB Advanced Level",d:"An ISTQB Advanced Level certification track focused on test automation engineering.", link:"https://kiwamitech.com/school/course.html?id=istqb-advanced-voucher"},
-    result_perfSpecialist:{r:true,t:"Performance Testing Specialist",s:"ISTQB Advanced Level",d:"An ISTQB Advanced specialization track focused on performance testing.", link:"https://kiwamitech.com/school/course.html?id=performance-testing-istqb"},
-    result_secSpecialist:{r:true,t:"Security Testing Specialist",s:"ISTQB Advanced Level",d:"An ISTQB Advanced specialization track focused on security testing.", link:"https://kiwamitech.com/school/course.html?id=security-testing-istqb"}
+    result_fallback:{r:true,t:"Let's find the right fit together",s:"",d:"Your background doesn't fit neatly into one box — and that's okay. Browse our full course catalogue and find what fits, or talk to our team directly.",link:"https://kiwamitech.com/school/index.html#courses",btnLabel:"Browse Courses →"},
+    result_ai:{r:true,t:"AI in Testing & AI System Validation",s:"",d:"Learn to apply AI tools within testing workflows and validate AI-driven systems — a fast-growing specialization.",link:"https://kiwamitech.com/school/course.html?id=bootcamp-ai-testing"},
+    result_automationBootcamp:{r:true,t:"Test Automation + AI Bootcamp",s:"Complete Automation Career Path",d:"A complete automation career path combining core automation engineering skills with AI-assisted testing techniques."},
+    result_robot:{r:true,t:"Robot Framework Specialization",s:"",d:"A focused, deep-dive specialization in Robot Framework for test automation.",link:"https://kiwamitech.com/school/course.html?id=robot-framework"},
+    result_playwright:{r:true,t:"Playwright with TypeScript",s:"",d:"Master modern web automation using Playwright and TypeScript — one of the fastest-growing automation tools in the industry.",link:"https://kiwamitech.com/school/course.html?id=playwright-javascript"},
+    result_performance:{r:true,t:"Performance Testing",s:"",d:"Learn load, stress, and performance testing methodologies and tools used to safeguard production systems."},
+    result_security:{r:true,t:"Security Testing",s:"",d:"Learn vulnerability assessment and penetration testing fundamentals to help safeguard applications and data."},
+    result_istqbFoundation:{r:true,t:"ISTQB Foundation Level Prep",s:"",d:"Get certified with our ISTQB Foundation Level preparation course — the internationally recognised starting point for QA certification.",link:"https://kiwamitech.com/school/course.html?id=istqb-foundation-prep"},
+    result_advAutomation:{r:true,t:"Advanced Test Automation",s:"ISTQB Advanced Level",d:"An ISTQB Advanced Level certification track focused on test automation engineering.",link:"https://kiwamitech.com/school/course.html?id=istqb-advanced-voucher"},
+    result_perfSpecialist:{r:true,t:"Performance Testing Specialist",s:"ISTQB Advanced Level",d:"An ISTQB Advanced specialization track focused on performance testing.",link:"https://kiwamitech.com/school/course.html?id=performance-testing-istqb"},
+    result_secSpecialist:{r:true,t:"Security Testing Specialist",s:"ISTQB Advanced Level",d:"An ISTQB Advanced specialization track focused on security testing.",link:"https://kiwamitech.com/school/course.html?id=security-testing-istqb"}
   };
 
   let history = [];
@@ -783,6 +794,13 @@ document.getElementById('scrollTop').addEventListener('click',()=>window.scrollT
   window.cfChoose = function(next){ history.push(current); current = next; render(); };
   window.cfBack = function(){ current = history.pop(); render(); };
   window.cfRestart = function(){ history = []; current = "student"; render(); };
+
+  window.cfReopenManual = function(){
+    history = [];
+    current = "student";
+    render();
+    cfOpen();
+  };
 
   window.cfClose = function(){
     document.getElementById('cfOverlay').classList.remove('show');
