@@ -1,6 +1,5 @@
 // ─────────────────────────────────────────────────────────────
 //  KIWAMI SCHOOL — COURSE DATA
-//  Single source of truth for all pages.
 //  To add a new course: add an object here. Done.
 // ─────────────────────────────────────────────────────────────
 

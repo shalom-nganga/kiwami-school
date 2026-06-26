@@ -19,15 +19,15 @@ html{scroll-behavior:smooth;}
 body{font-family:var(--font);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
 
 /* ── NAV ── */
-nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
-.logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
+nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.logo{font-family:var(--font2);font-size:17px;font-weight:900;letter-spacing:.04em;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--blue);}
 .nav-right{display:flex;align-items:center;gap:12px;}
 .btn-ghost{color:var(--blue);font-weight:600;font-size:14px;text-decoration:none;padding:8px 16px;border-radius:var(--radius);transition:background .2s;}
 .btn-ghost:hover{background:var(--blue-light);}
-.btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);transition:all .2s;}
+.btn-solid{background:var(--blue);color:#fff;font-weight:700;font-size:14px;text-decoration:none;padding:10px 22px;border-radius:var(--radius);transition:all .2s;border:none;cursor:pointer;}
 .btn-solid:hover{background:var(--blue-dark);}
 
 /* Hamburger */
@@ -39,7 +39,7 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 /* Mobile menu */
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:90px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:82px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:var(--ink);text-decoration:none;font-size:18px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--border);}
 .mobile-menu a:hover{color:var(--blue);}
@@ -156,6 +156,51 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   .form-title{font-size:19px;}
   input,select,textarea{font-size:14px;padding:12px 14px;}
 }
+
+/* ══════════════ COURSE FINDER POPUP ══════════════ */
+.cf-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,29,58,.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.cf-overlay.show{opacity:1;pointer-events:auto;}
+.cf-box{background:var(--surface);border-radius:var(--radius-xl);max-width:600px;width:100%;max-height:92vh;overflow-y:auto;padding:40px 36px 32px;position:relative;box-shadow:0 30px 90px rgba(15,29,58,.4);transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.cf-overlay.show .cf-box{transform:translateY(0) scale(1);}
+.cf-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:var(--bg2);color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;}
+.cf-close:hover{background:var(--border);color:var(--ink);}
+.cf-eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--green-light);color:var(--green);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:700;margin-bottom:18px;font-family:var(--font2);}
+.cf-eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--green);}
+.cf-progress{display:flex;gap:5px;margin-bottom:22px;}
+.cf-dot{height:4px;flex:1;background:var(--border);border-radius:2px;overflow:hidden;}
+.cf-dot span{display:block;height:100%;width:0;background:var(--blue);transition:width .3s;}
+.cf-dot.done span{width:100%;}
+.cf-step-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;font-family:var(--font2);}
+.cf-q{font-family:var(--font2);font-weight:800;font-size:24px;color:var(--ink);line-height:1.3;margin-bottom:24px;letter-spacing:-.3px;}
+.cf-opts{display:flex;flex-direction:column;gap:10px;}
+.cf-opt{text-align:left;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:15px 18px;font-family:var(--font);font-weight:600;font-size:14.5px;color:var(--ink);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;}
+.cf-opt:hover{border-color:var(--blue);background:var(--blue-light);color:var(--blue);}
+.cf-opt .go{opacity:0;transition:opacity .15s;color:var(--blue);flex-shrink:0;}
+.cf-opt:hover .go{opacity:1;}
+.cf-back{margin-top:18px;font-size:13px;font-weight:700;color:var(--muted2);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:var(--font);}
+.cf-back:hover{color:var(--blue);}
+.cf-result{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-top:8px;}
+.cf-badge{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);background:var(--green-light);padding:6px 14px;border-radius:100px;margin-bottom:8px;font-family:var(--font2);}
+.cf-result h2{font-family:var(--font2);font-weight:900;font-size:26px;color:var(--ink);line-height:1.2;letter-spacing:-.5px;}
+.cf-result .sub{font-size:13px;font-weight:700;color:var(--accent);margin-top:2px;}
+.cf-result p{font-size:14.5px;color:var(--muted);line-height:1.7;max-width:440px;margin-top:10px;}
+.cf-result-btns{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;justify-content:center;}
+.cf-btn-yellow{background:var(--yellow);color:var(--blue-dark);font-family:var(--font2);font-weight:800;font-size:14px;padding:13px 26px;border-radius:var(--radius-lg);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.cf-btn-yellow:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,200,66,.35);}
+.cf-btn-ghost{background:transparent;color:var(--blue);font-weight:700;font-size:14px;padding:12px 22px;border-radius:var(--radius-lg);text-decoration:none;border:1.5px solid var(--border2);display:inline-flex;align-items:center;gap:6px;}
+.cf-btn-ghost:hover{background:var(--blue-light);}
+.cf-restart{margin-top:20px;font-size:13px;font-weight:700;color:var(--muted2);background:none;border:none;cursor:pointer;font-family:var(--font);}
+.cf-restart:hover{color:var(--ink);}
+@media(max-width:600px){.cf-box{padding:32px 22px 26px;}.cf-q{font-size:20px;}}
+
+.cf-reopen{position:fixed;bottom:90px;right:24px;z-index:998;background:var(--blue);color:#fff;font-weight:700;font-size:13px;padding:12px 18px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(21,43,94,.3);display:flex;align-items:center;gap:8px;font-family:var(--font);transition:all .25s;}
+.cf-reopen:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 10px 26px rgba(21,43,94,.4);}
+.cf-reopen .cfr-text{display:none;}
+@media(max-width:600px){
+  .cf-reopen{bottom:84px;right:20px;padding:11px 14px;border-radius:50px;font-size:12px;gap:5px;}
+  .cf-reopen .cfr-text{display:inline;}
+  .cf-reopen .cfr-full{display:none;}
+}
 </style>
 </head>
 
@@ -168,12 +213,25 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   <span>Chat on WhatsApp</span>
 </a>
 
+<button class="cf-reopen" onclick="cfReopenManual()" aria-label="Need help choosing a course?">
+  🤔 <span class="cfr-full">Need help choosing a course?</span><span class="cfr-text">Find My Course</span>
+</button>
+
 <body>
+
+<!-- COURSE FINDER POPUP -->
+<div class="cf-overlay" id="cfOverlay">
+  <div class="cf-box">
+    <button class="cf-close" onclick="cfClose()" aria-label="Close">✕</button>
+    <div id="cfCard"></div>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">Kiwami School</a>
+  <a href="index.html" class="logo">KIWAMI SCHOOL</a>
   <ul class="nav-links">
+    <li><a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a></li>
     <li><a href="index.html#courses">Courses</a></li>
     <li><a href="index.html#why">Why Us</a></li>
     <li><a href="index.html#testimonials">Alumni</a></li>
@@ -183,7 +241,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   </ul>
   <div class="nav-right">
     <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
-    <a href="contact.html" class="btn-solid">Enroll Now</a>
+    <a href="javascript:void(0)" class="btn-solid" onclick="cfReopenManual()">Enroll Now</a>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -192,6 +250,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a>
   <a href="index.html#courses">Courses</a>
   <a href="index.html#why">Why Us</a>
   <a href="index.html#testimonials">Alumni</a>
@@ -200,7 +259,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   <a href="hub.html">Kiwami Tech Hub</a>
   <div class="mobile-menu-btns">
     <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
-    <a href="contact.html" class="btn-solid">Enroll Now</a>
+    <a href="javascript:void(0)" class="btn-solid" onclick="cfReopenManual();closeMenu()">Enroll Now</a>
   </div>
 </div>
 
@@ -465,6 +524,11 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('open');
+  document.body.style.overflow = '';
+}
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     mobileMenu.classList.remove('open');
@@ -552,6 +616,148 @@ async function submitForm(btn) {
     btn.innerHTML = '<span>Send Enquiry →</span>';
   }
 }
+
+// ══════════════ COURSE FINDER POPUP LOGIC ══════════════
+(function(){
+  const SCHOOL_CONTACT = "contact.html";
+  const WA_LINK = "https://wa.me/254110436849";
+
+  const tree = {
+    student: { q:"Are you a student?", opts:[
+      {l:"Yes, I'm a student", n:"result_intro"},
+      {l:"No, I'm not a student", n:"newToTesting"}
+    ]},
+    newToTesting: { q:"Are you new to software testing?", opts:[
+      {l:"Yes, I'm completely new to this", n:"entryType"},
+      {l:"No, I have some experience already", n:"qaEngineer"}
+    ]},
+    entryType: { q:"What are you looking for?", opts:[
+      {l:"A shorter, career-entry course", n:"result_manual"},
+      {l:"A complete QA career path", n:"result_fullstack"}
+    ]},
+    qaEngineer: { q:"Are you already working as a QA Engineer?", opts:[
+      {l:"Yes, I'm a QA Engineer", n:"qaFocus"},
+      {l:"No, none of the above quite fit", n:"result_fallback"}
+    ]},
+    qaFocus: { q:"What would you like to focus on?", opts:[
+      {l:"Grow in a specific technical area", n:"growthArea"},
+      {l:"Pursue ISTQB Certification", n:"istqbFoundationCheck"}
+    ]},
+    growthArea: { q:"Which area would you like to grow in?", opts:[
+      {l:"Test Automation", n:"automationType"},
+      {l:"Non-Functional Testing", n:"nonFunctionalType"},
+      {l:"AI in Testing", n:"result_ai"}
+    ]},
+    automationType: { q:"Which automation path interests you?", opts:[
+      {l:"Complete Automation Career Path", n:"result_automationBootcamp"},
+      {l:"Robot Framework", n:"result_robot"},
+      {l:"Playwright", n:"result_playwright"}
+    ]},
+    nonFunctionalType: { q:"Which non-functional area interests you?", opts:[
+      {l:"Performance Testing", n:"result_performance"},
+      {l:"Security Testing", n:"result_security"}
+    ]},
+    istqbFoundationCheck: { q:"Do you already have your ISTQB Foundation Level certification?", opts:[
+      {l:"Yes, I have Foundation Level", n:"istqbAdvancedChoice"},
+      {l:"No, not yet", n:"result_istqbFoundation"}
+    ]},
+    istqbAdvancedChoice: { q:"Which advanced specialization interests you?", opts:[
+      {l:"Advanced Test Automation", n:"result_advAutomation"},
+      {l:"Performance Testing Specialist", n:"result_perfSpecialist"},
+      {l:"Security Testing Specialist", n:"result_secSpecialist"}
+    ]},
+
+    result_intro:{r:true,t:"Introduction to Software Testing",s:"Best for students exploring QA",d:"A beginner-friendly course covering the fundamentals of software testing — perfect for students exploring QA as a career path.",link:"https://kiwamitech.com/school/course.html?id=intro-testing"},
+    result_manual:{r:true,t:"Manual Testing + AI in Manual Testing",s:"+ ISTQB Foundation Voucher included",d:"A focused, career-entry course covering manual testing fundamentals plus practical AI-assisted testing techniques.",link:"https://kiwamitech.com/school/course.html?id=manual-testing-istqb"},
+    result_fullstack:{r:true,t:"FullStack QA Bootcamp",s:"Manual + Automation + Performance + AI",d:"Our most comprehensive program — covering the complete QA skillset from manual testing through automation, performance, and AI in testing.",link:"https://kiwamitech.com/school/course.html?id=bootcamp-2026"},
+    result_fallback:{r:true,t:"Let's find the right fit together",s:"",d:"Your background doesn't fit neatly into one box — and that's okay. You can visit our website to enroll or talk to our team directly and we'll recommend the right course for you.",link:"https://kiwamitech.com/school/"},
+    result_ai:{r:true,t:"AI in Testing & AI System Validation",s:"",d:"Learn to apply AI tools within testing workflows and validate AI-driven systems — a fast-growing specialization.", link:"https://kiwamitech.com/school/course.html?id=bootcamp-ai-testing"},
+    result_automationBootcamp:{r:true,t:"Test Automation + AI Bootcamp",s:"Complete Automation Career Path",d:"A complete automation career path combining core automation engineering skills with AI-assisted testing techniques.", link:"https://kiwamitech.com/school/course.html?id=bootcamp-test-automation-ai"},
+    result_robot:{r:true,t:"Robot Framework Specialization",s:"",d:"A focused, deep-dive specialization in Robot Framework for test automation.", link:"https://kiwamitech.com/school/course.html?id=robot-framework"},
+    result_playwright:{r:true,t:"Playwright with TypeScript",s:"",d:"Master modern web automation using Playwright and TypeScript — one of the fastest-growing automation tools in the industry.", link:"https://kiwamitech.com/school/course.html?id=playwright-typescript"},
+    result_performance:{r:true,t:"Performance Testing",s:"",d:"Learn load, stress, and performance testing methodologies and tools used to safeguard production systems.", link:"https://kiwamitech.com/school/course.html?id=performance-testing"},
+    result_security:{r:true,t:"Security Testing",s:"",d:"Learn vulnerability assessment and penetration testing fundamentals to help safeguard applications and data.", link:"https://kiwamitech.com/school/course.html?id=security-testing"},
+    result_istqbFoundation:{r:true,t:"ISTQB Foundation Level Prep",s:"",d:"Get certified with our ISTQB Foundation Level preparation course — the internationally recognised starting point for QA certification.", link:"https://kiwamitech.com/school/course.html?id=istqb-foundation-prep"},
+    result_advAutomation:{r:true,t:"Advanced Test Automation",s:"ISTQB Advanced Level",d:"An ISTQB Advanced Level certification track focused on test automation engineering.", link:"https://kiwamitech.com/school/course.html?id=istqb-advanced-voucher"},
+    result_perfSpecialist:{r:true,t:"Performance Testing Specialist",s:"ISTQB Advanced Level",d:"An ISTQB Advanced specialization track focused on performance testing.", link:"https://kiwamitech.com/school/course.html?id=performance-testing-istqb"},
+    result_secSpecialist:{r:true,t:"Security Testing Specialist",s:"ISTQB Advanced Level",d:"An ISTQB Advanced specialization track focused on security testing.", link:"https://kiwamitech.com/school/course.html?id=security-testing-istqb"}
+  };
+
+  let history = [];
+  let current = "student";
+  const totalSteps = 5;
+
+  function render(){
+    const card = document.getElementById('cfCard');
+    const node = tree[current];
+
+    if(node.r){
+      const enrollLink = node.link || SCHOOL_CONTACT;
+      card.innerHTML = `
+        <div class="cf-result">
+          <div class="cf-badge">Recommended Course</div>
+          <h2>${node.t}</h2>
+          ${node.s ? `<div class="sub">${node.s}</div>` : ''}
+          <p>${node.d}</p>
+          <div class="cf-result-btns">
+            <a class="cf-btn-yellow" href="${enrollLink}">Enroll Now →</a>
+            <a class="cf-btn-ghost" href="${WA_LINK}" target="_blank">Talk to an Advisor</a>
+          </div>
+          <button class="cf-restart" onclick="cfRestart()">↺ Start Over</button>
+        </div>`;
+      return;
+    }
+
+    const stepNum = history.length + 1;
+    let dots = '';
+    for(let i=0;i<totalSteps;i++){
+      dots += `<div class="cf-dot ${i < stepNum ? 'done' : ''}"><span></span></div>`;
+    }
+    let opts = '';
+    node.opts.forEach(o=>{
+      opts += `<button class="cf-opt" onclick="cfChoose('${o.n}')">${o.l}<span class="go">→</span></button>`;
+    });
+
+    card.innerHTML = `
+      <div class="cf-eyebrow"><span class="cf-eyebrow-dot"></span>Find Your Course</div>
+      <div class="cf-progress">${dots}</div>
+      <div class="cf-step-lbl">Question ${stepNum}</div>
+      <div class="cf-q">${node.q}</div>
+      <div class="cf-opts">${opts}</div>
+      ${history.length ? `<button class="cf-back" onclick="cfBack()">← Back</button>` : ''}
+    `;
+  }
+
+  window.cfChoose = function(next){ history.push(current); current = next; render(); };
+  window.cfBack = function(){ current = history.pop(); render(); };
+  window.cfRestart = function(){ history = []; current = "student"; render(); };
+
+  window.cfClose = function(){
+    document.getElementById('cfOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  };
+
+  function cfOpen(){
+    document.getElementById('cfOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.cfReopenManual = function(){
+    history = [];
+    current = "student";
+    render();
+    cfOpen();
+  };
+
+  document.getElementById('cfOverlay').addEventListener('click', function(e){
+    if(e.target.id === 'cfOverlay') window.cfClose();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') window.cfClose();
+  });
+
+  render();
+})();
 </script>
 </body>
 </html>

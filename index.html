@@ -21,8 +21,8 @@ body{font-family:var(--font);color:var(--ink);background:var(--surface);overflow
 .topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.2px;position:sticky;top:37px;z-index:101;;line-height:1.5;}
 .topbar a{color:#fff;text-decoration:underline;}
 
-nav{background:var(--surface);position:sticky;top:74px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:68px;}
-.logo{font-family:var(--font2);font-size:20px;font-weight:900;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
+nav{background:var(--surface);position:sticky;top:74px;z-index:100;border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.logo{font-family:var(--font2);font-size:17px;font-weight:900;letter-spacing:.04em;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:10px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--blue);}
@@ -37,7 +37,7 @@ nav{background:var(--surface);position:sticky;top:74px;z-index:100;border-bottom
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:100px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--surface);padding:88px 6vw 40px;flex-direction:column;gap:8px;overflow-y:auto;}
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:var(--ink);text-decoration:none;font-size:18px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--border);transition:color .2s;}
 .mobile-menu a:hover{color:var(--blue);}
@@ -236,7 +236,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 @media(max-width:640px){
   .topbar{font-size:11px;padding:9px 14px;}
   nav{height:60px;padding:0 5vw;}
-  .logo{font-size:18px;}
+  .logo{font-size:15px;}
   .hero{padding:40px 5vw 0;}
   .hero-eyebrow{font-size:12px;padding:6px 14px;}
   .hero-left{padding-bottom:40px;}
@@ -347,8 +347,9 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">Kiwami School</a>
+  <a href="index.html" class="logo">KIWAMI SCHOOL</a>
   <ul class="nav-links">
+    <li><a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a></li>
     <li><a href="#courses">Courses</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#testimonials">Alumni</a></li>
@@ -366,6 +367,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a>
   <a href="#courses" onclick="closeMenu()">Courses</a>
   <a href="#why" onclick="closeMenu()">Why Us</a>
   <a href="#testimonials" onclick="closeMenu()">Alumni</a>
