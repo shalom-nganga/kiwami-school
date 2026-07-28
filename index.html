@@ -814,7 +814,7 @@ document.getElementById('scrollTop').addEventListener('click',()=>window.scrollT
   window.cfClose = function(){
     document.getElementById('cfOverlay').classList.remove('show');
     document.body.style.overflow = '';
-    try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
+    // try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
   };
 
   function cfOpen(){
@@ -830,12 +830,7 @@ document.getElementById('scrollTop').addEventListener('click',()=>window.scrollT
   });
 
   render();
-
-  let seen = false;
-  try{ seen = localStorage.getItem(STORAGE_KEY) === '1'; }catch(e){}
-  if(!seen){
     setTimeout(cfOpen, 600);
-  }
 })();
 </script>
 </body>
