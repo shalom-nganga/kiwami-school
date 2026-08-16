@@ -116,6 +116,14 @@ nav{background:var(--surface);position:sticky;top:0;z-index:100;border-bottom:1p
 .sidebar-card{background:var(--surface);border-radius:var(--radius-xl);border:1.5px solid var(--border);padding:28px;box-shadow:0 4px 24px rgba(21,43,94,.07);}
 .sidebar-card+.sidebar-card{margin-top:20px;}
 
+/* ── FIX BUG-003: hide the redundant sidebar enroll card on desktop,
+     where the hero enrollment card (ch-card-wrap) is already visible.
+     Below 961px the hero card is hidden (see .ch-card-wrap rule below),
+     so the sidebar card remains the ONLY enroll card on mobile/tablet. ── */
+@media(min-width:961px){
+  .sidebar-card--enroll{display:none;}
+}
+
 /* ─ REVIEWS ─ */
 .reviews-section{background:var(--bg);padding:64px 6vw;}
 .reviews-inner{max-width:1160px;margin:0 auto;}
@@ -481,7 +489,7 @@ function renderCourse(c) {
       </div>
 
       <div class="course-sidebar">
-        <div class="sidebar-card">
+        <div class="sidebar-card sidebar-card--enroll">
           <div class="cc-icon" style="margin-bottom:16px;">${c.icon}</div>
           ${sidebarPriceBlock}
           <div class="cc-price-note" style="margin-bottom:20px;">Full course · All materials included</div>

@@ -112,6 +112,14 @@ textarea{resize:vertical;min-height:110px;}
 .success-body{font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:24px;}
 .btn-back{display:inline-block;background:var(--blue-light);color:var(--blue);font-weight:700;font-size:14px;text-decoration:none;padding:12px 24px;border-radius:var(--radius);}
 
+/* ── Submit-error fallback banner (NEW: BUG-004 fix) ── */
+.submit-error-banner{display:none;background:#fff4f0;border:1.5px solid #f3c8b8;border-radius:var(--radius-lg);padding:18px 20px;margin-top:16px;}
+.submit-error-banner.show{display:block;}
+.seb-title{font-size:14px;font-weight:800;color:#b5451a;font-family:var(--font2);margin-bottom:6px;}
+.seb-body{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.seb-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-weight:700;font-size:13px;text-decoration:none;padding:10px 18px;border-radius:var(--radius);}
+.seb-wa:hover{background:#1ebe5d;}
+
 /* ── FOOTER ── */
 footer{background:var(--ink);padding:64px 6vw 32px;}
 .footer-grid{max-width:1160px;margin:0 auto;}
@@ -462,6 +470,15 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
         <span>Send Enquiry →</span>
       </button>
       <p class="form-note">We'll respond within 24 hours. No spam, ever.</p>
+
+      <!-- BUG-004 fix: instead of just an alert(), show a persistent banner
+           with a WhatsApp fallback pre-filled with their details, so a failed
+           submit doesn't lose the lead. -->
+      <div class="submit-error-banner" id="submitErrorBanner">
+        <div class="seb-title">We couldn't submit that automatically</div>
+        <div class="seb-body">Your details are safe below — tap to send them to us on WhatsApp instead and we'll pick it up right away.</div>
+        <a class="seb-wa" id="submitErrorWaLink" href="#" target="_blank" rel="noopener">💬 Send via WhatsApp</a>
+      </div>
     </div>
 
     <div id="successState" style="display:none;" class="success-state">
@@ -508,7 +525,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 Kiwami Tech Solutions Ltd</p>
+      <p>© 2026 Kiwami Tech Solutions Ltd</p>
       <p>Nairobi, Kenya</p>
     </div>
   </div>
@@ -565,7 +582,18 @@ function clearCourse() {
   document.getElementById('courseBanner').style.display = 'none';
 }
 
-// ── FORM SUBMIT ───────────────────────────────────────────────
+// ── FORM SUBMIT (BUG-004 FIX) ────────────────────────────────
+// Root cause: the old code called `await res.json()` unconditionally.
+// If the API ever returns a non-JSON body (an HTML error page, an empty
+// 500 response, a plain-text error, or even a 200 with no body), that
+// .json() call throws a SyntaxError, lands in the catch block, and the
+// user sees the generic "Something went wrong" alert — even when the
+// actual server response would have told us exactly what's wrong.
+//
+// Fix: read the response as text first, log the real status + body to
+// the console so we can diagnose the backend, only parse as JSON if it
+// looks like JSON, and give the user a way to still get their enquiry
+// to us (WhatsApp, prefilled) instead of just losing the lead.
 async function submitForm(btn) {
   const fname    = document.getElementById('fname').value.trim();
   const lname    = document.getElementById('lname').value.trim();
@@ -576,6 +604,8 @@ async function submitForm(btn) {
   const bg       = document.getElementById('background').value;
   const source   = document.getElementById('source').value;
   const message  = document.getElementById('message').value.trim();
+
+  document.getElementById('submitErrorBanner').classList.remove('show');
 
   if (!fname || !lname || !email || !phone || !course) {
     alert('Please fill in all required fields (marked with *).');
@@ -589,29 +619,51 @@ async function submitForm(btn) {
   btn.disabled = true;
   btn.innerHTML = '<span>Sending...</span>';
 
+  const payload = {
+    first_name: fname, last_name: lname,
+    email, phone, course, schedule,
+    background: bg, referral: source, extra_info: message
+  };
+
   try {
     const res = await fetch('https://jewapropertypro.com/infinity/jewaapp/api/applicationsubmit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        first_name: fname, last_name: lname,
-        email, phone, course, schedule,
-        background: bg, referral: source, extra_info: message
-      })
+      body: JSON.stringify(payload)
     });
 
-    const data = await res.json();
-    console.log('API response:', data);
+    // Read as text FIRST — never blindly assume JSON.
+    const raw = await res.text();
+    let data = null;
+    try { data = raw ? JSON.parse(raw) : null; } catch (parseErr) { /* not JSON, that's fine, we log raw below */ }
+
+    // Log the real server response so it can be diagnosed in DevTools → Console.
+    console.log('[Enquiry submit] status:', res.status, 'body:', raw);
 
     if (res.ok) {
       document.getElementById('formWrap').style.display = 'none';
       document.getElementById('successState').style.display = 'block';
     } else {
-      console.error('API error:', data);
-      throw new Error('Server returned ' + res.status);
+      throw new Error(`Server returned ${res.status}${raw ? ': ' + raw.slice(0, 300) : ' (empty body)'}`);
     }
   } catch (err) {
-    alert('Something went wrong — please try again or WhatsApp us directly.');
+    console.error('[Enquiry submit] failed:', err);
+
+    // Fallback: pre-fill a WhatsApp message with everything they typed,
+    // so a backend failure doesn't lose the enquiry.
+    const waText = encodeURIComponent(
+      `Hi, I'd like to enroll.\n` +
+      `Name: ${fname} ${lname}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone}\n` +
+      `Course: ${course}\n` +
+      (schedule ? `Preferred schedule: ${schedule}\n` : '') +
+      (bg ? `Background: ${bg}\n` : '') +
+      (message ? `Message: ${message}\n` : '')
+    );
+    document.getElementById('submitErrorWaLink').href = `https://wa.me/254110436849?text=${waText}`;
+    document.getElementById('submitErrorBanner').classList.add('show');
+
     btn.disabled = false;
     btn.innerHTML = '<span>Send Enquiry →</span>';
   }
