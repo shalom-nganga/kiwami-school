@@ -41,39 +41,6 @@ const COURSES = {
     testimonials: []
   },
 
-  // "manual-testing": {
-  //   id: "manual-testing",
-  //   title: "Manual Testing",
-  //   track: "Beginner",
-  //   categories: ["beginner"],
-  //   icon: "📋",
-  //   cardBg: "#fff4ed",
-  //   tags: [{ label: "POPULAR", cls: "tag-pop" }],
-  //   tool: "JIRA · TestRail",
-  //   tagline: "Master the art of manual QA from day one.",
-  //   description: "A deep dive into professional manual testing practices. You'll work with the same tools used by QA engineers at top Kenyan tech companies, and graduate with a portfolio of real test artefacts.",
-  //   price: 19999,
-  //   duration: "1.5 months",
-  //   cohort: "May 2026",
-  //   mode: "Virtual · Instructor-Led",
-  //   rating: 4.8,
-  //   reviews: 74,
-  //   prerequisites: [
-  //     "Basic computer literacy",
-  //     "No prior QA experience needed",
-  //     "Completion of Intro to Testing is an advantage but not required"
-  //   ],
-  //   curriculum: [
-  //     { week: "Week 1", title: "QA Foundations", topics: ["Quality principles and mindset", "SDLC & STLC", "Risk-based testing approach"] },
-  //     { week: "Week 2", title: "Test Design Techniques", topics: ["Equivalence partitioning", "Boundary value analysis", "Decision table testing"] },
-  //     { week: "Week 3", title: "Shift-Left & BDD", topics: ["Shift-left testing philosophy", "Behavior-Driven Development (BDD)", "Writing Gherkin test scenarios"] },
-  //     { week: "Week 4", title: "Tools — JIRA & TestRail", topics: ["JIRA for bug tracking", "TestRail for test case management", "End-to-end defect lifecycle walkthrough"] },
-  //     { week: "Week 5", title: "Tools — Zephyr & Advanced JIRA", topics: ["Zephyr Scale integration", "Test execution & reporting in JIRA", "Traceability matrices"] },
-  //     { week: "Week 6", title: "Test Case Optimization", topics: ["Writing effective test cases", "Test coverage analysis", "Regression testing strategies"] },
-  //   ],
-  //   testimonials: []
-  // },
-
   "manual-testing-istqb": {
     id: "manual-testing-istqb",
     title: "Manual Testing + ISTQB Voucher",
@@ -264,37 +231,6 @@ const COURSES = {
     ],
     testimonials: []
   },
-
-  // "ussd-automation": {
-  //   id: "ussd-automation",
-  //   title: "USSD Automation",
-  //   track: "Intermediate",
-  //   categories: ["intermediate"],
-  //   icon: "⚡",
-  //   cardBg: "#fff4ed",
-  //   tags: [{ label: "AFRICA-SPECIFIC", cls: "tag-new" }],
-  //   tool: null,
-  //   tagline: "Automate USSD testing for mobile money and telco apps.",
-  //   description: "Learn to automate USSD applications, reducing manual effort and ensuring reliability in mobile transactions, banking, and customer interactions. High demand skill across East Africa.",
-  //   price: 21999,
-  //   duration: "2 months",
-  //   cohort: "May 2026",
-  //   mode: "Virtual · Instructor-Led",
-  //   rating: 4.6,
-  //   reviews: 19,
-  //   prerequisites: [
-  //     "Completion of USSD Testing course or equivalent experience",
-  //     "Basic scripting knowledge is helpful",
-  //     "Familiarity with USSD flows"
-  //   ],
-  //   curriculum: [
-  //     { week: "Week 1–2", title: "USSD Automation Foundations", topics: ["Review of USSD testing fundamentals", "Introduction to USSD automation tools", "Scripting USSD flows"] },
-  //     { week: "Week 3–4", title: "Automation Framework Setup", topics: ["Test framework design for USSD", "Handling session state in automation", "Data-driven USSD testing"] },
-  //     { week: "Week 5–6", title: "Real-World Automation Scenarios", topics: ["Automating M-Pesa-style flows", "Bank USSD automation scenarios", "Error handling and retry logic"] },
-  //     { week: "Week 7–8", title: "CI/CD & Final Project", topics: ["Integrating USSD tests into pipelines", "Reporting and alerting", "Automated USSD test suite as portfolio piece"] },
-  //   ],
-  //   testimonials: []
-  // },
 
   "ussd-automation-istqb": {
     id: "ussd-automation-istqb",
@@ -985,9 +921,9 @@ const COURSES = {
     icon: "🚀",
     cardBg: "var(--yellow)",
     tags: [{ label: "INTENSIVE", cls: "tag-hot" }, { label: "LIMITED SEATS", cls: "tag-pop" }],
-    tool: null,
-    tagline: "Go from beginner to job-ready QA engineer in one intensive programme.",
-    description: "An intensive instructor-led bootcamp covering the full spectrum of software QA engineering — from manual testing fundamentals to automation, API testing, and CI/CD. Designed to get you job-ready as fast as possible.",
+    tool: "Postman · Selenium · Cypress · Playwright · Appium · JMeter · k6 · OWASP ZAP · Burp Suite",
+    tagline: "Go from beginner to job-ready QA engineer — manual, automation, and non-functional, in one intensive combined track.",
+    description: "The complete Kiwami School experience in a single programme: manual testing, full-stack test automation (web, API, mobile), and non-functional testing (performance + security) — each with AI-enhanced modules, its own ISTQB certification track, and dedicated mock interviews. This is the combined track for students who want the entire QA skillset, not just one specialisation.",
     price: 100000,
     duration: "10 months",
     cohort: "August 2026",
@@ -997,13 +933,19 @@ const COURSES = {
     prerequisites: [
       "No prior tech experience required",
       "A laptop or desktop with at least 8GB RAM",
-      "Strong commitment — this is an intensive programme"
+      "Strong commitment — this is a 10-month intensive programme"
     ],
     curriculum: [
-      { week: "Phase 1", title: "QA Foundations", topics: ["Software testing fundamentals", "Manual testing techniques", "JIRA and test management tools"] },
-      { week: "Phase 2", title: "API Testing", topics: ["REST API concepts", "Postman for API testing", "API automation basics"] },
-      { week: "Phase 3", title: "Web Automation", topics: ["Selenium or Playwright (your choice)", "Page Object Model", "Cross-browser testing"] },
-      { week: "Phase 4", title: "CI/CD & Deployment", topics: ["GitHub Actions pipeline", "Automated test reporting", "Portfolio project"] },
+      { week: "Phase 1", title: "Manual Testing Foundations", topics: ["Manual testing techniques", "Agile QA practices & defect management", "QA reporting and QA in modern SDLC (shift-left, shift-right)"] },
+      { week: "Phase 2", title: "Manual Testing Project + AI in Manual Testing", topics: ["End-to-end manual testing project & documentation", "AI in manual testing fundamentals and defect prediction", "Mini project: AI-assisted test cases using Testim/Mabl"] },
+      { week: "Phase 3", title: "Test Automation Foundations", topics: ["Environment setup & core programming for automation", "BDD & end-to-end automation (Selenium, Cypress, Playwright, Puppeteer)", "Version control for automation engineers"] },
+      { week: "Phase 4", title: "API & Mobile Test Automation", topics: ["REST & SOAP fundamentals — Postman, REST Assured, Karate", "API mocking & service virtualisation", "Mobile automation — Appium, XCUITest, cloud device testing"] },
+      { week: "Phase 5", title: "Automation Specialisation Tracks (choose two, Playwright compulsory)", topics: ["UI Automation — Selenium, Cypress, Robot Framework advanced", "API Automation — REST Assured, Karate, Postman, Playwright API", "Mobile Automation — Appium, Espresso, XCUITest, mobile clouds"] },
+      { week: "Phase 6", title: "Advanced Automation & AI in Automation", topics: ["Data-driven, keyword-driven & hybrid frameworks", "CI/CD integration — Docker, Kubernetes, automated pipeline reporting", "AI-enhanced automation & AI system validation"] },
+      { week: "Phase 7", title: "Non-Functional Testing — Performance", topics: ["Performance testing with JMeter, Gatling, Locust, k6", "AI for load pattern prediction & anomaly detection", "Performance capstone: load test a sample system + dashboards"] },
+      { week: "Phase 8", title: "Non-Functional Testing — Security", topics: ["Vulnerability scanning & penetration testing — OWASP ZAP, Burp Suite", "Secure coding principles & AI in vulnerability prediction", "Security capstone: vulnerability scan + penetration test report"] },
+      { week: "Phase 9", title: "Final Capstone Project", topics: ["Full-stack QA project spanning manual, automation, and non-functional testing", "CI/CD pipeline with automated reporting and dashboards", "Final project presentation & peer review"] },
+      { week: "Phase 10", title: "Certification & Interview Prep", topics: ["Awarding of Kiwami Tech Certificate (Fullstack QA — Manual, Automation, Non-Functional)", "3 ISTQB certification tracks: Foundation Level (Manual), Advanced Test Automation, and Foundation/Advanced (Non-Functional)", "6 mock interviews across manual testing, test automation, and non-functional testing"] },
     ],
     testimonials: []
   },
@@ -1181,35 +1123,5 @@ const COURSES = {
     ],
     testimonials: []
   },
-
-  // "automation-governance": {
-  //   id: "automation-governance",
-  //   title: "Automation & Governance in Software QA",
-  //   track: "Specialist",
-  //   categories: ["specialist"],
-  //   icon: "🏛️",
-  //   cardBg: "var(--blue-light)",
-  //   tags: [{ label: "SPECIALIST", cls: "tag-new" }],
-  //   tool: null,
-  //   tagline: "Compliance, frameworks, and quality at enterprise scale.",
-  //   description: "Implement robust automation frameworks while ensuring compliance with industry standards, best practices, and regulatory requirements to enhance software reliability, efficiency, and scalability across your organisation.",
-  //   price: 80000,
-  //   duration: "2 months",
-  //   cohort: "May 2026",
-  //   mode: "Virtual · Instructor-Led",
-  //   rating: 4.7,
-  //   reviews: 9,
-  //   prerequisites: [
-  //     "At least 2 years of QA experience",
-  //     "Experience with automation frameworks",
-  //     "Familiarity with Agile/DevOps environments"
-  //   ],
-  //   curriculum: [
-  //     { week: "Week 1", title: "Automation Strategy & Governance", topics: ["Defining automation objectives", "Governance frameworks for QA", "Compliance requirements in software quality"] },
-  //     { week: "Week 2", title: "Framework Design & Standards", topics: ["Industry-standard automation architectures", "Code quality and maintainability", "Documentation and audit trails"] },
-  //     { week: "Week 3", title: "Implementation & Scaling", topics: ["Scaling automation across teams", "Regulatory compliance testing", "QA maturity models"] },
-  //   ],
-  //   testimonials: []
-  // },
 
 };

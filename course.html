@@ -405,6 +405,14 @@ function renderCourse(c) {
     </div>
   `).join('');
 
+  // BUG-002 fix: previously this always fell back to "Be the first to
+  // complete this course and share your story!" whenever c.testimonials
+  // was empty — even when c.rating/c.reviews claimed real review counts
+  // (e.g. 4.7 stars, 38 reviews). That's a contradiction: the hero shows
+  // "38 reviews" while the reviews section says nobody has reviewed it
+  // yet. Until real testimonial text is added to courses-data.js, show
+  // an honest message that acknowledges the rating exists without
+  // implying zero students have taken the course.
   const reviewCards = c.testimonials.length > 0
     ? c.testimonials.map(t => `
         <div class="rcard">
@@ -415,7 +423,9 @@ function renderCourse(c) {
             <div><div class="rc-name">${t.name}</div><div class="rc-role">${t.role}</div></div>
           </div>
         </div>`).join('')
-    : `<div class="no-reviews">⭐ Be the first to complete this course and share your story!</div>`;
+    : (c.reviews > 0
+        ? `<div class="no-reviews">⭐ ${c.reviews} students have rated this course ${c.rating}/5 — written reviews are being added soon.</div>`
+        : `<div class="no-reviews">⭐ Be the first to complete this course and share your story!</div>`);
 
   const enrollHref = `contact.html?course=${c.id}`;
 
