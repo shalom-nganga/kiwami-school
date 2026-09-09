@@ -912,6 +912,40 @@ const COURSES = {
     testimonials: []
   },
 
+    "applied-ai-agents-n8n": {
+    id: "applied-ai-agents-n8n",
+    title: "Applied AI Agents — No-Code/Low-Code",
+    track: "Specialist",
+    categories: ["specialist"],
+    icon: "🤖",
+    cardBg: "#f3eaff",
+    tags: [{ label: "NEW", cls: "tag-new" }, { label: "NO-CODE", cls: "tag-pop" }],
+    tool: "n8n",
+    tagline: "Build practical AI-powered workflows — no coding required.",
+    description: "Learn to design and deploy AI agents and automated workflows using no-code/low-code tools like n8n. Built for business teams — not software engineers — this course takes you from prompt basics to a full automation you can deploy in a real SME, with human-in-the-loop approvals and monitoring built in from day one.",
+    price: 30000,
+    duration: "5–6 weeks",
+    cohort: "August 2026",
+    mode: "Virtual · Instructor-Led",
+    rating: 0,
+    reviews: 0,
+    prerequisites: [
+      "No coding or software engineering background required",
+      "A laptop with a stable internet connection",
+      "Basic familiarity with everyday business tools (email, spreadsheets)"
+    ],
+    curriculum: [
+      { week: "Week 1", title: "Foundations of AI Agents & Workflow Design", topics: ["What AI agents are and how they differ from simple automations", "Mapping a business process into an automatable workflow", "Planning your first agent"] },
+      { week: "Week 2", title: "n8n Fundamentals", topics: ["Navigating the n8n interface and nodes", "Building your first end-to-end workflow", "Triggers, actions, and conditional logic"] },
+      { week: "Week 3", title: "Prompt Templates & Structured Outputs", topics: ["Writing reliable prompt templates for business tasks", "Getting structured (JSON) outputs from AI models", "Testing and refining prompts"] },
+      { week: "Week 4", title: "App Integrations", topics: ["Connecting n8n to common business apps (Gmail, Sheets, Slack, WhatsApp)", "Working with APIs without writing code", "Handling data between connected apps"] },
+      { week: "Week 5", title: "Human-in-the-Loop & Monitoring", topics: ["Adding approval steps into automated workflows", "Monitoring workflows and handling errors", "Safety and reliability best practices"] },
+      { week: "Week 6", title: "Kenyan SME Automation Capstone", topics: ["Build an end-to-end automation for a real SME use case", "Present your workflow for feedback", "Certificate of completion"] },
+    ],
+    testimonials: []
+  },
+
+
   // ── BOOTCAMPS ─────────────────────────────────────────────
   "bootcamp-2026": {
     id: "bootcamp-2026",
