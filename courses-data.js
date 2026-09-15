@@ -52,7 +52,7 @@ const COURSES = {
     tool: "ISTQB Voucher",
     tagline: "Get certified on your first attempt.",
     description: "Everything in the Manual Testing course, plus your ISTQB Foundation Level exam voucher and dedicated preparation sessions. Our pass rate on first attempt is over 90%.",
-    price: 32999,
+    price: 55000,
     duration: "2 months",
     cohort: "August 2026",
     mode: "Virtual · Instructor-Led",
