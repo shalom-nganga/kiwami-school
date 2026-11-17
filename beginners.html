@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start a Software Testing Career in Kenya | Beginner QA Courses | Kiwami School</title>
+<meta name="description" content="New to software testing? Kiwami School's beginner pathway takes you from the basics to a job-ready QA professional with instructor-led courses in Kenya.">
+<link rel="canonical" href="https://kiwamitech.com/school/beginners.html">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="path-pages.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">KIWAMI SCHOOL</a>
+  <ul class="nav-links">
+    <li><a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a></li>
+    <li><a href="index.html#courses">Courses</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#testimonials">Alumni</a></li>
+    <li><a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a></li>
+  </ul>
+  <div class="nav-right"><a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a><a href="contact.html" class="btn-solid">Enroll Now</a></div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="index.html#courses">All courses</a><a href="professionals.html">Not new to QA?</a><a href="https://learning.kiwamitech.com/" target="_blank">Login to LMS</a><a href="contact.html">Enroll Now</a>
+</div>
+
+<header class="phero">
+  <div class="phero-in">
+    <div class="crumb"><a href="index.html">Kiwami School</a> / New to QA</div>
+    <span class="ppill">Beginner learning pathway</span>
+    <h1>Your QA journey starts here.</h1>
+    <p class="lead">No experience? No problem. Pick a course, build your skills with live instructors and take your first step into Quality Assurance.</p>
+  </div>
+</header>
+
+<section class="psec">
+  <div class="pin">
+    <div class="offer"><span><b>Student?</b> Get Introduction to Software Testing at <b>Ksh 9,999</b> instead of Ksh 14,999.</span><a href="course.html?id=intro-testing">Claim student offer</a></div>
+    <h2 class="ptitle">Choose where to begin</h2>
+    <p class="psub">Three courses, one path towards becoming a QA professional. Start at Level 01 or jump in where you feel ready.</p>
+    <div class="pgrid" id="pgrid"></div>
+  </div>
+</section>
+
+<section class="cross">
+  <h2>Not sure which one fits?</h2>
+  <p>Talk to an advisor and we'll point you to the right starting point.</p>
+  <a class="btn-yellow" href="https://wa.me/254110436849" target="_blank" rel="noopener">Chat with an advisor</a>
+  <p style="margin:22px 0 0;font-size:14px">Already working in QA? <a href="professionals.html" style="color:var(--yellow)">See the professional pathway →</a></p>
+</section>
+
+<footer><div class="fwrap"><span>© 2026 Kiwami Tech Solutions Ltd · Nairobi, Kenya</span><a href="index.html">← Back to Kiwami School</a></div></footer>
+<a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">💬 <span>Chat on WhatsApp</span></a>
+
+<script src="courses-data.js"></script>
+<script src="path.js"></script>
+<script>
+// To use real photos, add img:'images/intro.jpg' to an entry below.
+const STEPS = [
+  {id:'intro-testing', lvl:'Level 01', icon:'📝', title:'Introduction to Software Testing', desc:'Discover the fundamentals of software testing and understand what QA professionals do.'},
+  {id:'manual-testing-istqb', lvl:'Level 02', icon:'🐞', title:'Manual Testing', desc:'Learn to test applications, identify bugs and write effective test cases. Includes ISTQB prep.'},
+  {id:'bootcamp-2026', lvl:'Level 03', icon:'🚀', title:'Full Stack QA Bootcamp', desc:'Expand your skills and understand testing across the different layers of an application.'}
+];
+document.getElementById('pgrid').innerHTML = STEPS.map(s => {
+  const c = ALL[s.id] || {};
+  const bg = s.img ? `style="background-image:url(${s.img})"` : '';
+  return `<a class="pc" href="course.html?id=${s.id}">
+    <div class="pc-img" ${bg}>${s.img ? '' : s.icon}</div>
+    <div class="pc-body">
+      <span class="lvl">${s.lvl}</span>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+      <div class="pc-meta"><span>${c.duration ? '⏱ ' + c.duration : ''}</span><b>${c.price ? money(c.price) : ''}</b></div>
+      <span class="pc-go">Explore course →</span>
+    </div></a>`;
+}).join('');
+</script>
+</body>
+</html>

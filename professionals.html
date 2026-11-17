@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced QA Courses in Kenya | Automation, Performance, Security &amp; ISTQB | Kiwami School</title>
+<meta name="description" content="Already working in QA? Specialise in test automation, performance and security testing, or earn ISTQB certification with Kiwami School in Kenya.">
+<link rel="canonical" href="https://kiwamitech.com/school/professionals.html">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="path-pages.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">KIWAMI SCHOOL</a>
+  <ul class="nav-links">
+    <li><a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a></li>
+    <li><a href="index.html#courses">Courses</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#testimonials">Alumni</a></li>
+    <li><a href="https://kiwamitech.com/sqasummit2026/" target="_blank">SQA Summit 2026</a></li>
+  </ul>
+  <div class="nav-right"><a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a><a href="contact.html" class="btn-solid">Enroll Now</a></div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="index.html#courses">All courses</a><a href="beginners.html">New to QA?</a><a href="https://learning.kiwamitech.com/" target="_blank">Login to LMS</a><a href="contact.html">Enroll Now</a>
+</div>
+
+<header class="phero pro">
+  <div class="phero-in">
+    <div class="crumb"><a href="index.html">Kiwami School</a> / Not new to QA</div>
+    <span class="ppill">Professional pathway</span>
+    <h1>Ready to take your QA skills further?</h1>
+    <div class="kicker">Explore. Specialise. Advance.</div>
+    <p class="lead">Build on what you know. Explore advanced testing disciplines and develop specialised skills to take your QA career further.</p>
+    <span class="pnote">For aspiring and experienced QA professionals</span>
+  </div>
+</header>
+
+<section class="psec alt">
+  <div class="pin">
+    <h2 class="ptitle">Where do you want to grow?</h2>
+    <p class="psub">Pick an area to see the courses.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="lhead"><h2 id="lt">All professional courses</h2><button id="showAll" hidden>Show all courses</button></div>
+    <div class="course-listing" id="list"></div>
+  </div>
+</section>
+
+<section class="cross">
+  <h2>New to software testing?</h2>
+  <p>Start with the basics and build up from there.</p>
+  <a class="btn-yellow" href="beginners.html">See the beginner pathway →</a>
+</section>
+
+<footer><div class="fwrap"><span>© 2026 Kiwami Tech Solutions Ltd · Nairobi, Kenya</span><a href="index.html">← Back to Kiwami School</a></div></footer>
+<a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">💬 <span>Chat on WhatsApp</span></a>
+
+<script src="courses-data.js"></script>
+<script src="path.js"></script>
+<script>
+// "cats" are the category keys used in courses-data.js. Change them here to regroup courses.
+const GROUPS = {
+  courses:{ic:'📘', t:'Courses', d:'Build deeper knowledge in software testing and QA.', cats:['intermediate']},
+  spec:{ic:'🎯', t:'Specialisations', d:'Master tools like Playwright, Cypress and Selenium.', cats:['automation','specialist','bootcamps']},
+  nft:{ic:'⚡', t:'Non-Functional Testing', d:'Explore performance, security and usability testing.', cats:['performance','security']},
+  istqb:{ic:'🏆', t:'ISTQB Certification', d:'Prepare for Foundation and Advanced Level exams.', cats:['istqb']}
+};
+// Beginner-only courses live on the beginner page, so keep them out of here.
+const isPro = c => { const k = c.categories || []; return k.includes('intermediate') || !k.includes('beginner'); };
+const inGroup = (c, g) => isPro(c) && (c.categories || []).some(x => GROUPS[g].cats.includes(x));
+const pool = Object.values(ALL);
+let active = null;
+
+function draw(){
+  const list = active ? pool.filter(c => inGroup(c, active)) : pool.filter(c => Object.keys(GROUPS).some(g => inGroup(c, g)));
+  document.getElementById('lt').textContent = active ? GROUPS[active].t : 'All professional courses';
+  document.getElementById('showAll').hidden = !active;
+  document.getElementById('list').innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="empty-cat">No courses here yet. Check back soon!</div>';
+  document.querySelectorAll('.tile').forEach(t => t.classList.toggle('on', t.dataset.g === active));
+}
+document.getElementById('tiles').innerHTML = Object.entries(GROUPS).map(([k, g]) =>
+  `<button class="tile" data-g="${k}"><span class="ic">${g.ic}</span><h3>${g.t}</h3><p>${g.d}</p><span class="n">${pool.filter(c => inGroup(c, k)).length} courses →</span></button>`).join('');
+document.getElementById('tiles').addEventListener('click', e => {
+  const t = e.target.closest('.tile'); if (!t) return;
+  active = active === t.dataset.g ? null : t.dataset.g; draw();
+  document.getElementById('lt').scrollIntoView({behavior:'smooth', block:'start'});
+});
+document.getElementById('showAll').addEventListener('click', () => { active = null; draw(); });
+draw();
+</script>
+</body>
+</html>
