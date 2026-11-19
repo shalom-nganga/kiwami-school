@@ -391,6 +391,7 @@ if (!course) {
 
 // ── RENDER ────────────────────────────────────────────────────
 function renderCourse(c) {
+  c = { ...c, cohort: cohortLabel(c) };
   const prereqs = c.prerequisites.map(p => `<li>${p}</li>`).join('');
   const curriculum = c.curriculum.map((w, i) => `
     <div class="cw${i === 0 ? ' open' : ''}" onclick="toggleWeek(this)">

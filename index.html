@@ -388,6 +388,10 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   .cf-reopen{bottom:84px;right:20px;padding:11px 14px;border-radius:50px;font-size:12px;gap:5px;}
   .cf-reopen .cfr-text{display:inline;}
   .cf-reopen .cfr-full{display:none;}
+
+  .card-bottom{justify-content:stretch}
+.card-actions{width:100%}
+.card-actions .learn-more,.card-actions .enroll{flex:1;text-align:center}
 }
 </style>
 </head>
@@ -403,22 +407,22 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 <!-- TOPBAR -->
 <!-- MARQUEE -->
-<div class="student-marquee" onclick="document.getElementById('student-offer').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+<div class="student-marquee" onclick="location.href='beginners.html'" style="cursor:pointer;">
   <div class="student-marquee-track">
-    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing at <strong style="color:var(--yellow);">Ksh 9,999</strong> <span class="sm-sep"></span></span>
+    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
     <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
     <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
-    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special offer at <strong style="color:var(--yellow);">Ksh 9,999</strong> · Click to learn more <span class="sm-sep"></span></span>
-    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing at <strong style="color:var(--yellow);">Ksh 9,999</strong> <span class="sm-sep"></span></span>
+    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special student offer · Click to learn more <span class="sm-sep"></span></span>
+    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
     <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
     <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
-    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special offer at <strong style="color:var(--yellow);">Ksh 9,999</strong> · Click to learn more <span class="sm-sep"></span></span>
+    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special student offer · Click to learn more <span class="sm-sep"></span></span>
   </div>
 </div>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  🎓 Bootcamp now open. <strong>Fullstack QA Engineering</strong> · October 2026 · Virtual &amp; Hybrid &nbsp;
+  🎓 Bootcamp now open. <strong>Fullstack QA Engineering</strong> · <span class="js-cohort">October 2026</span> · Virtual &amp; Hybrid &nbsp;
   <a href="course.html?id=bootcamp-2026">Apply Now →</a>
 </div>
 
@@ -481,11 +485,11 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
     </div>
     <div class="hero-right">
 
-        <a class="path-ai" href="course.html?id=applied-ai-agents-n8n">
+        <!-- <a class="path-ai" href="course.html?id=applied-ai-agents-n8n">
           <span class="path-ai-ic">🔥</span>
           <span class="path-ai-txt"><small>New course</small><b>Learn AI: No-Code/Low-Code</b><em>Applied AI Agents · n8n</em></span>
           <span class="path-ai-btn">Apply Now →</span>
-        </a>
+        </a> -->
 
         <div class="path-label">Where are you on your QA journey?</div>
 
@@ -508,7 +512,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
         </a>
 
       </div>
-      <div class="hero-screen">
+      <!-- <div class="hero-screen">
         <div class="hs-bar">
           <div class="hs-dot" style="background:#ff5f57;"></div>
           <div class="hs-dot" style="background:#febc2e;"></div>
@@ -530,7 +534,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
           <div class="cp-title">Introduction to Software Testing</div>
           <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 8 weeks</span><span>KSH 14,999</span></div>
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -542,7 +546,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
       <p class="attachment-tag">Special Offer</p>
       <h2 class="attachment-title">Student Bootcamp</h2>
       <p class="attachment-sub">Are you a university or college student looking to break into Software Testing?</p>
-      <p class="attachment-price">Grab our discounted <strong>Introduction to Software Testing Course</strong> at <span class="price-new">Ksh 9,999</span> <span class="price-old">Ksh 14,999</span></p>
+      <p class="attachment-price">Grab our discounted <strong>Introduction to Software Testing Course</strong> as a student.</p>
       <a href="course.html?id=intro-testing" class="attachment-btn">Apply Now</a>
     </div>
     <div class="attachment-right">
@@ -720,9 +724,9 @@ function cardHTML(c){
   const toolPill = c.tool ? `<span class="pill">🛠 ${c.tool}</span>` : '';
   const enrollLabel = c.price ? 'Enroll →' : 'Enquire →';
 
-  const priceBlock = c.price
-    ? `<div><div class="price">KSH ${Number(c.price).toLocaleString()}</div><div class="price-sub">Full course</div></div>`
-    : `<div><div class="price">Enquire</div><div class="price-sub">Contact us</div></div>`;
+  // const priceBlock = c.price
+  //   ? `<div><div class="price">KSH ${Number(c.price).toLocaleString()}</div><div class="price-sub">Full course</div></div>`
+  //   : `<div><div class="price">Enquire</div><div class="price-sub">Contact us</div></div>`;
 
   return `
     <div class="card">
@@ -734,16 +738,15 @@ function cardHTML(c){
       <div class="card-desc">${c.tagline}</div>
       <div class="card-pills">
         <span class="pill">⏱ ${c.duration}</span>
-        <span class="pill">📅 ${c.cohort}</span>
+        <span class="pill">📅 ${cohortLabel(c)}</span>
         ${toolPill}
       </div>
       <div class="card-bottom">
-        ${priceBlock}
-        <div class="card-actions">
-          <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
-          <a href="contact.html?course=${c.id}" class="enroll">${enrollLabel}</a>
-        </div>
+      <div class="card-actions">
+        <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
+        <a href="contact.html?course=${c.id}" class="enroll">Enroll →</a>
       </div>
+    </div>
     </div>`;
 }
 
@@ -918,6 +921,8 @@ document.getElementById('scrollTop').addEventListener('click',()=>window.scrollT
   render();
     setTimeout(cfOpen, 600);
 })();
+
+document.querySelectorAll('.js-cohort').forEach(el => el.textContent = nextCohort());
 </script>
 </body>
 </html>
