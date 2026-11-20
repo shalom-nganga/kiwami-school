@@ -20,3 +20,11 @@ function cardHTML(c){
       <a href="contact.html?course=${c.id}" class="enroll">${c.price?'Enroll →':'Enquire →'}</a>
     </div></div></div>`;
 }
+
+function setHeaderH(){
+  const h = ['.student-marquee','.topbar','nav']
+    .reduce((s,q)=> s + document.querySelector(q).offsetHeight, 0);
+  document.documentElement.style.setProperty('--header-h', h+'px');
+}
+setHeaderH();
+window.addEventListener('resize', setHeaderH);

@@ -498,10 +498,11 @@ a.sm-item:hover u{color:#fff}
 .hero-sub{color:rgba(255,255,255,.78)}
 
 /* Frosted-glass pathway cards so the photo shows through */
+/* Balanced glass: solid enough for text on the left, clear on the right */
 .path-card.path-new,.path-card.path-pro{
-  background:rgba(12,24,56,.45);
-  -webkit-backdrop-filter:blur(10px);
-  backdrop-filter:blur(10px);
+  background:linear-gradient(90deg,rgba(12,24,56,.84) 0%,rgba(12,24,56,.58) 55%,rgba(12,24,56,.28) 100%);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
 }
 
 /* Phones: darker, centred on the people */
@@ -520,6 +521,57 @@ a.sm-item:hover u{color:#fff}
 .sm-new u{color:#ffe08a;text-underline-offset:3px}
 a.sm-item:hover u{color:#fff}
 .student-marquee .sm-item{text-shadow:0 0 12px rgba(245,200,66,.25)}
+
+/* ===== Hero fills the first screen; Special Offer only appears on scroll ===== */
+:root{ --header-h:134px; } /* marquee 37 + topbar 37 + nav 60 */
+
+.hero{
+  min-height:calc(100vh - var(--header-h));
+  min-height:calc(100svh - var(--header-h)); /* better on mobile browsers */
+  display:flex;
+  align-items:center;
+}
+.hero-inner{ width:100%; }
+
+/* ===== "Where are you on your QA journey?" label ===== */
+.path-label{
+  color:#fff;                 /* same solid white as the card headings */
+  font-weight:800;
+  text-align:center;          /* centered over the two cards */
+  font-size:12.5px;
+  letter-spacing:1.4px;
+  margin:0 0 14px;
+}
+
+/* ===== Help button: always show the full label ===== */
+.cf-reopen .cfr-full{display:inline !important;}
+.cf-reopen .cfr-text{display:none !important;}
+
+.cf-reopen{
+  right:14px;
+  bottom:14px;
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:700;
+  gap:8px;
+  white-space:nowrap;
+  background:var(--yellow);        /* stands out against the dark hero */
+  color:var(--blue-dark);
+  box-shadow:0 4px 16px rgba(0,0,0,.35);
+}
+.cf-reopen:hover{
+  background:#ffd95e;
+  color:var(--blue-dark);
+  transform:translateY(-2px);
+}
+
+/* Keep the WhatsApp button sitting just above it */
+.wa-float{bottom:62px;}
+
+@media(max-width:640px){
+  .cf-reopen{font-size:12px;padding:9px 14px;}
+  .wa-float{bottom:62px;}
+}
 </style>
 </head>
 <body>
@@ -785,7 +837,7 @@ a.sm-item:hover u{color:#fff}
 </a>
 
 <button class="cf-reopen" onclick="cfReopenManual()" aria-label="Need help choosing a course?">
-  🤔 <span class="cfr-full">Need help choosing a course?</span><span class="cfr-text">Find My Course</span>
+ <span class="cfr-full">Need help choosing a course?</span><span class="cfr-text">Find My Course</span>
 </button>
 
 <script src="courses-data.js"></script>
