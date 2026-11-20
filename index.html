@@ -388,11 +388,138 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   .cf-reopen{bottom:84px;right:20px;padding:11px 14px;border-radius:50px;font-size:12px;gap:5px;}
   .cf-reopen .cfr-text{display:inline;}
   .cf-reopen .cfr-full{display:none;}
+}
 
-  .card-bottom{justify-content:stretch}
+.card-bottom{justify-content:stretch}
 .card-actions{width:100%}
 .card-actions .learn-more,.card-actions .enroll{flex:1;text-align:center}
+
+/* ===== COMPACT HERO v2 (balanced) ===== */
+.hero{padding:clamp(16px,3.4vh,40px) 6vw}
+.hero-inner{align-items:center;gap:clamp(32px,5vw,64px)}
+.hero-left{padding-bottom:0}
+.hero-eyebrow{margin-bottom:clamp(10px,2vh,18px);padding:6px 15px;font-size:12.5px}
+h1{font-size:clamp(30px,min(3.7vw,7.4vh),52px);line-height:1.06;letter-spacing:-1.5px;margin-bottom:clamp(10px,2vh,18px)}
+.hero-sub{font-size:clamp(14px,2.4vh,16px);line-height:1.65;max-width:480px;margin-bottom:clamp(14px,3vh,26px)}
+.btn-hero{padding:13px 26px;font-size:15px}
+.btn-hero-outline{font-size:15px}
+.hero-trust{margin-top:clamp(14px,3vh,26px)}
+.trust-face{width:34px;height:34px;font-size:12px}
+
+.path-label{margin:0 0 10px;font-size:11.5px}
+.path-card{padding:clamp(12px,2.4vh,20px) 22px;margin-bottom:12px}
+.path-pill{margin-bottom:8px}
+.path-ic{top:14px;right:18px;font-size:20px}
+.path-card h3{font-size:clamp(17px,2.9vh,21px)}
+.path-sub{font-size:14px}
+.path-card p:not(.path-sub){font-size:13.5px;line-height:1.5;margin-bottom:clamp(10px,2vh,14px)}
+.path-cta{padding:9px 16px;font-size:13.5px}
+
+.cf-reopen{right:auto;left:24px;bottom:24px}
+.scroll-top{display:none}
+
+/* Learn AI strip, compact */
+.path-ai{padding:clamp(8px,1.6vh,12px) 16px;gap:12px}
+.path-ai-ic{width:36px;height:36px;font-size:17px;border-radius:10px}
+.path-ai-txt small{font-size:9.5px}
+.path-ai-txt b{font-size:clamp(14px,2.3vh,15.5px)}
+.path-ai-txt em{font-size:11.5px}
+.path-ai-btn{padding:7px 14px;font-size:12.5px}
+
+/* give the extra strip room: tighten the two cards a little */
+.path-card{padding:clamp(10px,2vh,16px) 22px;margin-bottom:10px}
+.path-card p:not(.path-sub){margin-bottom:clamp(8px,1.6vh,12px)}
+
+/* Bigger text logo */
+.logo{font-size:28px;font-weight:900;letter-spacing:.05em}
+@media(max-width:1100px){.logo{font-size:23px}}
+@media(max-width:640px){.logo{font-size:19px}}
+/* Narrower, less stretched right column */
+.hero-right{max-width:470px;margin-left:auto;width:100%}
+.path-card{padding:clamp(10px,2vh,16px) 20px}
+.path-card p:not(.path-sub){font-size:13px}
+
+/* New course strip: visibly shorter than the two cards, centred under them */
+/* .path-ai{width:88%;margin:0 auto} */
+
+/* Professional card = same colours as the beginner card */
+.path-pro{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12)}
+.path-pro:hover{border-color:var(--yellow)}
+.path-pro .path-sub{color:var(--yellow)}
+.path-pro .path-cta{background:var(--yellow)}
+.path-pill{color:var(--yellow);border-color:rgba(245,200,66,.5)}
+
+/* Blue marquee */
+.student-marquee{background:linear-gradient(90deg,#0b1736 0%,#14295e 50%,#0b1736 100%);border-bottom:1px solid rgba(245,200,66,.35)}
+.sm-sep{background:var(--yellow)}
+.sm-item strong{color:var(--yellow)}
+a.sm-item{color:#fff;text-decoration:none}
+a.sm-item:hover u{color:#fff}
+.sm-new u{color:var(--yellow);text-underline-offset:3px}
+
+/* Constant gold border */
+.path-card.path-new,.path-card.path-pro{border-color:var(--yellow)}
+
+/* Rebalance the two cards now the strip is gone */
+.hero-right{display:flex;flex-direction:column;justify-content:center}
+.path-card{padding:clamp(14px,2.7vh,22px) 22px;margin-bottom:12px}
+.path-card:last-child{margin-bottom:0}
+.path-card h3{font-size:clamp(18px,3vh,22px)}
+.path-card p:not(.path-sub){font-size:13.5px}
+.path-cta{padding:10px 18px;font-size:13.5px}
+
+/* Floating buttons: stacked bottom-right, compact. Help sits below WhatsApp */
+.wa-float{right:14px;bottom:56px;padding:8px 14px 8px 11px;font-size:13px;gap:7px;box-shadow:0 4px 14px rgba(37,211,102,.4)}
+.wa-float svg{width:18px;height:18px}
+.cf-reopen{right:14px;left:auto;bottom:14px;padding:7px 13px;font-size:12px;gap:6px;box-shadow:0 4px 14px rgba(21,43,94,.3)}
+
+/* Short laptop screens: icon-only so they can never reach the cards */
+@media(max-height:700px) and (min-width:961px){
+  .wa-float span,.cf-reopen .cfr-full{display:none}
+  .wa-float{padding:9px;bottom:58px}
+  .cf-reopen{padding:9px 10px}
 }
+
+/* Phones */
+@media(max-width:640px){
+  .wa-float{padding:11px;right:14px;bottom:60px}
+  .wa-float span{display:none}
+  .cf-reopen{right:14px;bottom:14px;padding:8px 12px;font-size:11.5px}
+}
+
+/* Hero background photo */
+.hero{
+  background:
+    linear-gradient(90deg,rgba(10,20,48,.90) 0%,rgba(10,20,48,.55) 42%,rgba(10,20,48,.12) 100%),
+    url('hero-bg.jpg') center 62% / cover no-repeat,
+    var(--blue-dark);
+}
+.hero-blob,.hero-blob2{display:none}
+.hero-sub{color:rgba(255,255,255,.78)}
+
+/* Frosted-glass pathway cards so the photo shows through */
+.path-card.path-new,.path-card.path-pro{
+  background:rgba(12,24,56,.45);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+
+/* Phones: darker, centred on the people */
+@media(max-width:960px){
+  .hero{background:
+    linear-gradient(180deg,rgba(10,20,48,.88),rgba(10,20,48,.80)),
+    url('hero-bg.jpg') 70% center / cover no-repeat,
+    var(--blue-dark);}
+}
+
+/* Golden marquee */
+.student-marquee .sm-item,
+.student-marquee a.sm-item{color:var(--yellow)}
+.student-marquee .sm-item strong{color:#ffe08a}
+.sm-sep{background:var(--yellow)}
+.sm-new u{color:#ffe08a;text-underline-offset:3px}
+a.sm-item:hover u{color:#fff}
+.student-marquee .sm-item{text-shadow:0 0 12px rgba(245,200,66,.25)}
 </style>
 </head>
 <body>
@@ -409,10 +536,13 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 <!-- MARQUEE -->
 <div class="student-marquee" onclick="location.href='beginners.html'" style="cursor:pointer;">
   <div class="student-marquee-track">
+    <a class="sm-item sm-new" href="course.html?id=applied-ai-agents-n8n" onclick="event.stopPropagation()">🔥 <strong>New course</strong> — Learn AI: No-Code/Low-Code · Applied AI Agents with n8n · <u>Apply now →</u> <span class="sm-sep"></span></a>
     <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
     <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
     <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
     <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special student offer · Click to learn more <span class="sm-sep"></span></span>
+
+    <a class="sm-item sm-new" href="course.html?id=applied-ai-agents-n8n" onclick="event.stopPropagation()">🔥 <strong>New course</strong> — Learn AI: No-Code/Low-Code · Applied AI Agents with n8n · <u>Apply now →</u> <span class="sm-sep"></span></a>
     <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
     <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
     <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
@@ -428,8 +558,7 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">KIWAMI SCHOOL</a>
-  <ul class="nav-links">
+    <a href="index.html" class="logo">KIWAMI SCHOOL</a>  <ul class="nav-links">
     <li><a href="https://kiwamitech.com" target="_blank">Kiwami Tech</a></li>
     <li><a href="#courses">Courses</a></li>
     <li><a href="#why">Why Us</a></li>
@@ -439,8 +568,8 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
     <!-- <li><a href="hub.html">Kiwami Tech Hub</a></li> -->
   </ul>
   <div class="nav-right">
-    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Login to LMS</a>
     <a href="javascript:void(0)" class="btn-solid" onclick="cfReopenManual()">Enroll Now</a>
+    <a href="https://learning.kiwamitech.com/" class="btn-ghost" target="_blank">Access LMS</a>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -467,8 +596,8 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Expert-Led · ISTQB Certified Trainers</div>
-      <h1>Become a<br><i>QA Engineer</i><br>people trust.</h1>
-      <p class="hero-sub">Real skills, real projects, real instructors. Kiwami School trains the next generation of software testing professionals, from beginner to certified automation engineer. Kiwami School is a software testing and Quality Assurance training school in Kenya, helping aspiring and experienced testers build practical, industry-ready skills.</p>
+      <h1>Become a <i>QA Engineer</i><br>people trust.</h1>
+      <p class="hero-sub">Real skills, real projects, real instructors. Kiwami School is a software testing and Quality Assurance training school in Kenya, helping aspiring and experienced testers build practical, industry-ready skills.</p>
       <div class="hero-actions">
         <a href="#courses" class="btn-hero">Browse Courses →</a>
         <a href="course.html?id=bootcamp-2026" class="btn-hero-outline">Apply for Bootcamp ↗</a>
@@ -483,58 +612,26 @@ footer{background:var(--ink);padding:64px 6vw 32px;}
         <div class="trust-txt"><strong>50+ graduates</strong><br>Trained across East Africa &amp; beyond</div>
       </div>
     </div>
+
     <div class="hero-right">
+      <div class="path-label">Where are you on your QA journey?</div>
 
-        <!-- <a class="path-ai" href="course.html?id=applied-ai-agents-n8n">
-          <span class="path-ai-ic">🔥</span>
-          <span class="path-ai-txt"><small>New course</small><b>Learn AI: No-Code/Low-Code</b><em>Applied AI Agents · n8n</em></span>
-          <span class="path-ai-btn">Apply Now →</span>
-        </a> -->
+      <a class="path-card path-new" href="beginners.html">
+        <span class="path-pill">Beginner pathway</span>
+        <!-- <span class="path-ic">🎓</span> -->
+        <h3>New to Quality Assurance?</h3>
+        <p class="path-sub">Your journey starts here.</p>
+        <p>No experience? No problem. Take your first steps into QA.</p>
+        <span class="path-cta">Start your QA journey →</span>
+      </a>
 
-        <div class="path-label">Where are you on your QA journey?</div>
-
-        <a class="path-card path-new" href="beginners.html">
-          <span class="path-pill">Beginner pathway</span>
-          <span class="path-ic">🎓</span>
-          <h3>New to Quality Assurance?</h3>
-          <p class="path-sub">Your journey starts here.</p>
-          <p>No experience? No problem. Discover the world of software testing and take your first steps towards a career in QA.</p>
-          <span class="path-cta">Start your QA journey →</span>
-        </a>
-
-        <a class="path-card path-pro" href="professionals.html">
-          <span class="path-pill">Professional pathway</span>
-          <span class="path-ic">📈</span>
-          <h3>Already familiar with QA?</h3>
-          <p class="path-sub">Take your skills further.</p>
-          <p>Build on what you know. Explore specialised testing disciplines and develop your expertise in software quality.</p>
-          <span class="path-cta">Explore professional courses →</span>
-        </a>
-
-      </div>
-      <!-- <div class="hero-screen">
-        <div class="hs-bar">
-          <div class="hs-dot" style="background:#ff5f57;"></div>
-          <div class="hs-dot" style="background:#febc2e;"></div>
-          <div class="hs-dot" style="background:#28c840;"></div>
-          <span class="hs-title">MY COURSES</span>
-        </div>
-        <a href="course.html?id=playwright-typescript" class="course-preview">
-          <div class="cp-tag">AUTOMATION</div>
-          <div class="cp-title">Playwright (TypeScript)</div>
-          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 3 months</span><span>KSH 44,999</span></div>
-        </a>
-        <a href="course.html?id=manual-testing-istqb" class="course-preview">
-          <div class="cp-tag" style="background:#fff4ed;color:var(--accent);">BEGINNER</div>
-          <div class="cp-title">Manual Testing + ISTQB Prep</div>
-          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 2 months</span><span>KSH 55,000</span></div>
-        </a>
-        <a href="course.html?id=intro-testing" class="course-preview" style="border:1.5px dashed var(--border);background:var(--bg);">
-          <div class="cp-tag" style="background:var(--blue-light);color:var(--blue);">BEGINNER</div>
-          <div class="cp-title">Introduction to Software Testing</div>
-          <div class="cp-meta"><span style="color:var(--blue);font-weight:600;">✓ Complete in 8 weeks</span><span>KSH 14,999</span></div>
-        </a>
-      </div> -->
+      <a class="path-card path-pro" href="professionals.html">
+        <span class="path-pill">Professional pathway</span>
+        <!-- <span class="path-ic">📈</span> -->
+        <h3>Already familiar with QA?</h3>
+        <p class="path-sub">Take your skills further.</p>
+        <p>Explore specialised testing disciplines and grow your expertise.</p>        <span class="path-cta">Explore professional courses →</span>
+      </a>
     </div>
   </div>
 </section>
