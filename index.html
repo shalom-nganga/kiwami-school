@@ -572,6 +572,61 @@ a.sm-item:hover u{color:#fff}
   .cf-reopen{font-size:12px;padding:9px 14px;}
   .wa-float{bottom:62px;}
 }
+
+/* ===== Floating buttons: same size, stacked bottom-right ===== */
+.wa-float,
+.cf-reopen{
+  right:14px;
+  height:40px;
+  min-width:124px;
+  padding:0 16px;
+  font-size:13px;
+  font-weight:700;
+  gap:7px;
+  justify-content:center;
+  white-space:nowrap;
+  border-radius:50px;
+}
+
+/* Help button: back to the original blue */
+.cf-reopen{
+  bottom:14px;
+  background:var(--blue);
+  color:#fff;
+  box-shadow:0 4px 14px rgba(21,43,94,.35);
+}
+.cf-reopen:hover{background:var(--blue-dark);color:#fff;transform:translateY(-2px);}
+.cf-reopen .cfr-full{display:inline !important;}
+.cf-reopen .cfr-text{display:none !important;}
+
+/* WhatsApp sits just above, label always visible */
+.wa-float{bottom:64px;}
+.wa-float span{display:inline !important;}
+.wa-float svg{width:18px;height:18px;}
+
+/* Short laptop screens and phones: keep the same compact size */
+@media(max-height:700px) and (min-width:961px){
+  .wa-float,.cf-reopen{padding:0 16px;}
+  .wa-float{bottom:64px;}
+}
+@media(max-width:640px){
+  .wa-float,.cf-reopen{height:38px;min-width:116px;padding:0 14px;font-size:12px;border-radius:50px;}
+  .wa-float{bottom:60px;}
+}
+
+/* ===== Pathway cards: less blur, more photo ===== */
+.path-card.path-new,
+.path-card.path-pro{
+  background:linear-gradient(90deg,rgba(12,24,56,.74) 0%,rgba(12,24,56,.44) 55%,rgba(12,24,56,.14) 100%);
+  -webkit-backdrop-filter:blur(1px);
+  backdrop-filter:blur(1px);
+}
+/* Keeps the text readable where the card is most transparent */
+.path-card h3,
+.path-card .path-sub,
+.path-card p:not(.path-sub){
+  text-shadow:0 1px 8px rgba(0,0,0,.55);
+}
 </style>
 </head>
 <body>
@@ -833,11 +888,11 @@ a.sm-item:hover u{color:#fff}
 
 <a href="https://wa.me/254110436849" class="wa-float" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.847L.057 23.882a.5.5 0 0 0 .606.663l6.266-1.643A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.389l-.36-.214-3.733.979.995-3.636-.234-.374A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-  <span>Chat on WhatsApp</span>
+  <span>WhatsApp</span>
 </a>
 
 <button class="cf-reopen" onclick="cfReopenManual()" aria-label="Need help choosing a course?">
- <span class="cfr-full">Need help choosing a course?</span><span class="cfr-text">Find My Course</span>
+  🤔 <span class="cfr-full">Need help?</span><span class="cfr-text">Need help?</span>
 </button>
 
 <script src="courses-data.js"></script>
