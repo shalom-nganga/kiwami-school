@@ -627,6 +627,14 @@ a.sm-item:hover u{color:#fff}
 .path-card p:not(.path-sub){
   text-shadow:0 1px 8px rgba(0,0,0,.55);
 }
+
+/* every course card image: same size, same crop, never squeezed by the text below */
+.card-thumb{flex:0 0 170px;height:170px;min-height:170px;margin:-24px -24px 18px;border-radius:22px 22px 0 0;background:#0e1e42 center 28%/cover no-repeat;position:relative;overflow:hidden}
+.card-thumb .card-tags{position:absolute;top:12px;right:12px}
+.card-thumb .tag{box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.card-tagrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-height:22px;margin-bottom:10px}
+.card-thumb--plain{background:linear-gradient(135deg,#0e1e42,#1e3a7a);display:flex;align-items:flex-end;padding:14px 18px}
+.card-thumb--plain .ct-track{font:800 11px/1 var(--font2);letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow)}
 </style>
 </head>
 <body>
@@ -643,11 +651,11 @@ a.sm-item:hover u{color:#fff}
 <!-- MARQUEE -->
 <div class="student-marquee" onclick="location.href='beginners.html'" style="cursor:pointer;">
   <div class="student-marquee-track">
-    <a class="sm-item sm-new" href="course.html?id=applied-ai-agents-n8n" onclick="event.stopPropagation()">🔥 <strong>New course</strong> — Learn AI: No-Code/Low-Code · Applied AI Agents with n8n · <u>Apply now →</u> <span class="sm-sep"></span></a>
-    <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
-    <span class="sm-item">🎯 Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
-    <span class="sm-item">✅ Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
-    <span class="sm-item">🚀 <strong>Student Bootcamp</strong> — Special student offer · Click to learn more <span class="sm-sep"></span></span>
+    <a class="sm-item sm-new" href="course.html?id=applied-ai-agents-n8n" onclick="event.stopPropagation()"><strong>New course</strong> — Learn AI: No-Code/Low-Code · Applied AI Agents with n8n · <u>Apply now →</u> <span class="sm-sep"></span></a>
+      <span class="sm-item"><strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
+      <span class="sm-item">Are you a university or college student? Break into Software Testing today <span class="sm-sep"></span></span>
+      <span class="sm-item">Certificate upon completion · Mentorship included · Real QA project experience <span class="sm-sep"></span></span>
+      <span class="sm-item"><strong>Student Bootcamp</strong> — Special student offer · Click to learn more <span class="sm-sep"></span></span>
 
     <a class="sm-item sm-new" href="course.html?id=applied-ai-agents-n8n" onclick="event.stopPropagation()">🔥 <strong>New course</strong> — Learn AI: No-Code/Low-Code · Applied AI Agents with n8n · <u>Apply now →</u> <span class="sm-sep"></span></a>
     <span class="sm-item">🎓 <strong>Student Bootcamp</strong> — Introduction to Software Testing · Special student offer <span class="sm-sep"></span></span>
@@ -925,32 +933,31 @@ function getCourses(f){
 
 function cardHTML(c){
   const tags = (c.tags||[]).map(t=>`<span class="tag ${t.cls}">${t.label}</span>`).join('');
-  const toolPill = c.tool ? `<span class="pill">🛠 ${c.tool}</span>` : '';
-  const enrollLabel = c.price ? 'Enroll →' : 'Enquire →';
+  const toolPill = c.tool ? `<span class="pill">${c.tool}</span>` : '';
 
-  // const priceBlock = c.price
-  //   ? `<div><div class="price">KSH ${Number(c.price).toLocaleString()}</div><div class="price-sub">Full course</div></div>`
-  //   : `<div><div class="price">Enquire</div><div class="price-sub">Contact us</div></div>`;
+  const top = c.thumb
+    ? `<div class="card-thumb" style="background-image:url('${c.thumb}')"></div>`
+    : `<div class="card-thumb card-thumb--plain">
+         <span class="ct-track">${c.track}</span>
+       </div>`;
 
   return `
     <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:${c.cardBg||'var(--blue-light)'};">${c.icon}</div>
-        <div class="card-tags">${tags}</div>
-      </div>
+      ${top}
+      <div class="card-tagrow">${tags}</div>
       <div class="card-title">${c.title}</div>
       <div class="card-desc">${c.tagline}</div>
       <div class="card-pills">
-        <span class="pill">⏱ ${c.duration}</span>
-        <span class="pill">📅 ${cohortLabel(c)}</span>
+        <span class="pill">${c.duration}</span>
+        <span class="pill">${cohortLabel(c)}</span>
         ${toolPill}
       </div>
       <div class="card-bottom">
-      <div class="card-actions">
-        <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
-        <a href="contact.html?course=${c.id}" class="enroll">Enroll →</a>
+        <div class="card-actions">
+          <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
+          <a href="contact.html?course=${c.id}" class="enroll">Enroll →</a>
+        </div>
       </div>
-    </div>
     </div>`;
 }
 
@@ -1128,5 +1135,6 @@ document.getElementById('scrollTop').addEventListener('click',()=>window.scrollT
 
 document.querySelectorAll('.js-cohort').forEach(el => el.textContent = nextCohort());
 </script>
+<script src="no-emoji.js"></script>
 </body>
 </html>

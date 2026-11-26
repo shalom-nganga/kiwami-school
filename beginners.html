@@ -147,6 +147,23 @@ footer{background:var(--ink);padding:40px 6vw 28px}
 .wa-float:hover{background:#1ebe5d;transform:translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,.55)}
 .wa-float svg{width:22px;height:22px;flex-shrink:0}
 @media(max-width:640px){.wa-float{padding:16px;border-radius:50%;bottom:20px;right:20px}.wa-float span{display:none}}
+
+/* hero photo */
+.phero{
+  background:
+    linear-gradient(90deg, rgba(14,30,66,.88) 0%, rgba(14,30,66,.55) 48%, rgba(14,30,66,.12) 100%),
+    url('images/hero-pathways.jpg') right 30% / cover no-repeat,
+    var(--blue-dark);
+}
+.phero::before{display:none}
+@media(max-width:960px){
+  .phero{
+    background:
+      linear-gradient(rgba(14,30,66,.78), rgba(14,30,66,.78)),
+      url('images/hero-pathways.jpg') 72% 30% / cover no-repeat,
+      var(--blue-dark);
+  }
+}
 </style>
 </head>
 <body>
@@ -228,9 +245,10 @@ const STEPS = [
 ];
 document.getElementById('pgrid').innerHTML = STEPS.map(s => {
   const c = ALL[s.id] || {};
-  const bg = s.img ? `style="background-image:url(${s.img})"` : '';
+  const img = s.img || c.thumb;
+  const bg = img ? `style="background-image:url('${img}')"` : '';
   return `<a class="pc" href="course.html?id=${s.id}">
-    <div class="pc-img" ${bg}>${s.img ? '' : s.icon}</div>
+    <div class="pc-img" ${bg}>${img ? '' : s.icon}</div>
     <div class="pc-body">
       <span class="lvl">${s.lvl}</span>
       <h3>${s.title}</h3>

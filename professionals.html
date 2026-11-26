@@ -147,6 +147,30 @@ footer{background:var(--ink);padding:40px 6vw 28px}
 .wa-float:hover{background:#1ebe5d;transform:translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,.55)}
 .wa-float svg{width:22px;height:22px;flex-shrink:0}
 @media(max-width:640px){.wa-float{padding:16px;border-radius:50%;bottom:20px;right:20px}.wa-float span{display:none}}
+/* thumbnail cards, same look as homepage */
+.card{padding:0;overflow:hidden}
+.card-thumb{height:153px;display:flex;align-items:center;justify-content:center;font-size:44px;background:var(--blue-light)}
+.card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.card-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.card-top{justify-content:flex-start;margin-bottom:14px}
+.card-tags{justify-content:flex-start}
+
+/* hero photo */
+.phero{
+  background:
+    linear-gradient(90deg, rgba(14,30,66,.88) 0%, rgba(14,30,66,.55) 48%, rgba(14,30,66,.12) 100%),
+    url('images/hero-pathways.jpg') right 30% / cover no-repeat,
+    var(--blue-dark);
+}
+.phero::before{display:none}
+@media(max-width:960px){
+  .phero{
+    background:
+      linear-gradient(rgba(14,30,66,.78), rgba(14,30,66,.78)),
+      url('images/hero-pathways.jpg') 72% 30% / cover no-repeat,
+      var(--blue-dark);
+  }
+}
 </style>
 </head>
 <body>
@@ -209,15 +233,22 @@ hb.addEventListener('click', () => mm.classList.toggle('open'));
 function cardHTML(c){
   const tags = (c.tags||[]).map(t=>`<span class="tag ${t.cls}">${t.label}</span>`).join('');
   const tool = c.tool ? `<span class="pill">🛠 ${c.tool}</span>` : '';
+  const thumb = c.thumb
+    ? `<div class="card-thumb"><img src="${c.thumb}" alt="" loading="lazy"></div>`
+    : `<div class="card-thumb" style="background:${c.cardBg||'var(--blue-light)'}">${c.icon||'📘'}</div>`;
   return `<div class="card">
-    <div class="card-top"><div class="card-icon" style="background:${c.cardBg||'var(--blue-light)'}">${c.icon||'📘'}</div><div class="card-tags">${tags}</div></div>
-    <div class="card-title">${c.title}</div>
-    <div class="card-desc">${c.tagline||''}</div>
-    <div class="card-pills"><span class="pill">⏱ ${c.duration||''}</span><span class="pill">📅 ${cohortLabel(c)}</span>${tool}</div>
-    <div class="card-bottom"><div class="card-actions">
-      <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
-      <a href="contact.html?course=${c.id}" class="enroll">Enroll →</a>
-    </div></div></div>`;
+    ${thumb}
+    <div class="card-body">
+      <div class="card-top"><div class="card-tags">${tags}</div></div>
+      <div class="card-title">${c.title}</div>
+      <div class="card-desc">${c.tagline||''}</div>
+      <div class="card-pills"><span class="pill">⏱ ${c.duration||''}</span><span class="pill">📅 ${cohortLabel(c)}</span>${tool}</div>
+      <div class="card-bottom"><div class="card-actions">
+        <a href="course.html?id=${c.id}" class="learn-more">Learn More</a>
+        <a href="contact.html?course=${c.id}" class="enroll">Enroll →</a>
+      </div></div>
+    </div>
+  </div>`;
 }
 
 </script>

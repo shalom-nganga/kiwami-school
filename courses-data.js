@@ -11,7 +11,9 @@ const COURSES = {
     title: "Introduction to Software Testing",
     track: "Beginner",
     categories: ["beginner"],
-    icon: "🧪",
+    image: "images/beginner/course-intro.jpg",
+    thumb: "images/beginner/thumb-intro.jpg",
+    cardBg: "var(--blue-light)",
     cardBg: "var(--blue-light)",
     tags: [{ label: "BEGINNER", cls: "tag-new" }],
     tool: null,
@@ -46,7 +48,9 @@ const COURSES = {
     title: "Manual Testing + ISTQB Voucher",
     track: "Beginner",
     categories: ["beginner"],
-    icon: "🏆",
+    image: "images/beginner/course-manual.jpg",
+    thumb: "images/beginner/thumb-manual.jpg",
+    cardBg: "var(--green-light)",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }, { label: "POPULAR", cls: "tag-pop" }],
     tool: "ISTQB Voucher",
@@ -77,7 +81,8 @@ const COURSES = {
     title: "API Testing + Automation (Postman)",
     track: "Intermediate",
     categories: ["intermediate"],
-    icon: "🔌",
+    image: "images/intermediate/course-api-postman.jpg",
+    thumb: "images/intermediate/thumb-api-postman.jpg",
     cardBg: "var(--blue-light)",
     tags: [{ label: "POPULAR", cls: "tag-pop" }],
     tool: "Postman",
@@ -110,7 +115,8 @@ const COURSES = {
     title: "API Testing + Automation (Selenium)",
     track: "Intermediate",
     categories: ["intermediate"],
-    icon: "🔗",
+    image: "images/intermediate/course-api-selenium.jpg",
+    thumb: "images/intermediate/thumb-api-selenium.jpg",
     cardBg: "var(--blue-light)",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Selenium",
@@ -143,7 +149,8 @@ const COURSES = {
     title: "Advanced API Automation (Postman + AI)",
     track: "Intermediate",
     categories: ["intermediate"],
-    icon: "🤖",
+    image: "images/intermediate/course-api-advanced.jpg",
+    thumb: "images/intermediate/thumb-api-advanced.jpg",
     cardBg: "#fff0f0",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Postman AI · CI/CD",
@@ -175,7 +182,8 @@ const COURSES = {
     title: "API Testing + ISTQB Voucher",
     track: "Intermediate",
     categories: ["intermediate"],
-    icon: "🏆",
+    image: "images/intermediate/course-api-istqb.jpg",
+    thumb: "images/intermediate/thumb-api-istqb.jpg",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "ISTQB Voucher",
@@ -205,7 +213,8 @@ const COURSES = {
     title: "USSD Testing",
     track: "Intermediate",
     categories: ["intermediate"],
-    icon: "📱",
+    image: "images/intermediate/course-ussd.jpg",
+    thumb: "images/intermediate/thumb-ussd.jpg",
     cardBg: "#fff4ed",
     tags: [{ label: "AFRICA-SPECIFIC", cls: "tag-new" }],
     tool: null,
@@ -237,7 +246,8 @@ const COURSES = {
     title: "USSD Automation + ISTQB Voucher",
     track: "Intermediate",
     categories: ["intermediate"],
-    icon: "🏆",
+    image: "images/intermediate/course-ussd-automation.jpg",
+    thumb: "images/intermediate/thumb-ussd-automation.jpg",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }, { label: "AFRICA-SPECIFIC", cls: "tag-new" }],
     tool: "ISTQB Voucher",
@@ -267,7 +277,6 @@ const COURSES = {
     title: "Web Automation — Selenium",
     track: "Automation",
     categories: ["automation"],
-    icon: "⚙️",
     cardBg: "var(--blue-light)",
     tags: [{ label: "POPULAR", cls: "tag-pop" }],
     tool: "Selenium",
@@ -300,7 +309,6 @@ const COURSES = {
     title: "Web Automation (Selenium) + ISTQB Voucher",
     track: "Automation",
     categories: ["automation"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "Selenium · ISTQB Voucher",
@@ -329,7 +337,6 @@ const COURSES = {
     title: "Test Automation — Cypress",
     track: "Automation",
     categories: ["automation"],
-    icon: "🌲",
     cardBg: "var(--green-light)",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Cypress · GitHub Actions",
@@ -362,7 +369,6 @@ const COURSES = {
     title: "Test Automation (Cypress) + ISTQB Voucher",
     track: "Automation",
     categories: ["automation"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "Cypress · ISTQB Voucher",
@@ -391,7 +397,6 @@ const COURSES = {
     title: "Test Automation — Playwright (TypeScript)",
     track: "Automation",
     categories: ["automation"],
-    icon: "🎭",
     cardBg: "#fff0f0",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Playwright · TypeScript",
@@ -424,7 +429,6 @@ const COURSES = {
     title: "Playwright (TypeScript) + ISTQB Advanced",
     track: "Automation",
     categories: ["automation"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }, { label: "BEST VALUE", cls: "tag-hot" }],
     tool: "Playwright · ISTQB Advanced",
@@ -453,7 +457,6 @@ const COURSES = {
     title: "Test Automation — Playwright (JavaScript)",
     track: "Automation",
     categories: ["automation"],
-    icon: "🎭",
     cardBg: "#fff0f0",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Playwright · JavaScript",
@@ -486,7 +489,6 @@ const COURSES = {
     title: "Playwright (JavaScript) + ISTQB Voucher",
     track: "Automation",
     categories: ["automation"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "Playwright · ISTQB Voucher",
@@ -515,7 +517,6 @@ const COURSES = {
     title: "Test Automation — Robot Framework",
     track: "Automation",
     categories: ["automation"],
-    icon: "🤖",
     cardBg: "var(--blue-light)",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Robot Framework",
@@ -548,7 +549,6 @@ const COURSES = {
     title: "Robot Framework + ISTQB Voucher",
     track: "Automation",
     categories: ["automation"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "Robot Framework · ISTQB Voucher",
@@ -577,7 +577,6 @@ const COURSES = {
     title: "Mobile Automation — Appium",
     track: "Automation",
     categories: ["automation"],
-    icon: "📲",
     cardBg: "var(--blue-light)",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "Appium",
@@ -610,7 +609,6 @@ const COURSES = {
     title: "Mobile Automation (Appium) + ISTQB Voucher",
     track: "Automation",
     categories: ["automation"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "Appium · ISTQB Voucher",
@@ -640,7 +638,6 @@ const COURSES = {
     title: "Performance Testing",
     track: "Performance",
     categories: ["performance"],
-    icon: "⚡",
     cardBg: "var(--blue-light)",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "JMeter · k6",
@@ -673,7 +670,6 @@ const COURSES = {
     title: "Performance Testing + ISTQB Voucher",
     track: "Performance",
     categories: ["performance"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "JMeter · k6 · ISTQB Voucher",
@@ -703,7 +699,6 @@ const COURSES = {
     title: "Security Testing",
     track: "Security",
     categories: ["security"],
-    icon: "🔐",
     cardBg: "#fff0f0",
     tags: [{ label: "IN DEMAND", cls: "tag-hot" }],
     tool: "OWASP · Burp Suite",
@@ -736,7 +731,6 @@ const COURSES = {
     title: "Security Testing + ISTQB Voucher",
     track: "Security",
     categories: ["security"],
-    icon: "🏆",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }],
     tool: "OWASP · Burp Suite · ISTQB",
@@ -766,7 +760,6 @@ const COURSES = {
     title: "ISTQB Foundation Level — Exam Preparation",
     track: "ISTQB",
     categories: ["istqb"],
-    icon: "📚",
     cardBg: "var(--blue-light)",
     tags: [{ label: "ISTQB", cls: "tag-istqb" }],
     tool: null,
@@ -798,7 +791,6 @@ const COURSES = {
     title: "ISTQB Foundation Prep + Exam Voucher",
     track: "ISTQB",
     categories: ["istqb"],
-    icon: "🎟️",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB BUNDLE", cls: "tag-istqb" }, { label: "POPULAR", cls: "tag-pop" }],
     tool: "ISTQB Voucher Included",
@@ -826,7 +818,6 @@ const COURSES = {
     title: "ISTQB Advanced Test Automation — Exam Prep",
     track: "ISTQB",
     categories: ["istqb"],
-    icon: "🎓",
     cardBg: "var(--blue-light)",
     tags: [{ label: "ISTQB ADVANCED", cls: "tag-istqb" }],
     tool: null,
@@ -857,7 +848,6 @@ const COURSES = {
     title: "ISTQB Advanced Test Automation Prep + Voucher",
     track: "ISTQB",
     categories: ["istqb"],
-    icon: "🎟️",
     cardBg: "var(--green-light)",
     tags: [{ label: "ISTQB ADVANCED", cls: "tag-istqb" }],
     tool: "ISTQB Advanced Voucher",
@@ -887,7 +877,6 @@ const COURSES = {
     title: "AWS Cloud Practitioner — Exam Prep",
     track: "Specialist",
     categories: ["specialist"],
-    icon: "☁️",
     cardBg: "#fff4ed",
     tags: [{ label: "AWS", cls: "tag-new" }],
     tool: "AWS",
@@ -917,7 +906,6 @@ const COURSES = {
     title: "Applied AI Agents — No-Code/Low-Code",
     track: "Specialist",
     categories: ["specialist"],
-    icon: "🤖",
     cardBg: "#f3eaff",
     tags: [{ label: "NEW", cls: "tag-new" }, { label: "NO-CODE", cls: "tag-pop" }],
     tool: "n8n",
@@ -952,7 +940,9 @@ const COURSES = {
     title: "Fullstack QA Bootcamp 2026",
     track: "Bootcamp",
     categories: ["bootcamps", "beginner"],
-    icon: "🚀",
+    image: "images/bootcamps/course-fullstack.jpg",
+    thumb: "images/bootcamps/thumb-fullstack.jpg",
+    cardBg: "var(--yellow)",
     cardBg: "var(--yellow)",
     tags: [{ label: "INTENSIVE", cls: "tag-hot" }, { label: "LIMITED SEATS", cls: "tag-pop" }],
     tool: "Postman · Selenium · Cypress · Playwright · Appium · JMeter · k6 · OWASP ZAP · Burp Suite",
@@ -989,7 +979,6 @@ const COURSES = {
     title: "Automation & Governance in Software QA",
     track: "Bootcamp",
     categories: ["bootcamps"],
-    icon: "🏛️",
     cardBg: "var(--blue-light)",
     tags: [{ label: "SPECIALIST", cls: "tag-new" }],
     tool: null,
@@ -1019,7 +1008,8 @@ const COURSES = {
     title: "Manual Testing + AI in Manual Testing Bootcamp",
     track: "Bootcamp",
     categories: ["bootcamps", "beginner"],
-    icon: "📋",
+    image: "images/beginner/course-manual.jpg",
+    thumb: "images/beginner/thumb-manual.jpg",
     cardBg: "#fff4ed",
     tags: [{ label: "INTENSIVE", cls: "tag-hot" }, { label: "LIMITED SEATS", cls: "tag-pop" }],
     tool: null,
@@ -1053,7 +1043,6 @@ const COURSES = {
     title: "Test Automation + AI in Test Automation Bootcamp",
     track: "Bootcamp",
     categories: ["bootcamps"],
-    icon: "⚙️",
     cardBg: "var(--blue-light)",
     tags: [{ label: "INTENSIVE", cls: "tag-hot" }, { label: "LIMITED SEATS", cls: "tag-pop" }],
     tool: "Selenium · Cypress · Playwright · Appium",
@@ -1091,7 +1080,6 @@ const COURSES = {
     title: "Non-Functional Testing + AI in Non-Functional Testing Bootcamp",
     track: "Bootcamp",
     categories: ["bootcamps"],
-    icon: "⚡",
     cardBg: "#fff0f0",
     tags: [{ label: "INTENSIVE", cls: "tag-hot" }, { label: "LIMITED SEATS", cls: "tag-pop" }],
     tool: "JMeter · k6 · OWASP ZAP · Burp Suite",
@@ -1126,7 +1114,6 @@ const COURSES = {
     title: "AI in Testing & AI System Validation Bootcamp",
     track: "Bootcamp",
     categories: ["bootcamps"],
-    icon: "🤖",
     cardBg: "var(--green-light)",
     tags: [{ label: "INTENSIVE", cls: "tag-hot" }, { label: "LIMITED SEATS", cls: "tag-pop" }],
     tool: "Testim · Mabl · Selenium · Cypress · Applitools",
@@ -1171,3 +1158,88 @@ function nextCohort(){
 function cohortLabel(c){
   return (!c.cohort || c.cohort === 'auto') ? nextCohort() : c.cohort;
 }
+
+// Photos for the 12 automation courses
+const AUTOMATION_PHOTOS = {
+  "selenium": "selenium",
+  "selenium-istqb": "selenium-istqb",
+  "cypress": "cypress",
+  "cypress-istqb": "cypress",
+  "playwright-typescript": "playwright-ts",
+  "playwright-istqb": "playwright-istqb",
+  "playwright-javascript": "playwright-js",
+  "playwright-javascript-istqb": "playwright-js",
+  "robot-framework": "robot",
+  "robot-framework-istqb": "robot",
+  "appium": "appium",
+  "appium-istqb": "appium-istqb"
+};
+Object.keys(AUTOMATION_PHOTOS).forEach(id => {
+  if (!COURSES[id]) return;
+  const n = AUTOMATION_PHOTOS[id];
+  COURSES[id].image = `images/automation/course-${n}.jpg`;
+  COURSES[id].thumb = `images/automation/thumb-${n}.jpg`;
+}); 
+
+// Photos for Performance and Security courses
+const PERF_SEC_PHOTOS = {
+  "performance-testing":       ["performance", "performance"],
+  "performance-testing-istqb": ["performance", "performance-istqb"],
+  "security-testing":          ["security", "security"],
+  "security-testing-istqb":    ["security", "security-istqb"]
+};
+Object.keys(PERF_SEC_PHOTOS).forEach(id => {
+  if (!COURSES[id]) return;
+  const [folder, n] = PERF_SEC_PHOTOS[id];
+  COURSES[id].image = `images/${folder}/course-${n}.jpg`;
+  COURSES[id].thumb = `images/${folder}/thumb-${n}.jpg`;
+});
+
+// Photos for the ISTQB courses
+const ISTQB_PHOTOS = {
+  "istqb-foundation-prep":    "foundation-prep",
+  "istqb-foundation-voucher": "foundation-voucher",
+  "istqb-advanced-prep":      "advanced-prep",
+  "istqb-advanced-voucher":   "advanced-voucher"
+};
+Object.keys(ISTQB_PHOTOS).forEach(id => {
+  if (!COURSES[id]) return;
+  const n = ISTQB_PHOTOS[id];
+  COURSES[id].image = `images/istqb/course-${n}.jpg`;
+  COURSES[id].thumb = `images/istqb/thumb-${n}.jpg`;
+});
+// The exam-room photo already has the people in the middle, so it needs no left shift
+if (COURSES["istqb-foundation-prep"]) COURSES["istqb-foundation-prep"].heroX = "0vw";
+
+// Photos for the four bootcamps
+const BOOTCAMP_PHOTOS = {
+  "automation-governance":       "governance",
+  "bootcamp-test-automation-ai": "test-automation-ai",
+  "bootcamp-non-functional-ai":  "non-functional-ai",
+  "bootcamp-ai-testing":         "ai-testing"
+};
+Object.keys(BOOTCAMP_PHOTOS).forEach(id => {
+  if (!COURSES[id]) return;
+  const n = BOOTCAMP_PHOTOS[id];
+  COURSES[id].image = `images/bootcamps/course-${n}.jpg`;
+  COURSES[id].thumb = `images/bootcamps/thumb-${n}.jpg`;
+});
+// This photo is busier, so it needs a bigger shift to bring the two people beside the price card
+if (COURSES["bootcamp-non-functional-ai"]) COURSES["bootcamp-non-functional-ai"].heroX = "28vw";
+
+
+
+// Photos for the Specialist courses
+const SPECIALIST_PHOTOS = {
+  "aws-practitioner":       "aws",
+  "applied-ai-agents-n8n":  "ai-agents"
+};
+Object.keys(SPECIALIST_PHOTOS).forEach(id => {
+  if (!COURSES[id]) return;
+  const n = SPECIALIST_PHOTOS[id];
+  COURSES[id].image = `images/specialist/course-${n}.jpg`;
+  COURSES[id].thumb = `images/specialist/thumb-${n}.jpg`;
+});
+// Optional: nudge the crop if the person ends up hidden behind the price card
+// if (COURSES["aws-practitioner"])      COURSES["aws-practitioner"].heroX = "18vw";
+// if (COURSES["applied-ai-agents-n8n"]) COURSES["applied-ai-agents-n8n"].heroX = "18vw";
