@@ -7,6 +7,9 @@
 <link rel="canonical" href="https://kiwamitech.com/school/professionals.html">
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="hero-bg.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--blue:#152b5e;--blue-dark:#0e1e42;--blue-light:#e8edf8;--blue-mid:#1e3a7a;--sky:#3a6db5;--ink:#0f1d3a;--muted:#4a6080;--muted2:#6b7f99;--surface:#fff;--bg:#f7f9fc;--border:#dce6f5;--border2:#c5d8f0;--green:#0e9f6e;--green-light:#e6f7f0;--accent:#e8622a;--yellow:#f5c842;--font:'Plus Jakarta Sans',sans-serif;--font2:'Manrope',sans-serif;--radius:12px;--radius-lg:18px;--radius-xl:24px}
@@ -171,6 +174,25 @@ footer{background:var(--ink);padding:40px 6vw 28px}
       var(--blue-dark);
   }
 }
+/* Greyer pathway cards and section background (both pages) */
+.psec,.psec.alt{background:#dfe5ee}
+
+/* Beginner page cards */
+.pc{background:#eef1f6;border-color:#c9d3e2;box-shadow:0 2px 10px rgba(21,43,94,.08)}
+.pc:hover{background:#f3f5f9;border-color:#aebbd0;box-shadow:0 18px 50px rgba(21,43,94,.14)}
+.pc-meta{border-top-color:#cdd6e4}
+.lvl{background:#fff}
+.pc-go{color:#0a7a52}
+.tile{background:#eef1f6;border-color:#c9d3e2}
+.tile.on{background:var(--green-light)}
+.card-thumb--plain{background:linear-gradient(135deg,#0e1e42,#1e3a7a);align-items:flex-end;justify-content:flex-start;padding:14px 18px}
+.card-thumb--plain .ct-track{font:800 11px/1 var(--font2);letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow)}
+
+/* Professional page cards: same grey as the beginner cards */
+.course-listing .card{background:#eef1f6;border-color:#c9d3e2;box-shadow:0 2px 10px rgba(21,43,94,.08)}
+.course-listing .card:hover{background:#f3f5f9;border-color:#aebbd0;box-shadow:0 18px 50px rgba(21,43,94,.14)}
+.course-listing .card-bottom{border-top-color:#cdd6e4}
+.course-listing .card .pill,.course-listing .card .learn-more{background:#fff}
 </style>
 </head>
 <body>
@@ -234,8 +256,8 @@ function cardHTML(c){
   const tags = (c.tags||[]).map(t=>`<span class="tag ${t.cls}">${t.label}</span>`).join('');
   const tool = c.tool ? `<span class="pill">🛠 ${c.tool}</span>` : '';
   const thumb = c.thumb
-    ? `<div class="card-thumb"><img src="${c.thumb}" alt="" loading="lazy"></div>`
-    : `<div class="card-thumb" style="background:${c.cardBg||'var(--blue-light)'}">${c.icon||'📘'}</div>`;
+      ? `<div class="card-thumb"><img src="${c.thumb}" alt="" loading="lazy" decoding="async" width="640" height="357"></div>`
+      : `<div class="card-thumb card-thumb--plain"><span class="ct-track">${c.track}</span></div>`;
   return `<div class="card">
     ${thumb}
     <div class="card-body">
@@ -283,5 +305,6 @@ document.getElementById('tiles').addEventListener('click', e => {
 document.getElementById('showAll').addEventListener('click', () => { active = null; draw(); });
 draw();
 </script>
+<script src="no-emoji.js"></script>
 </body>
 </html>

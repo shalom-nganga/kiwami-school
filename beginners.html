@@ -7,6 +7,9 @@
 <link rel="canonical" href="https://kiwamitech.com/school/beginners.html">
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="hero-bg.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--blue:#152b5e;--blue-dark:#0e1e42;--blue-light:#e8edf8;--blue-mid:#1e3a7a;--sky:#3a6db5;--ink:#0f1d3a;--muted:#4a6080;--muted2:#6b7f99;--surface:#fff;--bg:#f7f9fc;--border:#dce6f5;--border2:#c5d8f0;--green:#0e9f6e;--green-light:#e6f7f0;--accent:#e8622a;--yellow:#f5c842;--font:'Plus Jakarta Sans',sans-serif;--font2:'Manrope',sans-serif;--radius:12px;--radius-lg:18px;--radius-xl:24px}
@@ -164,6 +167,15 @@ footer{background:var(--ink);padding:40px 6vw 28px}
       var(--blue-dark);
   }
 }
+/* Greyer pathway cards and section background (both pages) */
+.psec,.psec.alt{background:#dfe5ee}
+
+/* Beginner page cards */
+.pc{background:#eef1f6;border-color:#c9d3e2;box-shadow:0 2px 10px rgba(21,43,94,.08)}
+.pc:hover{background:#f3f5f9;border-color:#aebbd0;box-shadow:0 18px 50px rgba(21,43,94,.14)}
+.pc-meta{border-top-color:#cdd6e4}
+.lvl{background:#fff}
+.pc-go{color:#0a7a52}
 </style>
 </head>
 <body>
@@ -258,5 +270,6 @@ document.getElementById('pgrid').innerHTML = STEPS.map(s => {
     </div></a>`;
 }).join('');
 </script>
+<script src="no-emoji.js"></script>
 </body>
 </html>
